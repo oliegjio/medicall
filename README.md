@@ -13,3 +13,11 @@
 1. `conda create -n django python=3.5`.
 2. `source activate django`.
 3. `sudo pip3 install django`
+
+### Django:
+- Create Django project: `django-admin startproject medicall`.
+  + File `manage.py` is a command-line utility that allows you to interact with Django in many different ways.
+  + File `urls.py` is the URL declarations for Django website.
+  + File `wsgi.py` is an entry-point for WSGI-compatible web servers to serve your project.
+- Run web-server (while in `web` directory): `python manage.py runserver`.
+- To create Django app: `python manage.py startapp website`.
