@@ -1,0 +1,26 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+
+  <form action="" method="POST">
+    {% csrf_token %}
+
+    <div>
+      <td>{{ form.username.label_tag }}</td>
+      <td>{{ form.username }}</td>
+    </div>
+
+    <div>
+      <td>{{ form.password1.label_tag }}</td>
+      <td>{{ form.password1 }}</td>
+    </div>
+
+    <div>
+      <td>{{ form.password2.label_tag }}</td>
+      <td>{{ form.password2 }}</td>
+    </div>
+
+    <input type="submit">
+  </form>
+
+{% endblock %}
