@@ -1,3 +1,7 @@
+## To Do:
+1. Patient and doctor profiles to log in.
+2. Database.
+
 ### Activate Django and Tensorflow environments:
 1. Activate Tensorflow (while in `neural` directory): `source activate tensorflow`.
 2. Activate Django (while in `web` directory): `source activate django`.
