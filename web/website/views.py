@@ -2,8 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import UserCreationForm
+from website.forms import UserCreationForm
 from django.shortcuts import render, redirect
+
+from django.contrib.auth.models import User
 
 def index(request):
     return render(request, 'home.html')
@@ -18,9 +20,16 @@ def signup(request):
             raw_password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('/')
+            return redirect(request.get_full_path())
     else:
         form = UserCreationForm()
 
     return render(request, 'registration/signup.html', {'form': form})
 
+def user(request, id):
+    try:
+        user = User.objects.get(id=id)
+    except User.DoesNotExist:
+        return HttpResponse('This user does not exist!')
+
+    return render(request, 'user.html', {'user': user})
