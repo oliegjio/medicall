@@ -34,7 +34,12 @@ class UserCreationForm(ModelForm):
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email')
-        field_classes = {'username': UsernameField}
+        field_classes = {
+            'username': UsernameField,
+            'first_name': forms.CharField,
+            'last_name': forms.CharField,
+            'email': forms.EmailField
+        }
 
     def __init__(self, *args, **kwargs):
         super(UserCreationForm, self).__init__(*args, **kwargs)

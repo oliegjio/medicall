@@ -1,6 +1,12 @@
 {% extends 'base_generic.html' %}
 
 {% block content %}
+  
+  {% if form.error_messages %}
+    {% for error in form.error_messages %}
+    <li>{{ error }}</li>
+    {% endfor %}
+  {% endif %}
 
   <form action="" method="POST">
     {% csrf_token %}
