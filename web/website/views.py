@@ -5,10 +5,12 @@ from django.contrib.auth import login, authenticate
 from website.forms import UserCreationForm
 from django.shortcuts import render, redirect
 
-from django.contrib.auth.models import User
+from website.models import User
+
 
 def index(request):
     return render(request, 'home.html')
+
 
 def signup(request):
     if request.method == 'POST':
@@ -25,6 +27,7 @@ def signup(request):
         form = UserCreationForm()
 
     return render(request, 'registration/signup.html', {'form': form})
+
 
 def user(request, id):
     try:
