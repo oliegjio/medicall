@@ -20,16 +20,17 @@ private slots:
     void backClicked();
 
 signals:
-    void switchView(int index);
+    void switchToLoginView();
+    void switchToWelcomeView();
 
 public:
-    LoginView();
+    LoginView(QWidget* parent = 0);
     ~LoginView();
 
 private:
     NetworkManager* network;
-    QLineEdit* username;
-    QLineEdit* password;
+    QLineEdit* usernameLine;
+    QLineEdit* passwordLine;
 };
 
 #endif // LOGINVIEW_H

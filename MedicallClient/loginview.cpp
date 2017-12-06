@@ -1,6 +1,6 @@
 #include "loginview.h"
 
-LoginView::LoginView()
+LoginView::LoginView(QWidget* parent) : QWidget(parent)
 {
     // #####
     // ## Setup:
@@ -33,33 +33,33 @@ LoginView::LoginView()
     layout->addStretch(1);
     layout->addLayout(formLayout);
 
-    // # Username:
-    QLabel* usernameLabel = new QLabel("Логин:");
-    usernameLabel->setMaximumWidth(labelsWidth);
-    formLayout->addWidget(usernameLabel, 0, 0);
+    // # usernameLine:
+    QLabel* usernameLineLabel = new QLabel("Логин:");
+    usernameLineLabel->setMaximumWidth(labelsWidth);
+    formLayout->addWidget(usernameLineLabel, 0, 0);
 
-    username = new QLineEdit();
-    username->setMaximumWidth(linesWidth);
-    formLayout->addWidget(username, 0, 1);
+    usernameLine = new QLineEdit();
+    usernameLine->setMaximumWidth(linesWidth);
+    formLayout->addWidget(usernameLine, 0, 1);
 
-    // # Password:
-    QLabel* passwordLabel = new QLabel("Пароль:");
-    passwordLabel->setMaximumWidth(labelsWidth);
-    formLayout->addWidget(passwordLabel, 1, 0);
+    // # passwordLine:
+    QLabel* passwordLineLabel = new QLabel("Пароль:");
+    passwordLineLabel->setMaximumWidth(labelsWidth);
+    formLayout->addWidget(passwordLineLabel, 1, 0);
 
-    password = new QLineEdit();
-    password->setMaximumWidth(linesWidth);
-    password->setEchoMode(QLineEdit::Password);
-    formLayout->addWidget(password, 1, 1);
+    passwordLine = new QLineEdit();
+    passwordLine->setMaximumWidth(linesWidth);
+    passwordLine->setEchoMode(QLineEdit::Password);
+    formLayout->addWidget(passwordLine, 1, 1);
 
     // # Buttons:
-    QPushButton* back = new QPushButton("Назад");
-    formLayout->addWidget(back, 2, 0);
-    connect(back, SIGNAL(clicked()), this, SLOT(backClicked()));
+    QPushButton* backButton = new QPushButton("Назад");
+    formLayout->addWidget(backButton, 2, 0);
+    connect(backButton, SIGNAL(clicked()), this, SLOT(backClicked()));
 
-    QPushButton* login = new QPushButton("Войти");
-    formLayout->addWidget(login, 2, 1);
-    connect(login, SIGNAL(clicked(bool)), this, SLOT(loginClicked()));
+    QPushButton* loginButton = new QPushButton("Войти");
+    formLayout->addWidget(loginButton, 2, 1);
+    connect(loginButton, SIGNAL(clicked()), this, SLOT(loginClicked()));
 
     // #####
     // ## Other:
@@ -80,16 +80,16 @@ void LoginView::loginClicked()
 
     QHttpMultiPart* multiPart = new QHttpMultiPart(QHttpMultiPart::FormDataType);
 
-    QHttpPart usernamePart;
-    usernamePart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant("form-data; name=\"username\""));
-    usernamePart.setBody(username->text().toLatin1());
+    QHttpPart usernameLinePart;
+    usernameLinePart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant("form-data; name=\"usernameLine\""));
+    usernameLinePart.setBody(usernameLine->text().toLatin1());
 
-    QHttpPart passwordPart;
-    passwordPart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant("form-data; name=\"password\""));
-    passwordPart.setBody(password->text().toLatin1());
+    QHttpPart passwordLinePart;
+    passwordLinePart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant("form-data; name=\"passwordLine\""));
+    passwordLinePart.setBody(passwordLine->text().toLatin1());
 
-    multiPart->append(usernamePart);
-    multiPart->append(passwordPart);
+    multiPart->append(usernameLinePart);
+    multiPart->append(passwordLinePart);
 
     // #####
     // ## Request:
@@ -112,4 +112,4 @@ void LoginView::loginClicked()
 }
 
 // Switch to WelcomeView
-void LoginView::backClicked() { emit switchView(0); }
+void LoginView::backClicked() { emit switchToWelcomeView(); }

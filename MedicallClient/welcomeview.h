@@ -11,12 +11,14 @@ class WelcomeView : public QWidget
 
 private slots:
     void loginButtonClicked();
+    void registerButtonClicked();
 
 signals:
-    void switchView(int index);
+    void switchToLoginView();
+    void switchToRegistrationView();
 
 public:
-    WelcomeView();
+    WelcomeView(QWidget* parent = 0);
     virtual ~WelcomeView() {}
 };
 

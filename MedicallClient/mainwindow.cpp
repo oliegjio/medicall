@@ -6,15 +6,14 @@ MainWindow::MainWindow()
     // ## Setup:
     // #####
 
-    resize(QDesktopWidget().availableGeometry(this).size() * 0.7);
+    resize(QDesktopWidget().availableGeometry(this).size() * 0.5);
     setWindowTitle("Medicall");
-
-    QWidget* interfaceArea = new QWidget();
-    setCentralWidget(interfaceArea);
 
     stack = new QStackedWidget();
 
-    QFont defaultFont("Arial", 18);
+    setCentralWidget(stack);
+
+    QFont defaultFont("Arial", 15);
     setFont(defaultFont);
 
     // #####
@@ -22,29 +21,40 @@ MainWindow::MainWindow()
     // #####
 
     // # 0
-    WelcomeView* welcomeView = new WelcomeView();
+    WelcomeView* welcomeView = new WelcomeView(this);
     stack->addWidget(welcomeView);
-    connect(welcomeView, &WelcomeView::switchView, this, &MainWindow::setView);
+    connect(welcomeView, &WelcomeView::switchToLoginView, this, &MainWindow::switchToLoginView);
+    connect(welcomeView, &WelcomeView::switchToRegistrationView, this, &MainWindow::switchToRegistrationView);
 
     // # 1
-    LoginView* loginView = new LoginView();
+    LoginView* loginView = new LoginView(this);
     stack->addWidget(loginView);
-    connect(loginView, &LoginView::switchView, this, &MainWindow::setView);
+    connect(loginView, &LoginView::switchToWelcomeView, this, &MainWindow::switchToWelcomeView);
+
+    // # 2
+    RegistrationView* registrationView = new RegistrationView(this);
+    stack->addWidget(registrationView);
 
     // #####
     // ## Other:
     // #####
-
-    QVBoxLayout* layout = new QVBoxLayout();
-    layout->addWidget(stack);
-    interfaceArea->setLayout(layout);
 
     setStyleSheet("background-color: white;");
 }
 
 MainWindow::~MainWindow() {}
 
-void MainWindow::setView(int index)
+void MainWindow::switchToWelcomeView()
 {
-    stack->setCurrentIndex(index);
+    stack->setCurrentIndex(0);
+}
+
+void MainWindow::switchToLoginView()
+{
+    stack->setCurrentIndex(1);
+}
+
+void MainWindow::switchToRegistrationView()
+{
+    stack->setCurrentIndex(2);
 }

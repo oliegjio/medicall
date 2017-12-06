@@ -1,6 +1,6 @@
 #include "welcomeview.h"
 
-WelcomeView::WelcomeView()
+WelcomeView::WelcomeView(QWidget* parent) : QWidget(parent)
 {
     // #####
     // ## Setup:
@@ -34,6 +34,7 @@ WelcomeView::WelcomeView()
     QPushButton* registerButton = new QPushButton("Зарегестрироваться");
     registerButton->setMaximumWidth(buttonsWidth);
     layout->addWidget(registerButton);
+    connect(registerButton, SIGNAL(clicked()), this, SLOT(registerButtonClicked()));
 
     // #####
     // ## Other:
@@ -45,4 +46,6 @@ WelcomeView::WelcomeView()
 }
 
 // Switch to LoginView
-void WelcomeView::loginButtonClicked() { emit switchView(1); }
+void WelcomeView::loginButtonClicked() { emit switchToLoginView(); }
+
+void WelcomeView::registerButtonClicked() { emit switchToRegistrationView(); }

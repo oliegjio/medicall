@@ -7,13 +7,16 @@
 
 #include "welcomeview.h"
 #include "loginview.h"
+#include "registrationview.h"
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public slots:
-    void setView(int index);
+    void switchToWelcomeView();
+    void switchToLoginView();
+    void switchToRegistrationView();
 
 public:
     MainWindow();
