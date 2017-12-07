@@ -75,29 +75,17 @@ LoginView::~LoginView() {}
 void LoginView::loginClicked()
 {
     // #####
-    // ## Data:
-    // #####
-
-    QHttpMultiPart* multiPart = new QHttpMultiPart(QHttpMultiPart::FormDataType);
-
-    QHttpPart usernameLinePart;
-    usernameLinePart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant("form-data; name=\"usernameLine\""));
-    usernameLinePart.setBody(usernameLine->text().toLatin1());
-
-    QHttpPart passwordLinePart;
-    passwordLinePart.setHeader(QNetworkRequest::ContentDispositionHeader, QVariant("form-data; name=\"passwordLine\""));
-    passwordLinePart.setBody(passwordLine->text().toLatin1());
-
-    multiPart->append(usernameLinePart);
-    multiPart->append(passwordLinePart);
-
-    // #####
     // ## Request:
     // #####
 
-    QUrl url("https://google.ru/");
-    QNetworkRequest request(url);
-    network->post(request, multiPart);
+//    QHash<QString, QString> data;
+//    data["username"] = "test3";
+//    data["password"] = "123456re";
+    QJsonObject data {
+        {"username", "test3"},
+        {"password", "123456re"}
+    };
+    network->postJson(QUrl("http://localhost:8000/website/token-auth/"), data);
 
     connect(network, &QNetworkAccessManager::finished, this, [=](QNetworkReply *reply) -> void {
         if (reply->error()) {

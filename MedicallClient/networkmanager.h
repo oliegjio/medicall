@@ -1,7 +1,11 @@
 #ifndef NETWORKMANAGER_H
 #define NETWORKMANAGER_H
 
-#include "QtNetwork/QNetworkAccessManager"
+#include <QtNetwork/QNetworkAccessManager>
+#include <QHttpMultiPart>
+#include <QHttpPart>
+#include <QJsonObject>
+#include <QJsonDocument>
 
 class NetworkManager : public QNetworkAccessManager
 {
@@ -9,6 +13,8 @@ class NetworkManager : public QNetworkAccessManager
 
 public:
     static NetworkManager* getInstance();
+    static QNetworkRequest* postForm(const QUrl& url, const QHash<QString, QString>& data);
+    static QNetworkRequest* postJson(const QUrl& url, const QJsonObject& data);
 
 private:
     NetworkManager();

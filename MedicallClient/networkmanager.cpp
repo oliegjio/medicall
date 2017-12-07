@@ -13,3 +13,39 @@ NetworkManager* NetworkManager::getInstance()
 }
 
 NetworkManager::NetworkManager() {}
+
+QNetworkRequest* NetworkManager::postForm(const QUrl& url, const QHash<QString, QString>& data)
+{
+    QNetworkRequest request(url);
+
+    QHttpMultiPart* multiPart = new QHttpMultiPart(instance);
+
+    QHash<QString, QString>::const_iterator i;
+    for (i = data.begin(); i != data.end(); i++)
+    {
+        QHttpPart part;
+        QVariant header("form-data; name=\"" + i.key() + "\"");
+
+        part.setHeader(QNetworkRequest::ContentDispositionHeader, header);
+        part.setBody(i.value().toLatin1());
+
+        multiPart->append(part);
+    }
+
+    instance->post(request, multiPart);
+
+    return &request;
+}
+
+QNetworkRequest* NetworkManager::postJson(const QUrl& url, const QJsonObject& data)
+{
+    QNetworkRequest request(url);
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
+    QJsonDocument document(data);
+    QByteArray array = document.toJson();
+
+    instance->post(request, array);
+
+    return &request;
+}
