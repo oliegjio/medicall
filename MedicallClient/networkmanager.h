@@ -6,6 +6,7 @@
 #include <QHttpPart>
 #include <QJsonObject>
 #include <QJsonDocument>
+#include <QNetworkReply>
 
 class NetworkManager : public QNetworkAccessManager
 {
@@ -13,8 +14,10 @@ class NetworkManager : public QNetworkAccessManager
 
 public:
     static NetworkManager* getInstance();
+
     static QNetworkRequest* postForm(const QUrl& url, const QHash<QString, QString>& data);
     static QNetworkRequest* postJson(const QUrl& url, const QJsonObject& data);
+    static QMap<QString, QString> getReplyData(QNetworkReply* reply);
 
 private:
     NetworkManager();

@@ -20,9 +20,6 @@ RegistrationView::RegistrationView(QWidget* parent) : QWidget(parent)
 
     QFont titleFont("Arial", 30);
 
-    int linesWidth = 400;
-    int labelsWidth = 150;
-
     layout->addStretch(3);
 
     // #####

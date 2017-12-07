@@ -49,3 +49,20 @@ QNetworkRequest* NetworkManager::postJson(const QUrl& url, const QJsonObject& da
 
     return &request;
 }
+
+QMap<QString, QString> NetworkManager::getReplyData(QNetworkReply* reply)
+{
+    QString rawData = reply->readAll();
+    QJsonDocument document = QJsonDocument::fromJson(rawData.toUtf8());
+    QJsonObject object = document.object();
+
+    QMap<QString, QString> data;
+
+    QJsonObject::iterator i;
+    for (i = object.begin(); i != object.end(); i++)
+    {
+        data[i.key()] = i.value().toString();
+    }
+
+    return data;
+}

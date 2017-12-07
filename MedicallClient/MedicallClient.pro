@@ -29,12 +29,14 @@ SOURCES += \
     welcomeview.cpp \
     loginview.cpp \
     networkmanager.cpp \
-    registrationview.cpp
+    registrationview.cpp \
+    user.cpp
 
 HEADERS += \
         mainwindow.h \
     welcomeview.h \
     loginview.h \
     networkmanager.h \
-    registrationview.h
+    registrationview.h \
+    user.h
 

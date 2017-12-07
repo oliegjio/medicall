@@ -14,8 +14,6 @@ LoginView::LoginView(QWidget* parent) : QWidget(parent)
 
     QFont logoFont("Arial", 75);
 
-    network = NetworkManager::getInstance();
-
     int linesWidth = 400;
     int labelsWidth = 150;
 
@@ -78,24 +76,26 @@ void LoginView::loginClicked()
     // ## Request:
     // #####
 
-//    QHash<QString, QString> data;
-//    data["username"] = "test3";
-//    data["password"] = "123456re";
     QJsonObject data {
-        {"username", "test3"},
-        {"password", "123456re"}
+        {"username", usernameLine->text()},
+        {"password", passwordLine->text()}
     };
-    network->postJson(QUrl("http://localhost:8000/website/token-auth/"), data);
+    NetworkManager::postJson(QUrl("http://localhost:8000/website/token-auth/"), data);
 
     connect(network, &QNetworkAccessManager::finished, this, [=](QNetworkReply *reply) -> void {
-        if (reply->error()) {
-            qDebug() << reply->errorString();
-            return;
-        }
+//        if (reply->error()) {
+//            qDebug() << reply->errorString();
+//            return;
+//        }
 
-        QString data = reply->readAll();
+//        QVariant statusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
 
-        qDebug() << data;
+//        if (!statusCode.isValid()) return;
+
+//        QMap<QString, QString> data = NetworkManager::getReplyData(reply);
+//        QString token = data["token"];
+
+//        qDebug() << token;
     });
 }
 
