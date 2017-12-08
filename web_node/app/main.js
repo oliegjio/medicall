@@ -2,6 +2,7 @@ const express = require('express')
 const path = require('path')
 const bodyParser = require('body-parser')
 const auth = require('./auth')()
+const db = require('./db')
 
 require('./dbInit')
 
@@ -26,8 +27,8 @@ app.use(require('../middlewares/crossOriginMiddleware').init)
 // ####
 
 require('../routes/loginRoute').init(app)
-require('../routes/tokenRoute').init(app)
 require('../routes/userRoute').init(app)
+require('../routes/registerPatientRoute').init(app)
 
 // ####
 // ## Other:
@@ -38,6 +39,10 @@ app.listen(port, (error) => {
     console.error(error)
   }
   console.log('Listening to localhost:8000')
+})
+
+process.on('exit', () => {
+  db.close()
 })
 
 module.exports.app = app

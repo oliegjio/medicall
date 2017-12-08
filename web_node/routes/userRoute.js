@@ -1,19 +1,20 @@
 const auth = require('../app/auth')()
-const UserModel = require('../models/userModel')
+const PatientModel = require('../models/PatientModel')
 
 var init = (app) => {
   app.post('/user/:id', auth.authenticate(), (request, response) => {
 
-    UserModel.getUser(request.params.id)
+    PatientModel.getById(request.params.id)
 
     .then((user) => {
-      response.json(user)
+      if (user) response.json(user)
+      response.sendStatus(404)
     })
 
     .catch((error) => {
       console.error(error)
+      response.sendStatus(406)
     })
-
   })
 }
 
