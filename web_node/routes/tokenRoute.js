@@ -1,6 +1,6 @@
 const jwt = require('jwt-simple')
-const config = require('../app/config.js')
-const users = require('../app/users.js')
+const config = require('../app/config')
+const users = require('../app/users')
 
 var init = (app) => {
   app.post("/token", function(request, response) {  

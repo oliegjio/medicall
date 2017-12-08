@@ -4,39 +4,37 @@ const passport = require('passport')
 const passportJwt = require('passport-jwt')
 const jwt = require('jsonwebtoken')
 const bodyParser = require('body-parser')
-const sqlite = require('sqlite3')
 const auth = require('./auth')()
+const UserModel = require('../models/userModel') 
+
+require('./dbInit')
+UserModel.getUser(1).then((user) => {
+  console.log(user) 
+})
 
 // ####
-// ## Init:
+// ## Setup:
 // ####
 
 const port = 8000
 const app = express()
 
 // ####
-// ## Database:
-// ####
-
-var db = new sqlite.Database('../db.sqlite')
-
-// ####
 // ## Middlewares:
 // ####
-
 
 app.use(auth.initialize())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
-app.use(require('../middlewares/crossOrigin').init)
+app.use(require('../middlewares/crossOriginMiddleware').init)
 
 // ####
 // ## Routes:
 // ####
 
-require('../routes/login').init(app)
-require('../routes/token').init(app)
-require('../routes/user').init(app)
+require('../routes/loginRoute').init(app)
+require('../routes/tokenRoute').init(app)
+require('../routes/userRoute').init(app)
 
 // ####
 // ## Other:
