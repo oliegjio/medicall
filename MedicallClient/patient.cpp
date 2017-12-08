@@ -2,8 +2,8 @@
 
 Patient::Patient(QWidget* parent) : QObject(parent)
 {
-    network = NetworkManager::getInstance();
-    connect(network, &NetworkManager::finished, this, &Patient::getPatientFinished);
+    getPatientNetworkManager = new QNetworkAccessManager();
+    connect(getPatientNetworkManager, &QNetworkAccessManager::finished, this, &Patient::getPatientFinished);
 }
 
 Patient::~Patient() {}
@@ -12,7 +12,7 @@ void Patient::getPatient(QString token)
 {
     this->token = token;
 
-    network->postJsonToken(QUrl("http://localhost:8000/user/"), QJsonObject{}, token);
+    NetworkManager::postJsonToken(getPatientNetworkManager, QUrl("http://localhost:8000/user/"), token);
 }
 
 void Patient::getPatientFinished(QNetworkReply *reply)

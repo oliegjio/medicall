@@ -12,8 +12,8 @@ LoginView::LoginView(QWidget* parent) : QWidget(parent)
     QGridLayout* formLayout  = new QGridLayout();
     formLayout->setAlignment(Qt::AlignCenter);
 
-    network = NetworkManager::getInstance();
-    connect(network, &NetworkManager::finished, this, &LoginView::loginRequestFinished);
+    loginNetworkManager = new QNetworkAccessManager();
+    connect(loginNetworkManager, &QNetworkAccessManager::finished, this, &LoginView::loginRequestFinished);
 
     QFont logoFont("Arial", 75);
 
@@ -80,7 +80,7 @@ void LoginView::loginClicked()
         {"password", passwordLine->text()}
     };
 
-    network->postJson(QUrl("http://localhost:8000/token/"), data);
+    NetworkManager::postJson(loginNetworkManager, QUrl("http://localhost:8000/token/"), data);
 }
 
 void LoginView::loginRequestFinished(QNetworkReply* reply)
@@ -91,10 +91,11 @@ void LoginView::loginRequestFinished(QNetworkReply* reply)
     }
 
     QVariant statusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
+    QByteArray replyData = reply->readAll();
 
-    if (!statusCode.isValid() || reply->readAll().isEmpty()) return;
+    if (!statusCode.isValid() || replyData.isEmpty()) return;
 
-    QMap<QString, QString> data = NetworkManager::getJsonReplyData(reply);
+    QMap<QString, QString> data = NetworkManager::jsonToMap(replyData);
 
     emit loggedIn(data["token"]);
 }

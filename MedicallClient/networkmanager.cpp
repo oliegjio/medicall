@@ -1,24 +1,10 @@
 #include "networkmanager.h"
 
-NetworkManager* NetworkManager::instance = 0;
-
-NetworkManager* NetworkManager::getInstance()
-{
-    if (instance == 0)
-    {
-        instance = new NetworkManager();
-    }
-
-    return instance;
-}
-
-NetworkManager::NetworkManager() {}
-
-QNetworkReply* NetworkManager::postForm(const QUrl& url, const QMap<QString, QString>& data)
+QNetworkReply* NetworkManager::postForm(QNetworkAccessManager* manager, const QUrl& url, const QMap<QString, QString>& data)
 {
     QNetworkRequest request(url);
 
-    QHttpMultiPart* multiPart = new QHttpMultiPart(instance);
+    QHttpMultiPart* multiPart = new QHttpMultiPart(manager);
 
     QMap<QString, QString>::const_iterator i;
     for (i = data.begin(); i != data.end(); i++)
@@ -32,17 +18,17 @@ QNetworkReply* NetworkManager::postForm(const QUrl& url, const QMap<QString, QSt
         multiPart->append(part);
     }
 
-    return instance->post(request, multiPart);
+    return manager->post(request, multiPart);
 }
 
-QNetworkReply* NetworkManager::postEmpy(const QUrl& url)
+QNetworkReply* NetworkManager::postEmpy(QNetworkAccessManager* manager, const QUrl& url)
 {
     QNetworkRequest request(url);
 
-    return instance->post(request, new QHttpMultiPart());
+    return manager->post(request, new QHttpMultiPart());
 }
 
-QNetworkReply* NetworkManager::postJson(const QUrl& url, const QJsonObject& data)
+QNetworkReply* NetworkManager::postJson(QNetworkAccessManager* manager, const QUrl& url, const QJsonObject& data)
 {
     QNetworkRequest request(url);
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
@@ -50,13 +36,23 @@ QNetworkReply* NetworkManager::postJson(const QUrl& url, const QJsonObject& data
     QJsonDocument document(data);
     QByteArray array = document.toJson();
 
-    return instance->post(request, array);
+    return manager->post(request, array);
 }
 
-QMap<QString, QString> NetworkManager::getJsonReplyData(QNetworkReply* reply)
+QNetworkReply* NetworkManager::postJsonToken(QNetworkAccessManager* manager, const QUrl& url, const QString& token)
 {
-    QString rawData = reply->readAll();
-    QJsonDocument document = QJsonDocument::fromJson(rawData.toUtf8());
+    QNetworkRequest request(url);
+
+    QByteArray authHeader("Bearer " + token.toUtf8());
+    request.setRawHeader(QByteArray("Authorization"), authHeader);
+
+    return manager->post(request, QByteArray());
+}
+
+QMap<QString, QString> NetworkManager::jsonToMap(QByteArray& rawData)
+{
+//    QString rawData = reply->readAll();
+    QJsonDocument document = QJsonDocument::fromJson(rawData);
     QJsonObject object = document.object();
 
     QMap<QString, QString> data;
@@ -68,16 +64,4 @@ QMap<QString, QString> NetworkManager::getJsonReplyData(QNetworkReply* reply)
     }
 
     return data;
-}
-
-QNetworkReply* NetworkManager::postJsonToken(const QUrl& url, const QJsonObject& data, const QString& token)
-{
-    QNetworkRequest request(url);
-    request.setRawHeader(QByteArray("Authorization"), QByteArray("Bearer " + token.toUtf8()));
-    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-
-    QJsonDocument document(data);
-    QByteArray array = document.toJson();
-
-    return instance->post(request, array);
 }

@@ -34,6 +34,8 @@ private:
     QString location;
     QString birthDate;
 
+    QNetworkAccessManager* getPatientNetworkManager;
+
 private:
     NetworkManager* network;
 };

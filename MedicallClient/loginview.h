@@ -30,7 +30,7 @@ public:
     ~LoginView();
 
 private:
-    NetworkManager* network;
+    QNetworkAccessManager* loginNetworkManager;
     QLineEdit* usernameLine;
     QLineEdit* passwordLine;
 };

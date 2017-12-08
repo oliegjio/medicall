@@ -20,9 +20,6 @@ class RegistrationView : public QWidget
 public:
     RegistrationView(QWidget* parent = 0);
     ~RegistrationView();
-
-private:
-    NetworkManager* network;
 };
 
 #endif // REGISTRATIONVIEW_H

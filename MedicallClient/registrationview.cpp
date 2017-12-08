@@ -16,8 +16,6 @@ RegistrationView::RegistrationView(QWidget* parent) : QWidget(parent)
     formLayout->setHorizontalSpacing(30);
     formLayout->setVerticalSpacing(10);
 
-    network = NetworkManager::getInstance();
-
     QFont titleFont("Arial", 30);
 
     layout->addStretch(3);
