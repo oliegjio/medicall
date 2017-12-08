@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_LoginView_t {
     QByteArrayData data[11];
-    char stringdata0[130];
+    char stringdata0[135];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -34,20 +34,20 @@ static const qt_meta_stringdata_LoginView_t qt_meta_stringdata_LoginView = {
 QT_MOC_LITERAL(0, 0, 9), // "LoginView"
 QT_MOC_LITERAL(1, 10, 17), // "switchToLoginView"
 QT_MOC_LITERAL(2, 28, 0), // ""
-QT_MOC_LITERAL(3, 29, 19), // "switchToWelcomeView"
-QT_MOC_LITERAL(4, 49, 8), // "loggedIn"
-QT_MOC_LITERAL(5, 58, 4), // "data"
-QT_MOC_LITERAL(6, 63, 12), // "loginClicked"
-QT_MOC_LITERAL(7, 76, 11), // "backClicked"
-QT_MOC_LITERAL(8, 88, 20), // "loginRequestFinished"
-QT_MOC_LITERAL(9, 109, 14), // "QNetworkReply*"
-QT_MOC_LITERAL(10, 124, 5) // "reply"
+QT_MOC_LITERAL(3, 29, 16), // "backButton_Event"
+QT_MOC_LITERAL(4, 46, 8), // "loggedIn"
+QT_MOC_LITERAL(5, 55, 4), // "data"
+QT_MOC_LITERAL(6, 60, 19), // "loginButton_Clicked"
+QT_MOC_LITERAL(7, 80, 18), // "backButton_Clicked"
+QT_MOC_LITERAL(8, 99, 14), // "login_Finished"
+QT_MOC_LITERAL(9, 114, 14), // "QNetworkReply*"
+QT_MOC_LITERAL(10, 129, 5) // "reply"
 
     },
     "LoginView\0switchToLoginView\0\0"
-    "switchToWelcomeView\0loggedIn\0data\0"
-    "loginClicked\0backClicked\0loginRequestFinished\0"
-    "QNetworkReply*\0reply"
+    "backButton_Event\0loggedIn\0data\0"
+    "loginButton_Clicked\0backButton_Clicked\0"
+    "login_Finished\0QNetworkReply*\0reply"
 };
 #undef QT_MOC_LITERAL
 
@@ -94,11 +94,11 @@ void LoginView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->switchToLoginView(); break;
-        case 1: _t->switchToWelcomeView(); break;
+        case 1: _t->backButton_Event(); break;
         case 2: _t->loggedIn((*reinterpret_cast< QVariantHash(*)>(_a[1]))); break;
-        case 3: _t->loginClicked(); break;
-        case 4: _t->backClicked(); break;
-        case 5: _t->loginRequestFinished((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
+        case 3: _t->loginButton_Clicked(); break;
+        case 4: _t->backButton_Clicked(); break;
+        case 5: _t->login_Finished((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
@@ -123,7 +123,7 @@ void LoginView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         }
         {
             typedef void (LoginView::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&LoginView::switchToWelcomeView)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&LoginView::backButton_Event)) {
                 *result = 1;
                 return;
             }
@@ -181,7 +181,7 @@ void LoginView::switchToLoginView()
 }
 
 // SIGNAL 1
-void LoginView::switchToWelcomeView()
+void LoginView::backButton_Event()
 {
     QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
 }

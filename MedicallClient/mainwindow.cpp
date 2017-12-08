@@ -25,18 +25,19 @@ MainWindow::MainWindow()
     // # 0
     WelcomeView* welcomeView = new WelcomeView(this);
     stack->addWidget(welcomeView);
-    connect(welcomeView, &WelcomeView::switchToLoginView, this, &MainWindow::switchToLoginView);
-    connect(welcomeView, &WelcomeView::switchToPatientRegistrationView, this, &MainWindow::switchToPatientRegistrationView);
-    connect(welcomeView, &WelcomeView::switchToDoctorRegistrationView, this, &MainWindow::switchToDoctorRegistrationView);
+    connect(welcomeView, &WelcomeView::loginButton_Event, this, &MainWindow::switchToLoginView);
+    connect(welcomeView, &WelcomeView::registerPatientButton_Event, this, &MainWindow::switchToPatientRegistrationView);
+    connect(welcomeView, &WelcomeView::registerDoctorButton_Event, this, &MainWindow::switchToDoctorRegistrationView);
 
     // # 1
     LoginView* loginView = new LoginView(this);
     stack->addWidget(loginView);
-    connect(loginView, &LoginView::switchToWelcomeView, this, &MainWindow::switchToWelcomeView);
+    connect(loginView, &LoginView::backButton_Event, this, &MainWindow::switchToWelcomeView);
 
     // # 2
     PatientRegistrationView* patientRegistrationView = new PatientRegistrationView(this);
     stack->addWidget(patientRegistrationView);
+    connect(patientRegistrationView, &PatientRegistrationView::backButton_Event, this, &MainWindow::switchToWelcomeView);
 
     // #####
     // ## Other:

@@ -16,13 +16,13 @@ class LoginView : public QWidget
     Q_OBJECT
 
 private slots:
-    void loginClicked();
-    void backClicked();
-    void loginRequestFinished(QNetworkReply* reply);
+    void loginButton_Clicked();
+    void backButton_Clicked();
+    void login_Finished(QNetworkReply* reply);
 
 signals:
     void switchToLoginView();
-    void switchToWelcomeView();
+    void backButton_Event();
     void loggedIn(QVariantHash data);
 
 public:
@@ -30,7 +30,7 @@ public:
     ~LoginView();
 
 private:
-    QNetworkAccessManager* loginNetworkManager;
+    QNetworkAccessManager* login_NetworkManager;
     QLineEdit* usernameLine;
     QLineEdit* passwordLine;
 };

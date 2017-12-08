@@ -1,5 +1,5 @@
-#ifndef REGISTRATIONVIEW_H
-#define REGISTRATIONVIEW_H
+#ifndef PATIENTREGISTRATIONVIEW_H
+#define PATIENTREGISTRATIONVIEW_H
 
 #include <QWidget>
 #include <QVBoxLayout>
@@ -17,9 +17,16 @@ class PatientRegistrationView : public QWidget
 {
     Q_OBJECT
 
+signals:
+    void backButton_Event();
+
+private slots:
+    void backButton_Clicked();
+    void registerButton_Clicked();
+
 public:
     PatientRegistrationView(QWidget* parent = 0);
     ~PatientRegistrationView();
 };
 
-#endif // REGISTRATIONVIEW_H
+#endif // PATIENTREGISTRATIONVIEW_H

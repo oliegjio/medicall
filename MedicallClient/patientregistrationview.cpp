@@ -92,7 +92,11 @@ PatientRegistrationView::PatientRegistrationView(QWidget* parent) : QWidget(pare
 
     // # Buttons:
     QPushButton* backButton = new QPushButton("Назад");
+    connect(backButton, SIGNAL(clicked()), this, SLOT(backButton_Clicked()));
+
     QPushButton* registerButton = new QPushButton("Зарегестрироваться");
+    connect(registerButton, SIGNAL(clicked()), this, SLOT(registerButton_Clicked()));
+
     formLayout->addRow(backButton, registerButton);
 
     // #####
@@ -106,3 +110,15 @@ PatientRegistrationView::PatientRegistrationView(QWidget* parent) : QWidget(pare
 }
 
 PatientRegistrationView::~PatientRegistrationView() {}
+
+void PatientRegistrationView::backButton_Clicked() { emit backButton_Event(); }
+
+void PatientRegistrationView::registerButton_Clicked()
+{
+//    QJsonObject data {
+//        {"username", usernameLine->text()},
+//        {"password", passwordLine->text()}
+//    };
+
+//    NetworkManager::postJson(login_NetworkManager, QUrl("http://localhost:8000/login/"), data);
+}

@@ -29,17 +29,19 @@ WelcomeView::WelcomeView(QWidget* parent) : QWidget(parent)
     QPushButton* loginButton = new QPushButton("Войти");
     loginButton->setMaximumWidth(buttonsWidth);
     layout->addWidget(loginButton);
-    connect(loginButton, SIGNAL(clicked()), this, SLOT(loginButtonClicked()));
+    connect(loginButton, SIGNAL(clicked()), this, SLOT(loginButton_Clicked()));
+
+    layout->addStretch(1);
 
     QPushButton* registerPatientButton = new QPushButton("Регистрация пациента");
     registerPatientButton->setMaximumWidth(buttonsWidth);
     layout->addWidget(registerPatientButton);
-    connect(registerPatientButton, SIGNAL(clicked()), this, SLOT(registerPatientButtonClicked()));
+    connect(registerPatientButton, SIGNAL(clicked()), this, SLOT(registerPatientButton_Clicked()));
 
     QPushButton* registerDoctorButton = new QPushButton("Регистрация доктора");
     registerDoctorButton->setMaximumWidth(buttonsWidth);
     layout->addWidget(registerDoctorButton);
-    connect(registerDoctorButton, SIGNAL(clicked()), this, SLOT(registerDoctorButtonClicked()));
+    connect(registerDoctorButton, SIGNAL(clicked()), this, SLOT(registerDoctorButton_Clicked()));
 
     // #####
     // ## Other:
@@ -51,8 +53,8 @@ WelcomeView::WelcomeView(QWidget* parent) : QWidget(parent)
 }
 
 // Switch to LoginView
-void WelcomeView::loginButtonClicked() { emit switchToLoginView(); }
+void WelcomeView::loginButton_Clicked() { emit loginButton_Event(); }
 
-void WelcomeView::registerPatientButtonClicked() { emit switchToPatientRegistrationView(); }
+void WelcomeView::registerPatientButton_Clicked() { emit registerPatientButton_Event(); }
 
-void WelcomeView::registerDoctorButtonClicked() { emit switchToDoctorRegistrationView(); }
+void WelcomeView::registerDoctorButton_Clicked() { emit registerDoctorButton_Event(); }

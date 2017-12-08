@@ -12,8 +12,8 @@ LoginView::LoginView(QWidget* parent) : QWidget(parent)
     QGridLayout* formLayout  = new QGridLayout();
     formLayout->setAlignment(Qt::AlignCenter);
 
-    loginNetworkManager = new QNetworkAccessManager();
-    connect(loginNetworkManager, &QNetworkAccessManager::finished, this, &LoginView::loginRequestFinished);
+    login_NetworkManager = new QNetworkAccessManager();
+    connect(login_NetworkManager, &QNetworkAccessManager::finished, this, &LoginView::login_Finished);
 
     QFont logoFont("Arial", 75);
 
@@ -56,11 +56,11 @@ LoginView::LoginView(QWidget* parent) : QWidget(parent)
     // # Buttons:
     QPushButton* backButton = new QPushButton("Назад");
     formLayout->addWidget(backButton, 2, 0);
-    connect(backButton, SIGNAL(clicked()), this, SLOT(backClicked()));
+    connect(backButton, SIGNAL(clicked()), this, SLOT(backButton_Clicked()));
 
     QPushButton* loginButton = new QPushButton("Войти");
     formLayout->addWidget(loginButton, 2, 1);
-    connect(loginButton, SIGNAL(clicked()), this, SLOT(loginClicked()));
+    connect(loginButton, SIGNAL(clicked()), this, SLOT(loginButton_Clicked()));
 
     // #####
     // ## Other:
@@ -73,17 +73,17 @@ LoginView::LoginView(QWidget* parent) : QWidget(parent)
 
 LoginView::~LoginView() {}
 
-void LoginView::loginClicked()
+void LoginView::loginButton_Clicked()
 {
     QJsonObject data {
         {"username", usernameLine->text()},
         {"password", passwordLine->text()}
     };
 
-    NetworkManager::postJson(loginNetworkManager, QUrl("http://localhost:8000/login/"), data);
+    NetworkManager::postJson(login_NetworkManager, QUrl("http://localhost:8000/login/"), data);
 }
 
-void LoginView::loginRequestFinished(QNetworkReply* reply)
+void LoginView::login_Finished(QNetworkReply* reply)
 {
     if (reply->error()) {
         qDebug() << reply->errorString();
@@ -101,5 +101,4 @@ void LoginView::loginRequestFinished(QNetworkReply* reply)
     emit loggedIn(data);
 }
 
-// Switch to WelcomeView
-void LoginView::backClicked() { emit switchToWelcomeView(); }
+void LoginView::backButton_Clicked() { emit backButton_Event(); }
