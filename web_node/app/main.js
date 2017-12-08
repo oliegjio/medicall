@@ -1,16 +1,9 @@
 const express = require('express')
 const path = require('path')
-const passport = require('passport')
-const passportJwt = require('passport-jwt')
-const jwt = require('jsonwebtoken')
 const bodyParser = require('body-parser')
 const auth = require('./auth')()
-const UserModel = require('../models/userModel') 
 
 require('./dbInit')
-UserModel.getUser(1).then((user) => {
-  console.log(user) 
-})
 
 // ####
 // ## Setup:

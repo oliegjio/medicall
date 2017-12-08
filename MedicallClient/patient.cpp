@@ -12,13 +12,17 @@ void Patient::getPatient(QString token)
 {
     this->token = token;
 
-    NetworkManager::postJsonToken(getPatientNetworkManager, QUrl("http://localhost:8000/user/"), token);
+    NetworkManager::postJsonToken(getPatientNetworkManager, QUrl("http://localhost:8000/user/1"), token);
 }
 
 void Patient::getPatientFinished(QNetworkReply *reply)
 {
-    qDebug() << reply->readAll();
-//    QMap<QString, QString> data = NetworkManager::getReplyData(reply);
-//    username = data["username"];
+    QByteArray rawData(reply->readAll());
+
+    QMap<QString, QString> data = NetworkManager::jsonToMap(rawData);
+
+    username = data["username"];
+
+    qDebug() << username;
 }
 
