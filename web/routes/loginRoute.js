@@ -15,10 +15,8 @@ var init = (app) => {
           .then((user) => {
             bcrypt.compare(password, user.password)
             .then((result) => {
-              if (!result) {
-                response.sendStatus(401)
-                return
-              }
+              if (!result)
+                return response.sendStatus(401)
 
               if (user) {
                   var payload = { id: user.id }
@@ -28,18 +26,18 @@ var init = (app) => {
                       user: user
                   })
               } else {
-                response.sendStatus(401)
+                return response.sendStatus(401)
               }
             })
             .catch((error) => {
               console.error(error)
-              response.sendStatus(400)
+              return response.sendStatus(400)
             })
           })
 
           .catch((error) => {
             console.error(error)
-            response.sendStatus(406)
+            return response.sendStatus(406)
           })
       } else {
           response.sendStatus(401)

@@ -18,6 +18,9 @@ PatientRegistrationView::PatientRegistrationView(QWidget* parent) : QWidget(pare
 
     QFont titleFont("Arial", 30);
 
+    register_NetworkManager = new QNetworkAccessManager;
+    connect(register_NetworkManager, &QNetworkAccessManager::finished, this, &PatientRegistrationView::register_Finished);
+
     layout->addStretch(3);
 
     // #####
@@ -36,54 +39,64 @@ PatientRegistrationView::PatientRegistrationView(QWidget* parent) : QWidget(pare
 
     // # Full name:
     QLabel* fullNameLabel = new QLabel("ФИО:");
-    QLineEdit* fullNameLine = new QLineEdit(this);
+    fullNameLine = new QLineEdit(this);
     formLayout->addRow(fullNameLabel, fullNameLine);
+
+    // # Username:
+    QLabel* usernameLabel = new QLabel("Логин:");
+    usernameLine = new QLineEdit(this);
+    formLayout->addRow(usernameLabel, usernameLine);
+
+    // # E-Mail:
+    QLabel* emailLabel = new QLabel("Эл-Почта:");
+    emailLine = new QLineEdit(this);
+    formLayout->addRow(emailLabel, emailLine);
 
     // # Password 1:
     QLabel* password1Label = new QLabel("Пароль:");
-    QLineEdit* password1Line = new QLineEdit(this);
+    password1Line = new QLineEdit(this);
     password1Line->setEchoMode(QLineEdit::Password);
     formLayout->addRow(password1Label, password1Line);
 
     // # Password 2:
     QLabel* password2Label = new QLabel("Повторите пароль:");
-    QLineEdit* password2Line = new QLineEdit(this);
+    password2Line = new QLineEdit(this);
     password2Line->setEchoMode(QLineEdit::Password);
     formLayout->addRow(password2Label, password2Line);
 
     // # Birth Day:
-    QLabel* birthDayLabel = new QLabel("Дата рождения:");
-    QDateTimeEdit* birthDayLine = new QDateTimeEdit(this);
-    birthDayLine->setDisplayFormat("dd.MM.yyyy");
-    formLayout->addRow(birthDayLabel, birthDayLine);
+    QLabel* birthDateLabel = new QLabel("Дата рождения:");
+    birthDateLine = new QDateTimeEdit(this);
+    birthDateLine->setDisplayFormat("dd.MM.yyyy");
+    formLayout->addRow(birthDateLabel, birthDateLine);
 
     // # Location:
     QLabel* localtionLabel = new QLabel("Место проживания:");
-    QLineEdit* locationLine = new QLineEdit(this);
+    locationLine = new QLineEdit(this);
     formLayout->addRow(localtionLabel, locationLine);
 
     // # Gender:
     QLabel* genderLabel = new QLabel("Пол:");
-    QComboBox* genderLine = new QComboBox(this);
+    genderLine = new QComboBox(this);
     genderLine->addItem("Мужской");
     genderLine->addItem("Женский");
     formLayout->addRow(genderLabel, genderLine);
 
     // # Weight:
     QLabel* weightLabel = new QLabel("Вес:");
-    QLineEdit* weightLine = new QLineEdit(this);
+    weightLine = new QLineEdit(this);
     weightLine->setValidator(new QDoubleValidator(0.0, 300.0, 3, this));
     formLayout->addRow(weightLabel, weightLine);
 
     // # Height:
     QLabel* heightLabel = new QLabel("Рост:");
-    QLineEdit* heightLine = new QLineEdit(this);
+    heightLine = new QLineEdit(this);
     heightLine->setValidator(new QDoubleValidator(0.0, 300.0, 3, this));
     formLayout->addRow(heightLabel, heightLine);
 
     // # Blood Type:
     QLabel* bloodTypeLabel = new QLabel("Группа крови:");
-    QComboBox* bloodTypeLine = new QComboBox(this);
+    bloodTypeLine = new QComboBox(this);
     bloodTypeLine->addItem("0");
     bloodTypeLine->addItem("A");
     bloodTypeLine->addItem("B");
@@ -115,10 +128,36 @@ void PatientRegistrationView::backButton_Clicked() { emit backButton_Event(); }
 
 void PatientRegistrationView::registerButton_Clicked()
 {
-//    QJsonObject data {
-//        {"username", usernameLine->text()},
-//        {"password", passwordLine->text()}
-//    };
+    QJsonObject data {
+        {"username", usernameLine->text()},
+        {"password", password1Line->text()},
+        {"passwordRepeat", password2Line->text()},
+        {"fullName", fullNameLine->text()},
+        {"birthDate", birthDateLine->text()},
+        {"email", emailLine->text()},
+        {"bloodType", bloodTypeLine->currentText()},
+        {"height", heightLine->text()},
+        {"weight", weightLine->text()},
+        {"gender", genderLine->currentText()},
+        {"location", locationLine->text()},
+    };
 
-//    NetworkManager::postJson(login_NetworkManager, QUrl("http://localhost:8000/login/"), data);
+    NetworkManager::postJson(register_NetworkManager, QUrl("http://localhost:8000/register-patient/"), data);
+}
+
+void PatientRegistrationView::register_Finished(QNetworkReply* reply)
+{
+    if (reply->error()) {
+        qDebug() << reply->errorString();
+        return;
+    }
+
+    QByteArray replyData = reply->readAll();
+    QVariant statusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
+
+    if (!statusCode.isValid() || replyData.isEmpty()) return;
+
+    QVariantHash data = NetworkManager::jsonToHash(replyData);
+
+    emit registered(data);
 }

@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_LoginView_t {
-    QByteArrayData data[11];
-    char stringdata0[135];
+    QByteArrayData data[12];
+    char stringdata0[149];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -36,17 +36,18 @@ QT_MOC_LITERAL(1, 10, 17), // "switchToLoginView"
 QT_MOC_LITERAL(2, 28, 0), // ""
 QT_MOC_LITERAL(3, 29, 16), // "backButton_Event"
 QT_MOC_LITERAL(4, 46, 8), // "loggedIn"
-QT_MOC_LITERAL(5, 55, 4), // "data"
-QT_MOC_LITERAL(6, 60, 19), // "loginButton_Clicked"
-QT_MOC_LITERAL(7, 80, 18), // "backButton_Clicked"
-QT_MOC_LITERAL(8, 99, 14), // "login_Finished"
-QT_MOC_LITERAL(9, 114, 14), // "QNetworkReply*"
-QT_MOC_LITERAL(10, 129, 5) // "reply"
+QT_MOC_LITERAL(5, 55, 13), // "QVariantHash&"
+QT_MOC_LITERAL(6, 69, 4), // "data"
+QT_MOC_LITERAL(7, 74, 19), // "loginButton_Clicked"
+QT_MOC_LITERAL(8, 94, 18), // "backButton_Clicked"
+QT_MOC_LITERAL(9, 113, 14), // "login_Finished"
+QT_MOC_LITERAL(10, 128, 14), // "QNetworkReply*"
+QT_MOC_LITERAL(11, 143, 5) // "reply"
 
     },
     "LoginView\0switchToLoginView\0\0"
-    "backButton_Event\0loggedIn\0data\0"
-    "loginButton_Clicked\0backButton_Clicked\0"
+    "backButton_Event\0loggedIn\0QVariantHash&\0"
+    "data\0loginButton_Clicked\0backButton_Clicked\0"
     "login_Finished\0QNetworkReply*\0reply"
 };
 #undef QT_MOC_LITERAL
@@ -70,19 +71,19 @@ static const uint qt_meta_data_LoginView[] = {
        4,    1,   46,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       6,    0,   49,    2, 0x08 /* Private */,
-       7,    0,   50,    2, 0x08 /* Private */,
-       8,    1,   51,    2, 0x08 /* Private */,
+       7,    0,   49,    2, 0x08 /* Private */,
+       8,    0,   50,    2, 0x08 /* Private */,
+       9,    1,   51,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QVariantHash,    5,
+    QMetaType::Void, 0x80000000 | 5,    6,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 9,   10,
+    QMetaType::Void, 0x80000000 | 10,   11,
 
        0        // eod
 };
@@ -129,7 +130,7 @@ void LoginView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
             }
         }
         {
-            typedef void (LoginView::*_t)(QVariantHash );
+            typedef void (LoginView::*_t)(QVariantHash & );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&LoginView::loggedIn)) {
                 *result = 2;
                 return;
@@ -187,7 +188,7 @@ void LoginView::backButton_Event()
 }
 
 // SIGNAL 2
-void LoginView::loggedIn(QVariantHash _t1)
+void LoginView::loggedIn(QVariantHash & _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 2, _a);

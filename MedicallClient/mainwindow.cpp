@@ -6,7 +6,7 @@ MainWindow::MainWindow()
     // ## Setup:
     // #####
 
-    resize(QDesktopWidget().availableGeometry(this).size() * 0.5);
+    resize(QDesktopWidget().availableGeometry(this).size() * 0.6);
     setWindowTitle("Medicall");
 
     stack = new QStackedWidget();
@@ -39,11 +39,22 @@ MainWindow::MainWindow()
     stack->addWidget(patientRegistrationView);
     connect(patientRegistrationView, &PatientRegistrationView::backButton_Event, this, &MainWindow::switchToWelcomeView);
 
+    // # 3
+    DoctorRegistrationView* doctorRegistrationView = new DoctorRegistrationView(this);
+    stack->addWidget(doctorRegistrationView);
+
+    // # 4
+    PatientView* patientView = new PatientView(this);
+    stack->addWidget(patientView);
+
     // #####
     // ## Other:
     // #####
 
-    connect(loginView, &LoginView::loggedIn, patient, &Patient::getPatient);
+    connect(loginView, &LoginView::loggedIn, patient, &Patient::initPatient);
+    connect(loginView, &LoginView::loggedIn, this, &MainWindow::switchToPatientView);
+
+    connect(patientRegistrationView, &PatientRegistrationView::registered, patient, &Patient::initPatient);
 
     setStyleSheet("background-color: white;");
 }
@@ -68,4 +79,9 @@ void MainWindow::switchToPatientRegistrationView()
 void MainWindow::switchToDoctorRegistrationView()
 {
     stack->setCurrentIndex(3);
+}
+
+void MainWindow::switchToPatientView()
+{
+    stack->setCurrentIndex(4);
 }

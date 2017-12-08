@@ -1,33 +1,43 @@
 const PatientModel = require('../models/PatientModel')
 const bcrypt = require('bcrypt')
+const jwt = require('jwt-simple')
+const config = require('../app/config')
 
 var init = (app) => {
   app.post("/register-patient", function(request, response) {
 
     var b = request.body
-    if (!PatientModel.validate(b)) {
-      response.sendStatus(406)
-      return
-    }
-    var patient = new PatientModel(b)
+    if (!PatientModel.validate(b))
+      return response.sendStatus(406)
 
-    bcrypt.hash(patient.password, 10)
+    if (b.password != b.passwordRepeat)
+      return response.sendStatus(406)
+
+    var user = new PatientModel(b)
+
+    bcrypt.hash(user.password, 10)
     .then((hash) => {
-      patient.password = hash
-      patient.commit()
+      user.password = hash
+      user.commit()
 
       .then((info) => {
-        return response.sendStatus(200)
+        var payload = { id: user.id }
+        var token = jwt.encode(payload, config.jwtSecret)
+
+        return response.json({
+          token: token,
+          user: user
+        })
       })
 
       .catch((error) => {
         console.error(error)
-        response.sendStatus(406)
+        return response.sendStatus(406)
       })
     })
     .catch((error) => {
       console.error(error)
-      response.sendStatus(400)
+      return response.sendStatus(400)
     })
   })
 }

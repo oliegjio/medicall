@@ -30,7 +30,9 @@ SOURCES += \
     loginview.cpp \
     networkmanager.cpp \
     patient.cpp \
-    patientregistrationview.cpp
+    patientregistrationview.cpp \
+    doctorregistrationview.cpp \
+    patientview.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -38,5 +40,7 @@ HEADERS += \
     loginview.h \
     networkmanager.h \
     patient.h \
-    patientregistrationview.h
+    patientregistrationview.h \
+    doctorregistrationview.h \
+    patientview.h
 

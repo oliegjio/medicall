@@ -12,13 +12,13 @@ db.serialize(() => {
       'username' text unique not null,
       'email' text unique not null,
       'password' text not null,
-      'full_name' text,
-      'birth_date' text,
+      'fullName' text,
+      'birthDate' text,
       'location' text,
       'gender' text,
       'weight' text,
       'height' text,
-      'blood_type' text
+      'bloodType' text
     )
   `)
 
@@ -33,7 +33,7 @@ db.serialize(() => {
       bloodType: 'AB',
       weight: '64',
       height: '1.85',
-      gender: 'male',
+      gender: 'Мужской',
       birthDate: '19.02.1973',
       fullName: 'John Doe'
     })
@@ -48,7 +48,7 @@ db.serialize(() => {
       bloodType: 'C',
       weight: '54',
       height: '1.35',
-      gender: 'female',
+      gender: 'Женский',
       birthDate: '19.02.1983',
       fullName: 'Lara Sheen'
     })

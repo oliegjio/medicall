@@ -23,7 +23,7 @@ private slots:
 signals:
     void switchToLoginView();
     void backButton_Event();
-    void loggedIn(QVariantHash data);
+    void loggedIn(QVariantHash& data);
 
 public:
     LoginView(QWidget* parent = 0);

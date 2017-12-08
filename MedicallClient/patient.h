@@ -3,6 +3,7 @@
 
 #include <QString>
 #include <QObject>
+#include <QNetworkReply>
 
 #include "networkmanager.h"
 #include "loginview.h"
@@ -12,10 +13,7 @@ class Patient : public QObject
     Q_OBJECT
 
 public slots:
-    void getPatient(QVariantHash data);
-
-private slots:
-    void getPatient_Finished(QNetworkReply* reply);
+    void initPatient(QVariantHash data);
 
 public:
     Patient(QWidget* parent = 0);
@@ -23,7 +21,6 @@ public:
 
 private:
     QString token;
-
     QString username;
     QString fullName;
     QString weight;
@@ -33,11 +30,6 @@ private:
     QString location;
     QString birthDate;
     QString password;
-
-    QNetworkAccessManager* getPatient_NetworkManager;
-
-private:
-    NetworkManager* network;
 };
 
 #endif // PATIENT_H

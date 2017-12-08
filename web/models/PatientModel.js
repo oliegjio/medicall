@@ -27,6 +27,7 @@ class PatientModel {
 
       var callback = (error, user) => {
         if (error)  reject(error)
+        if (!user) reject("No such user!")
         resolve(user)
       }
       db.get(
@@ -64,9 +65,9 @@ class PatientModel {
           'users'
           (
             'username', 'email', 'password',
-            'full_name', 'birth_date', 'location',
+            'fullName', 'birthDate', 'location',
             'gender', 'weight', 'height',
-            'blood_type'
+            'bloodType'
           )
           values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         `,[
