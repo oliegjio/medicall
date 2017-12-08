@@ -1,4 +1,5 @@
 const db = require('../app/db')
+const bcrypt = require('bcrypt')
 
 class PatientModel {
 
@@ -35,18 +36,15 @@ class PatientModel {
     })
   }
 
-  static getFromCredentials(username, password) {
+  static getFromUsername(username) {
     return new Promise((resolve, reject) => {
       var callback = (error, user) => {
         if (error) reject(error)
         resolve(user)
       }
       db.get(
-        `select * from 'users' where username = ? and password = ?`,
-        [
-          username,
-          password
-        ],
+        `select * from 'users' where username = ?`,
+        [username],
         callback)
     })
   }
