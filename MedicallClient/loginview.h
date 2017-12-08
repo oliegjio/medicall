@@ -23,7 +23,7 @@ private slots:
 signals:
     void switchToLoginView();
     void switchToWelcomeView();
-    void loggedIn(QString token);
+    void loggedIn(QString token, QString userData);
 
 public:
     LoginView(QWidget* parent = 0);

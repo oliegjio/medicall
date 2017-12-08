@@ -80,7 +80,7 @@ void LoginView::loginClicked()
         {"password", passwordLine->text()}
     };
 
-    NetworkManager::postJson(loginNetworkManager, QUrl("http://localhost:8000/token/"), data);
+    NetworkManager::postJson(loginNetworkManager, QUrl("http://localhost:8000/login/"), data);
 }
 
 void LoginView::loginRequestFinished(QNetworkReply* reply)
@@ -90,14 +90,15 @@ void LoginView::loginRequestFinished(QNetworkReply* reply)
         return;
     }
 
-    QVariant statusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
     QByteArray replyData = reply->readAll();
+
+    QVariant statusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
 
     if (!statusCode.isValid() || replyData.isEmpty()) return;
 
     QMap<QString, QString> data = NetworkManager::jsonToMap(replyData);
 
-    emit loggedIn(data["token"]);
+    emit loggedIn(data["token"], data["user"]);
 }
 
 // Switch to WelcomeView

@@ -8,21 +8,26 @@ Patient::Patient(QWidget* parent) : QObject(parent)
 
 Patient::~Patient() {}
 
-void Patient::getPatient(QString token)
+void Patient::getPatient(QString token, QString userData)
 {
-    this->token = token;
+//    QByteArray array(userData.toUtf8());
+//    QMap<QString, QString> user = NetworkManager::jsonToMap(array);
 
-    NetworkManager::postJsonToken(getPatientNetworkManager, QUrl("http://localhost:8000/user/1"), token);
+    qDebug() << userData;
+
+//    QUrl url("http://localhost:8000/user/" + userData["id"]);
+
+//    NetworkManager::postJsonToken(getPatientNetworkManager, url, token);
 }
 
 void Patient::getPatientFinished(QNetworkReply *reply)
 {
-    QByteArray rawData(reply->readAll());
+//    QByteArray rawData(reply->readAll());
 
-    QMap<QString, QString> data = NetworkManager::jsonToMap(rawData);
+//    QMap<QString, QString> data = NetworkManager::jsonToMap(rawData);
 
-    username = data["username"];
+//    username = data["user"];
 
-    qDebug() << username;
+//    qDebug() << username;
 }
 

@@ -40,6 +40,7 @@ class PatientModel {
     return new Promise((resolve, reject) => {
       var callback = (error, user) => {
         if (error) reject(error)
+        if (!user) reject("No such user!")
         resolve(user)
       }
       db.get(

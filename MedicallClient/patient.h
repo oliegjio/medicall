@@ -12,7 +12,7 @@ class Patient : public QObject
     Q_OBJECT
 
 public slots:
-    void getPatient(QString token);
+    void getPatient(QString token, QString userData);
 
 private slots:
     void getPatientFinished(QNetworkReply* reply);
@@ -20,7 +20,6 @@ private slots:
 public:
     Patient(QWidget* parent = 0);
     ~Patient();
-
 
 private:
     QString token;

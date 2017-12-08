@@ -51,7 +51,6 @@ QNetworkReply* NetworkManager::postJsonToken(QNetworkAccessManager* manager, con
 
 QMap<QString, QString> NetworkManager::jsonToMap(QByteArray& rawData)
 {
-//    QString rawData = reply->readAll();
     QJsonDocument document = QJsonDocument::fromJson(rawData);
     QJsonObject object = document.object();
 
@@ -65,3 +64,4 @@ QMap<QString, QString> NetworkManager::jsonToMap(QByteArray& rawData)
 
     return data;
 }
+

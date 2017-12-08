@@ -24,7 +24,8 @@ var init = (app) => {
                   var payload = { id: user.id }
                   var token = jwt.encode(payload, config.jwtSecret)
                   response.json({
-                      token: token
+                      token: token,
+                      user: user
                   })
               } else {
                 response.sendStatus(401)
