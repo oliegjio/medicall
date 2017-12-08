@@ -18,10 +18,12 @@ class LoginView : public QWidget
 private slots:
     void loginClicked();
     void backClicked();
+    void loginRequestFinished(QNetworkReply* reply);
 
 signals:
     void switchToLoginView();
     void switchToWelcomeView();
+    void loggedIn(QString token);
 
 public:
     LoginView(QWidget* parent = 0);

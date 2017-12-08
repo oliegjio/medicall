@@ -1,5 +1,5 @@
-#ifndef WelcomeView_H
-#define WelcomeView_H
+#ifndef WELCOMEVIEW_H
+#define WELCOMEVIEW_H
 
 #include "QLabel"
 #include "QVBoxLayout"
@@ -22,4 +22,4 @@ public:
     virtual ~WelcomeView() {}
 };
 
-#endif // WelcomeView_H
+#endif // WELCOMEVIEW_H

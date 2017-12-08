@@ -16,6 +16,8 @@ MainWindow::MainWindow()
     QFont defaultFont("Arial", 15);
     setFont(defaultFont);
 
+    Patient* patient = new Patient(this);
+
     // #####
     // ## Stack:
     // #####
@@ -38,6 +40,8 @@ MainWindow::MainWindow()
     // #####
     // ## Other:
     // #####
+
+    connect(loginView, &LoginView::loggedIn, patient, &Patient::getPatient);
 
     setStyleSheet("background-color: white;");
 }

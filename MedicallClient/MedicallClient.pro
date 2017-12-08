@@ -30,7 +30,7 @@ SOURCES += \
     loginview.cpp \
     networkmanager.cpp \
     registrationview.cpp \
-    user.cpp
+    patient.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -38,5 +38,5 @@ HEADERS += \
     loginview.h \
     networkmanager.h \
     registrationview.h \
-    user.h
+    patient.h
 

@@ -1,15 +1,41 @@
-#ifndef USER_H
-#define USER_H
+#ifndef PATIENT_H
+#define PATIENT_H
 
 #include <QString>
+#include <QObject>
 
-class User
+#include "networkmanager.h"
+#include "loginview.h"
+
+class Patient : public QObject
 {
-public:
-    User();
-    ~User();
+    Q_OBJECT
 
+public slots:
+    void getPatient(QString token);
+
+private slots:
+    void getPatientFinished(QNetworkReply* reply);
+
+public:
+    Patient(QWidget* parent = 0);
+    ~Patient();
+
+
+private:
     QString token;
+
+    QString username;
+    QString fullName;
+    QString weight;
+    QString height;
+    QString bloodType;
+    QString gender;
+    QString location;
+    QString birthDate;
+
+private:
+    NetworkManager* network;
 };
 
-#endif // USER_H
+#endif // PATIENT_H

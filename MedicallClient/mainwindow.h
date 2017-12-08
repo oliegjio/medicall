@@ -8,6 +8,7 @@
 #include "welcomeview.h"
 #include "loginview.h"
 #include "registrationview.h"
+#include "patient.h"
 
 class MainWindow : public QMainWindow
 {

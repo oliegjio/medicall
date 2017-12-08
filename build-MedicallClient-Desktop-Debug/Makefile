@@ -56,23 +56,25 @@ SOURCES       = ../MedicallClient/main.cpp \
 		../MedicallClient/loginview.cpp \
 		../MedicallClient/networkmanager.cpp \
 		../MedicallClient/registrationview.cpp \
-		../MedicallClient/user.cpp moc_mainwindow.cpp \
+		../MedicallClient/patient.cpp moc_mainwindow.cpp \
 		moc_welcomeview.cpp \
 		moc_loginview.cpp \
 		moc_networkmanager.cpp \
-		moc_registrationview.cpp
+		moc_registrationview.cpp \
+		moc_patient.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		welcomeview.o \
 		loginview.o \
 		networkmanager.o \
 		registrationview.o \
-		user.o \
+		patient.o \
 		moc_mainwindow.o \
 		moc_welcomeview.o \
 		moc_loginview.o \
 		moc_networkmanager.o \
-		moc_registrationview.o
+		moc_registrationview.o \
+		moc_patient.o
 DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/common/unix.conf \
 		/usr/lib/qt/mkspecs/common/linux.conf \
@@ -194,13 +196,13 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		../MedicallClient/loginview.h \
 		../MedicallClient/networkmanager.h \
 		../MedicallClient/registrationview.h \
-		../MedicallClient/user.h ../MedicallClient/main.cpp \
+		../MedicallClient/patient.h ../MedicallClient/main.cpp \
 		../MedicallClient/mainwindow.cpp \
 		../MedicallClient/welcomeview.cpp \
 		../MedicallClient/loginview.cpp \
 		../MedicallClient/networkmanager.cpp \
 		../MedicallClient/registrationview.cpp \
-		../MedicallClient/user.cpp
+		../MedicallClient/patient.cpp
 QMAKE_TARGET  = Test
 DESTDIR       = 
 TARGET        = Test
@@ -470,8 +472,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../MedicallClient/mainwindow.h ../MedicallClient/welcomeview.h ../MedicallClient/loginview.h ../MedicallClient/networkmanager.h ../MedicallClient/registrationview.h ../MedicallClient/user.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../MedicallClient/main.cpp ../MedicallClient/mainwindow.cpp ../MedicallClient/welcomeview.cpp ../MedicallClient/loginview.cpp ../MedicallClient/networkmanager.cpp ../MedicallClient/registrationview.cpp ../MedicallClient/user.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../MedicallClient/mainwindow.h ../MedicallClient/welcomeview.h ../MedicallClient/loginview.h ../MedicallClient/networkmanager.h ../MedicallClient/registrationview.h ../MedicallClient/patient.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../MedicallClient/main.cpp ../MedicallClient/mainwindow.cpp ../MedicallClient/welcomeview.cpp ../MedicallClient/loginview.cpp ../MedicallClient/networkmanager.cpp ../MedicallClient/registrationview.cpp ../MedicallClient/patient.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -503,13 +505,14 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/qt/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -Wall -W -dM -E -o moc_predefs.h /usr/lib/qt/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_welcomeview.cpp moc_loginview.cpp moc_networkmanager.cpp moc_registrationview.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_welcomeview.cpp moc_loginview.cpp moc_networkmanager.cpp moc_registrationview.cpp moc_patient.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_welcomeview.cpp moc_loginview.cpp moc_networkmanager.cpp moc_registrationview.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_welcomeview.cpp moc_loginview.cpp moc_networkmanager.cpp moc_registrationview.cpp moc_patient.cpp
 moc_mainwindow.cpp: ../MedicallClient/welcomeview.h \
 		../MedicallClient/loginview.h \
 		../MedicallClient/networkmanager.h \
 		../MedicallClient/registrationview.h \
+		../MedicallClient/patient.h \
 		../MedicallClient/mainwindow.h \
 		moc_predefs.h \
 		/usr/bin/moc
@@ -537,6 +540,13 @@ moc_registrationview.cpp: ../MedicallClient/networkmanager.h \
 		/usr/bin/moc
 	/usr/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/archie/Git/medicall/MedicallClient -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/7.2.0 -I/usr/include/c++/7.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/7.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include-fixed -I/usr/include ../MedicallClient/registrationview.h -o moc_registrationview.cpp
 
+moc_patient.cpp: ../MedicallClient/networkmanager.h \
+		../MedicallClient/loginview.h \
+		../MedicallClient/patient.h \
+		moc_predefs.h \
+		/usr/bin/moc
+	/usr/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/archie/Git/medicall/MedicallClient -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/7.2.0 -I/usr/include/c++/7.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/7.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include-fixed -I/usr/include ../MedicallClient/patient.h -o moc_patient.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
 compiler_uic_make_all:
@@ -555,14 +565,16 @@ main.o: ../MedicallClient/main.cpp ../MedicallClient/mainwindow.h \
 		../MedicallClient/welcomeview.h \
 		../MedicallClient/loginview.h \
 		../MedicallClient/networkmanager.h \
-		../MedicallClient/registrationview.h
+		../MedicallClient/registrationview.h \
+		../MedicallClient/patient.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../MedicallClient/main.cpp
 
 mainwindow.o: ../MedicallClient/mainwindow.cpp ../MedicallClient/mainwindow.h \
 		../MedicallClient/welcomeview.h \
 		../MedicallClient/loginview.h \
 		../MedicallClient/networkmanager.h \
-		../MedicallClient/registrationview.h
+		../MedicallClient/registrationview.h \
+		../MedicallClient/patient.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../MedicallClient/mainwindow.cpp
 
 welcomeview.o: ../MedicallClient/welcomeview.cpp ../MedicallClient/welcomeview.h
@@ -579,8 +591,10 @@ registrationview.o: ../MedicallClient/registrationview.cpp ../MedicallClient/reg
 		../MedicallClient/networkmanager.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o registrationview.o ../MedicallClient/registrationview.cpp
 
-user.o: ../MedicallClient/user.cpp ../MedicallClient/user.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o user.o ../MedicallClient/user.cpp
+patient.o: ../MedicallClient/patient.cpp ../MedicallClient/patient.h \
+		../MedicallClient/networkmanager.h \
+		../MedicallClient/loginview.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o patient.o ../MedicallClient/patient.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
@@ -596,6 +610,9 @@ moc_networkmanager.o: moc_networkmanager.cpp
 
 moc_registrationview.o: moc_registrationview.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_registrationview.o moc_registrationview.cpp
+
+moc_patient.o: moc_patient.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_patient.o moc_patient.cpp
 
 ####### Install
 

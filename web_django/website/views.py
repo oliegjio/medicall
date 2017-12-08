@@ -4,6 +4,9 @@ from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
 from website.forms import UserCreationForm
 from django.shortcuts import render, redirect
+from django.core import serializers
+
+import json
 
 from website.models import User
 
@@ -29,10 +32,18 @@ def signup(request):
     return render(request, 'registration/signup.html', {'form': form})
 
 
+
 def user(request, id):
+    if request.method != 'POST':
+        return HttpResponse("POST method is required!")
+
+    # if request.POST("token")
+
     try:
         user = User.objects.get(id=id)
     except User.DoesNotExist:
         return HttpResponse('This user does not exist!')
 
-    return render(request, 'user.html', {'user': user})
+    serialized_user = serializers.serialize('json', [user,])
+
+    return HttpResponse(json.dumps(serialized_user), content_type="application/json")
