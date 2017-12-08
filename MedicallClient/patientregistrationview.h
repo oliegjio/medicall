@@ -13,13 +13,13 @@
 
 #include "networkmanager.h"
 
-class RegistrationView : public QWidget
+class PatientRegistrationView : public QWidget
 {
     Q_OBJECT
 
 public:
-    RegistrationView(QWidget* parent = 0);
-    ~RegistrationView();
+    PatientRegistrationView(QWidget* parent = 0);
+    ~PatientRegistrationView();
 };
 
 #endif // REGISTRATIONVIEW_H

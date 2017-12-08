@@ -26,7 +26,8 @@ MainWindow::MainWindow()
     WelcomeView* welcomeView = new WelcomeView(this);
     stack->addWidget(welcomeView);
     connect(welcomeView, &WelcomeView::switchToLoginView, this, &MainWindow::switchToLoginView);
-    connect(welcomeView, &WelcomeView::switchToRegistrationView, this, &MainWindow::switchToRegistrationView);
+    connect(welcomeView, &WelcomeView::switchToPatientRegistrationView, this, &MainWindow::switchToPatientRegistrationView);
+    connect(welcomeView, &WelcomeView::switchToDoctorRegistrationView, this, &MainWindow::switchToDoctorRegistrationView);
 
     // # 1
     LoginView* loginView = new LoginView(this);
@@ -34,8 +35,8 @@ MainWindow::MainWindow()
     connect(loginView, &LoginView::switchToWelcomeView, this, &MainWindow::switchToWelcomeView);
 
     // # 2
-    RegistrationView* registrationView = new RegistrationView(this);
-    stack->addWidget(registrationView);
+    PatientRegistrationView* patientRegistrationView = new PatientRegistrationView(this);
+    stack->addWidget(patientRegistrationView);
 
     // #####
     // ## Other:
@@ -58,7 +59,12 @@ void MainWindow::switchToLoginView()
     stack->setCurrentIndex(1);
 }
 
-void MainWindow::switchToRegistrationView()
+void MainWindow::switchToPatientRegistrationView()
 {
     stack->setCurrentIndex(2);
+}
+
+void MainWindow::switchToDoctorRegistrationView()
+{
+    stack->setCurrentIndex(3);
 }

@@ -7,7 +7,7 @@
 
 #include "welcomeview.h"
 #include "loginview.h"
-#include "registrationview.h"
+#include "patientregistrationview.h"
 #include "patient.h"
 
 class MainWindow : public QMainWindow
@@ -17,7 +17,8 @@ class MainWindow : public QMainWindow
 public slots:
     void switchToWelcomeView();
     void switchToLoginView();
-    void switchToRegistrationView();
+    void switchToPatientRegistrationView();
+    void switchToDoctorRegistrationView();
 
 public:
     MainWindow();

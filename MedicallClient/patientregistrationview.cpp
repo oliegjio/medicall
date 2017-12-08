@@ -1,6 +1,6 @@
-#include "registrationview.h"
+#include "patientregistrationview.h"
 
-RegistrationView::RegistrationView(QWidget* parent) : QWidget(parent)
+PatientRegistrationView::PatientRegistrationView(QWidget* parent) : QWidget(parent)
 {
     // #####
     // ## Setup:
@@ -105,4 +105,4 @@ RegistrationView::RegistrationView(QWidget* parent) : QWidget(parent)
     setLayout(layout);
 }
 
-RegistrationView::~RegistrationView() {}
+PatientRegistrationView::~PatientRegistrationView() {}

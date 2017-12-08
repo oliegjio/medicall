@@ -11,11 +11,13 @@ class WelcomeView : public QWidget
 
 private slots:
     void loginButtonClicked();
-    void registerButtonClicked();
+    void registerPatientButtonClicked();
+    void registerDoctorButtonClicked();
 
 signals:
     void switchToLoginView();
-    void switchToRegistrationView();
+    void switchToPatientRegistrationView();
+    void switchToDoctorRegistrationView();
 
 public:
     WelcomeView(QWidget* parent = 0);
