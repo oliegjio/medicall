@@ -2,7 +2,7 @@ var UserModel = function() {}
 
 UserModel.db = require('../app/db')
 
-UserModel.getUser = (id) => {
+UserModel.getUserById = (id) => {
   return new Promise((resolve, reject) => {
 
     var callback = (error, user) => {
@@ -13,6 +13,26 @@ UserModel.getUser = (id) => {
     UserModel.db.get(
       `select * from 'users' where id = ?`,
       [id],
+      callback
+    )
+
+  })
+}
+
+UserModel.getUserByCredentials = (username, password) => {
+  return new Promise((resolve, reject) => {
+
+    var callback = (error, user) => {
+      if (error) { reject(error) }
+      resolve(user)
+    }
+
+    UserModel.db.get(
+      `select * from 'users' where username = ? and password = ?`,
+      [
+        username,
+        password
+      ],
       callback
     )
 

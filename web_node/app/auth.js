@@ -15,7 +15,7 @@ var params = {
 
 module.exports = function() {
     var strategy = new Strategy(params, function(payload, done) {
-      UserModel.getUser(payload.id)
+      UserModel.getUserById(payload.id)
       .then((user) => {
         return done(null, {
           id: user.id
