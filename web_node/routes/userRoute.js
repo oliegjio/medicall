@@ -7,7 +7,10 @@ var init = (app) => {
     PatientModel.getById(request.params.id)
 
     .then((user) => {
-      if (user) response.json(user)
+      if (user) {
+        response.json(user)
+        return
+      }
       response.sendStatus(404)
     })
 

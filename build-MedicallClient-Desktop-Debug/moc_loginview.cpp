@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_LoginView_t {
-    QByteArrayData data[12];
-    char stringdata0[140];
+    QByteArrayData data[11];
+    char stringdata0[130];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -36,20 +36,18 @@ QT_MOC_LITERAL(1, 10, 17), // "switchToLoginView"
 QT_MOC_LITERAL(2, 28, 0), // ""
 QT_MOC_LITERAL(3, 29, 19), // "switchToWelcomeView"
 QT_MOC_LITERAL(4, 49, 8), // "loggedIn"
-QT_MOC_LITERAL(5, 58, 5), // "token"
-QT_MOC_LITERAL(6, 64, 8), // "userData"
-QT_MOC_LITERAL(7, 73, 12), // "loginClicked"
-QT_MOC_LITERAL(8, 86, 11), // "backClicked"
-QT_MOC_LITERAL(9, 98, 20), // "loginRequestFinished"
-QT_MOC_LITERAL(10, 119, 14), // "QNetworkReply*"
-QT_MOC_LITERAL(11, 134, 5) // "reply"
+QT_MOC_LITERAL(5, 58, 4), // "data"
+QT_MOC_LITERAL(6, 63, 12), // "loginClicked"
+QT_MOC_LITERAL(7, 76, 11), // "backClicked"
+QT_MOC_LITERAL(8, 88, 20), // "loginRequestFinished"
+QT_MOC_LITERAL(9, 109, 14), // "QNetworkReply*"
+QT_MOC_LITERAL(10, 124, 5) // "reply"
 
     },
     "LoginView\0switchToLoginView\0\0"
-    "switchToWelcomeView\0loggedIn\0token\0"
-    "userData\0loginClicked\0backClicked\0"
-    "loginRequestFinished\0QNetworkReply*\0"
-    "reply"
+    "switchToWelcomeView\0loggedIn\0data\0"
+    "loginClicked\0backClicked\0loginRequestFinished\0"
+    "QNetworkReply*\0reply"
 };
 #undef QT_MOC_LITERAL
 
@@ -69,22 +67,22 @@ static const uint qt_meta_data_LoginView[] = {
  // signals: name, argc, parameters, tag, flags
        1,    0,   44,    2, 0x06 /* Public */,
        3,    0,   45,    2, 0x06 /* Public */,
-       4,    2,   46,    2, 0x06 /* Public */,
+       4,    1,   46,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       7,    0,   51,    2, 0x08 /* Private */,
-       8,    0,   52,    2, 0x08 /* Private */,
-       9,    1,   53,    2, 0x08 /* Private */,
+       6,    0,   49,    2, 0x08 /* Private */,
+       7,    0,   50,    2, 0x08 /* Private */,
+       8,    1,   51,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString,    5,    6,
+    QMetaType::Void, QMetaType::QVariantHash,    5,
 
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 10,   11,
+    QMetaType::Void, 0x80000000 | 9,   10,
 
        0        // eod
 };
@@ -97,7 +95,7 @@ void LoginView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         switch (_id) {
         case 0: _t->switchToLoginView(); break;
         case 1: _t->switchToWelcomeView(); break;
-        case 2: _t->loggedIn((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
+        case 2: _t->loggedIn((*reinterpret_cast< QVariantHash(*)>(_a[1]))); break;
         case 3: _t->loginClicked(); break;
         case 4: _t->backClicked(); break;
         case 5: _t->loginRequestFinished((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
@@ -131,7 +129,7 @@ void LoginView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
             }
         }
         {
-            typedef void (LoginView::*_t)(QString , QString );
+            typedef void (LoginView::*_t)(QVariantHash );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&LoginView::loggedIn)) {
                 *result = 2;
                 return;
@@ -189,9 +187,9 @@ void LoginView::switchToWelcomeView()
 }
 
 // SIGNAL 2
-void LoginView::loggedIn(QString _t1, QString _t2)
+void LoginView::loggedIn(QVariantHash _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)), const_cast<void*>(reinterpret_cast<const void*>(&_t2)) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 2, _a);
 }
 QT_WARNING_POP

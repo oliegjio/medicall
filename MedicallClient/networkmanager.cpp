@@ -49,19 +49,11 @@ QNetworkReply* NetworkManager::postJsonToken(QNetworkAccessManager* manager, con
     return manager->post(request, QByteArray());
 }
 
-QMap<QString, QString> NetworkManager::jsonToMap(QByteArray& rawData)
+QVariantHash NetworkManager::jsonToHash(QByteArray& rawData)
 {
     QJsonDocument document = QJsonDocument::fromJson(rawData);
-    QJsonObject object = document.object();
+    QVariantHash object = document.object().toVariantHash();
 
-    QMap<QString, QString> data;
-
-    QJsonObject::iterator i;
-    for (i = object.begin(); i != object.end(); i++)
-    {
-        data[i.key()] = i.value().toString();
-    }
-
-    return data;
+    return object;
 }
 

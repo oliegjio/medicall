@@ -22,7 +22,7 @@ public:
     static QNetworkReply* postJson(QNetworkAccessManager* manager, const QUrl& url, const QJsonObject& data);
     static QNetworkReply* postJsonToken(QNetworkAccessManager* manager, const QUrl& url, const QString& token);
 
-    static QMap<QString, QString> jsonToMap(QByteArray& reply);
+    static QVariantHash jsonToHash(QByteArray& reply);
 };
 
 #endif // NETWORKMANAGER_H

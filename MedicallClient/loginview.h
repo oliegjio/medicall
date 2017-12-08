@@ -1,13 +1,13 @@
 #ifndef LOGINVIEW_H
 #define LOGINVIEW_H
 
-#include "QLabel"
-#include "QVBoxLayout"
-#include "QLineEdit"
-#include "QPushButton"
-#include "QNetworkRequest"
-#include "QNetworkReply"
-#include "QHttpPart"
+#include <QLabel>
+#include <QVBoxLayout>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QNetworkRequest>
+#include <QNetworkReply>
+#include <QHttpPart>
 
 #include "networkmanager.h"
 
@@ -23,7 +23,7 @@ private slots:
 signals:
     void switchToLoginView();
     void switchToWelcomeView();
-    void loggedIn(QString token, QString userData);
+    void loggedIn(QVariantHash data);
 
 public:
     LoginView(QWidget* parent = 0);

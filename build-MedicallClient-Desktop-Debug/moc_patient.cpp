@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Patient_t {
-    QByteArrayData data[8];
-    char stringdata0[75];
+    QByteArrayData data[7];
+    char stringdata0[66];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -34,16 +34,14 @@ static const qt_meta_stringdata_Patient_t qt_meta_stringdata_Patient = {
 QT_MOC_LITERAL(0, 0, 7), // "Patient"
 QT_MOC_LITERAL(1, 8, 10), // "getPatient"
 QT_MOC_LITERAL(2, 19, 0), // ""
-QT_MOC_LITERAL(3, 20, 5), // "token"
-QT_MOC_LITERAL(4, 26, 8), // "userData"
-QT_MOC_LITERAL(5, 35, 18), // "getPatientFinished"
-QT_MOC_LITERAL(6, 54, 14), // "QNetworkReply*"
-QT_MOC_LITERAL(7, 69, 5) // "reply"
+QT_MOC_LITERAL(3, 20, 4), // "data"
+QT_MOC_LITERAL(4, 25, 19), // "getPatient_Finished"
+QT_MOC_LITERAL(5, 45, 14), // "QNetworkReply*"
+QT_MOC_LITERAL(6, 60, 5) // "reply"
 
     },
-    "Patient\0getPatient\0\0token\0userData\0"
-    "getPatientFinished\0QNetworkReply*\0"
-    "reply"
+    "Patient\0getPatient\0\0data\0getPatient_Finished\0"
+    "QNetworkReply*\0reply"
 };
 #undef QT_MOC_LITERAL
 
@@ -61,12 +59,12 @@ static const uint qt_meta_data_Patient[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    2,   24,    2, 0x0a /* Public */,
-       5,    1,   29,    2, 0x08 /* Private */,
+       1,    1,   24,    2, 0x0a /* Public */,
+       4,    1,   27,    2, 0x08 /* Private */,
 
  // slots: parameters
-    QMetaType::Void, QMetaType::QString, QMetaType::QString,    3,    4,
-    QMetaType::Void, 0x80000000 | 6,    7,
+    QMetaType::Void, QMetaType::QVariantHash,    3,
+    QMetaType::Void, 0x80000000 | 5,    6,
 
        0        // eod
 };
@@ -77,8 +75,8 @@ void Patient::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         Patient *_t = static_cast<Patient *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->getPatient((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
-        case 1: _t->getPatientFinished((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
+        case 0: _t->getPatient((*reinterpret_cast< QVariantHash(*)>(_a[1]))); break;
+        case 1: _t->getPatient_Finished((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {

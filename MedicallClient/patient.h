@@ -12,10 +12,10 @@ class Patient : public QObject
     Q_OBJECT
 
 public slots:
-    void getPatient(QString token, QString userData);
+    void getPatient(QVariantHash data);
 
 private slots:
-    void getPatientFinished(QNetworkReply* reply);
+    void getPatient_Finished(QNetworkReply* reply);
 
 public:
     Patient(QWidget* parent = 0);
@@ -32,8 +32,9 @@ private:
     QString gender;
     QString location;
     QString birthDate;
+    QString password;
 
-    QNetworkAccessManager* getPatientNetworkManager;
+    QNetworkAccessManager* getPatient_NetworkManager;
 
 private:
     NetworkManager* network;

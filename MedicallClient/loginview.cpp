@@ -96,9 +96,9 @@ void LoginView::loginRequestFinished(QNetworkReply* reply)
 
     if (!statusCode.isValid() || replyData.isEmpty()) return;
 
-    QMap<QString, QString> data = NetworkManager::jsonToMap(replyData);
+    QVariantHash data = NetworkManager::jsonToHash(replyData);
 
-    emit loggedIn(data["token"], data["user"]);
+    emit loggedIn(data);
 }
 
 // Switch to WelcomeView

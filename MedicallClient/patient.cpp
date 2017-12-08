@@ -2,32 +2,35 @@
 
 Patient::Patient(QWidget* parent) : QObject(parent)
 {
-    getPatientNetworkManager = new QNetworkAccessManager();
-    connect(getPatientNetworkManager, &QNetworkAccessManager::finished, this, &Patient::getPatientFinished);
+    getPatient_NetworkManager = new QNetworkAccessManager();
+    connect(getPatient_NetworkManager, &QNetworkAccessManager::finished, this, &Patient::getPatient_Finished);
 }
 
 Patient::~Patient() {}
 
-void Patient::getPatient(QString token, QString userData)
+void Patient::getPatient(QVariantHash data)
 {
-//    QByteArray array(userData.toUtf8());
-//    QMap<QString, QString> user = NetworkManager::jsonToMap(array);
+    QString id = data["user"].toHash()["id"].value<QString>();
+    token = data["token"].value<QString>();
 
-    qDebug() << userData;
+    QUrl url("http://localhost:8000/user/" + id);
 
-//    QUrl url("http://localhost:8000/user/" + userData["id"]);
-
-//    NetworkManager::postJsonToken(getPatientNetworkManager, url, token);
+    NetworkManager::postJsonToken(getPatient_NetworkManager, url, token);
 }
 
-void Patient::getPatientFinished(QNetworkReply *reply)
+void Patient::getPatient_Finished(QNetworkReply *reply)
 {
-//    QByteArray rawData(reply->readAll());
+    QByteArray array(reply->readAll());
+    QVariantHash data = NetworkManager::jsonToHash(array);
 
-//    QMap<QString, QString> data = NetworkManager::jsonToMap(rawData);
-
-//    username = data["user"];
-
-//    qDebug() << username;
+    username = data["username"].value<QString>();
+    fullName = data["fullName"].value<QString>();
+    weight = data["weight"].value<QString>();
+    bloodType = data["bloodType"].value<QString>();
+    location = data["location"].value<QString>();
+    height = data["height"].value<QString>();
+    gender = data["gender"].value<QString>();
+    birthDate = data["birthDate"].value<QString>();
+    password = data["password"].value<QString>();
 }
 
