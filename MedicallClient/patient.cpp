@@ -1,8 +1,17 @@
 #include "patient.h"
 
-Patient::Patient(QWidget* parent) : QObject(parent) {}
+Patient::Patient() {}
 
-Patient::~Patient() {}
+Patient* Patient::getInstance()
+{
+    if (instance == 0)
+    {
+        instance = new Patient();
+    }
+    return instance;
+}
+
+Patient* Patient::instance = 0;
 
 void Patient::initPatient(QVariantHash data)
 {
@@ -19,6 +28,7 @@ void Patient::initPatient(QVariantHash data)
     gender = user["gender"].value<QString>();
     birthDate = user["birthDate"].value<QString>();
     password = user["password"].value<QString>();
+    email = user["email"].value<QString>();
 }
 
 

@@ -28,6 +28,9 @@ public:
     ~MainWindow();
 
     QStackedWidget* stack;
+
+private:
+    PatientView* patientView;
 };
 
 #endif // MAINWINDOW_H

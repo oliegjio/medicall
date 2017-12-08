@@ -16,7 +16,7 @@ MainWindow::MainWindow()
     QFont defaultFont("Arial", 15);
     setFont(defaultFont);
 
-    Patient* patient = new Patient(this);
+    Patient* patient = Patient::getInstance();
 
     // #####
     // ## Stack:
@@ -44,8 +44,9 @@ MainWindow::MainWindow()
     stack->addWidget(doctorRegistrationView);
 
     // # 4
-    PatientView* patientView = new PatientView(this);
+    patientView = new PatientView(this);
     stack->addWidget(patientView);
+    connect(patientView, &PatientView::backButton_Event, this, &MainWindow::switchToWelcomeView);
 
     // #####
     // ## Other:
@@ -83,5 +84,6 @@ void MainWindow::switchToDoctorRegistrationView()
 
 void MainWindow::switchToPatientView()
 {
+    patientView->init();
     stack->setCurrentIndex(4);
 }

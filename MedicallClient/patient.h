@@ -4,6 +4,8 @@
 #include <QString>
 #include <QObject>
 #include <QNetworkReply>
+#include <QHBoxLayout>
+#include <QVBoxLayout>
 
 #include "networkmanager.h"
 #include "loginview.h"
@@ -15,13 +17,16 @@ class Patient : public QObject
 public slots:
     void initPatient(QVariantHash data);
 
-public:
-    Patient(QWidget* parent = 0);
-    ~Patient();
-
 private:
+    Patient();
+    static Patient* instance;
+
+public:
+    static Patient* getInstance();
+
     QString token;
     QString username;
+    QString email;
     QString fullName;
     QString weight;
     QString height;
