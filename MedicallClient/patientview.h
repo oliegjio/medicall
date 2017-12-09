@@ -5,8 +5,10 @@
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QFormLayout>
+#include <QScrollArea>
 
 #include "patient.h"
+#include "recomendationwidget.h"
 
 class PatientView : public QWidget
 {

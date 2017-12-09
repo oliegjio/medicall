@@ -12,13 +12,14 @@ db.serialize(() => {
       'username' text unique not null,
       'email' text unique not null,
       'password' text not null,
-      'fullName' text,
-      'birthDate' text,
-      'location' text,
-      'gender' text,
-      'weight' text,
-      'height' text,
-      'bloodType' text
+      'fullName' text not null,
+      'birthDate' text not null,
+      'location' text not null,
+      'gender' text not null,
+      'weight' text not null,
+      'height' text not null,
+      'bloodType' text not null,
+      'doctor'
     )
   `)
 
@@ -59,4 +60,36 @@ db.serialize(() => {
   .catch((error) => {
     console.error(error)
   })
+})
+
+db.serialize(() => {
+  db.run(`drop table if exists 'recomendations'`)
+  db.run(`
+    create table if not exists
+    'recomendations'
+    (
+      'id' integer primary key autoincrement,
+      'title' text not null,
+      'date' text not null,
+      'content' text not null,
+      'doctor' integer not null,
+        foreign key (doctor) references doctors(id)
+    )
+  `)
+})
+
+db.serialize(() => {
+  db.run(`drop table if exists 'doctors'`)
+  db.run(`
+    create table if not exists 'doctors'
+    (
+      'id' integer primary key autoincrement,
+      'fullName' text not null,
+      'password' text not null,
+      'speciality' text not null,
+      'phoneNumber' text not null,
+      'email' text not null,
+      'socialNetworks' text not null
+    )
+  `)
 })
