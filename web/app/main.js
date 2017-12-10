@@ -4,7 +4,8 @@ const bodyParser = require('body-parser')
 const auth = require('./auth')()
 const db = require('./db')
 
-require('./dbInit')
+// require('./dbInit')
+// require('./fakeData')
 
 // ####
 // ## Setup:
@@ -26,9 +27,11 @@ app.use(require('../middlewares/crossOriginMiddleware').init)
 // ## Routes:
 // ####
 
-require('../routes/loginRoute').init(app)
+require('../routes/loginPatientRoute').init(app)
+require('../routes/loginDoctorRoute').init(app)
 require('../routes/userRoute').init(app)
 require('../routes/registerPatientRoute').init(app)
+require('../routes/registerDoctorRoute').init(app)
 
 // ####
 // ## Other:
