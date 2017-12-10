@@ -1,3 +1,4 @@
+const db = require('../database/db')
 
 class RecomendationModel {
   constructor(recomendation) {
@@ -9,9 +10,9 @@ class RecomendationModel {
   }
 
   static validate(obj) {
-    if (!obj.date    || !obj.title ||
-        !obj.content || !obj.doctor)
-        return false
+    if (!obj.date    || !obj.title  ||
+        !obj.content || !obj.doctor ||
+        !obj.patient) return false
       else
         return true
   }
@@ -33,13 +34,27 @@ class RecomendationModel {
     return new Promise((resolve, reject) => {
       db.run(`
         INSERT INTO recomendations
-        (title, date, content, doctor)
-        VALUES (?, ?, ?, ?)`, [
+        (title, date, content, doctor, patient)
+        VALUES (?, ?, ?, ?, ?)`, [
         recomendation.title, recomendation.date,
-        recomendation.content, recomendation.doctor,],
+        recomendation.content, recomendation.doctor,
+        recomendation.patient],
         (error) => {
           if (error) reject(error)
           resolve(this)
+        })
+    })
+  }
+
+  static getByPatient(patientId) {
+    return new Promise((resolve, reject) => {
+      db.get(
+        `SELECT * FROM recomendations WHERE patient = ?`,
+        [patientId],
+        (error, recomendations) => {
+          if (error)  reject(error)
+          if (!recomendations) reject('There is no recomendations!')
+          resolve(recomendations)
         })
     })
   }

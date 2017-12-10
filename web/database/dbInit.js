@@ -58,12 +58,13 @@ db.serialize(() => {
       title TEXT NOT NULL,
       date TEXT NOT NULL,
       content TEXT NOT NULL,
-      doctor INTEGER NOT NULL,
-      FOREIGN KEY (doctor) REFERENCES doctors(id))`)
+      doctor INTEGER NOT NULL REFERENCES doctors(id),
+      patient INTEGER NOT NULL REFERENCES patients(id))`)
 
   // ####
   // ## Seeding:
   // ####
   require('./seeding/doctorsSeeding')
   require('./seeding/patientsSeeding')
+  require('./seeding/recomendationsSeeding')
 })
