@@ -35,7 +35,8 @@ SOURCES += \
     recomendationwidget.cpp \
     loginpatientview.cpp \
     logindoctorview.cpp \
-    doctor.cpp
+    doctor.cpp \
+    doctorview.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -48,5 +49,6 @@ HEADERS += \
     recomendationwidget.h \
     loginpatientview.h \
     logindoctorview.h \
-    doctor.h
+    doctor.h \
+    doctorview.h
 

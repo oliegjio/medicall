@@ -13,6 +13,7 @@
 #include "patient.h"
 #include "logindoctorview.h"
 #include "doctor.h"
+#include "doctorview.h"
 
 class MainWindow : public QMainWindow
 {
@@ -25,6 +26,7 @@ public slots:
     void switchToPatientRegistrationView();
     void switchToDoctorRegistrationView();
     void switchToPatientView();
+    void switchToDoctorView();
 
 public:
     MainWindow();
@@ -34,6 +36,7 @@ public:
 
 private:
     PatientView* patientView;
+    DoctorView* doctorView;
 };
 
 #endif // MAINWINDOW_H

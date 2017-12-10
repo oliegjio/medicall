@@ -115,7 +115,7 @@ void PatientView::init()
     // ## Other:
     // ####
 
-    // # Scroll Column:
+    // # Scroll Area:
     QWidget* contentColumn = new QWidget();
     contentColumn->setLayout(contentLayout);
     scrollArea->setWidget(contentColumn);

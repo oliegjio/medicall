@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[8];
-    char stringdata0[164];
+    QByteArrayData data[9];
+    char stringdata0[183];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -38,7 +38,8 @@ QT_MOC_LITERAL(3, 32, 24), // "switchToLoginPatientView"
 QT_MOC_LITERAL(4, 57, 23), // "switchToLoginDoctorView"
 QT_MOC_LITERAL(5, 81, 31), // "switchToPatientRegistrationView"
 QT_MOC_LITERAL(6, 113, 30), // "switchToDoctorRegistrationView"
-QT_MOC_LITERAL(7, 144, 19) // "switchToPatientView"
+QT_MOC_LITERAL(7, 144, 19), // "switchToPatientView"
+QT_MOC_LITERAL(8, 164, 18) // "switchToDoctorView"
 
     },
     "MainWindow\0switchToWelcomeView\0\0"
@@ -46,7 +47,7 @@ QT_MOC_LITERAL(7, 144, 19) // "switchToPatientView"
     "switchToLoginDoctorView\0"
     "switchToPatientRegistrationView\0"
     "switchToDoctorRegistrationView\0"
-    "switchToPatientView"
+    "switchToPatientView\0switchToDoctorView"
 };
 #undef QT_MOC_LITERAL
 
@@ -56,7 +57,7 @@ static const uint qt_meta_data_MainWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+       7,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -64,14 +65,16 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   44,    2, 0x0a /* Public */,
-       3,    0,   45,    2, 0x0a /* Public */,
-       4,    0,   46,    2, 0x0a /* Public */,
-       5,    0,   47,    2, 0x0a /* Public */,
-       6,    0,   48,    2, 0x0a /* Public */,
-       7,    0,   49,    2, 0x0a /* Public */,
+       1,    0,   49,    2, 0x0a /* Public */,
+       3,    0,   50,    2, 0x0a /* Public */,
+       4,    0,   51,    2, 0x0a /* Public */,
+       5,    0,   52,    2, 0x0a /* Public */,
+       6,    0,   53,    2, 0x0a /* Public */,
+       7,    0,   54,    2, 0x0a /* Public */,
+       8,    0,   55,    2, 0x0a /* Public */,
 
  // slots: parameters
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -94,6 +97,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 3: _t->switchToPatientRegistrationView(); break;
         case 4: _t->switchToDoctorRegistrationView(); break;
         case 5: _t->switchToPatientView(); break;
+        case 6: _t->switchToDoctorView(); break;
         default: ;
         }
     }
@@ -125,13 +129,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 7;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 7)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 6;
+        _id -= 7;
     }
     return _id;
 }

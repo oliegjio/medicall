@@ -56,6 +56,11 @@ MainWindow::MainWindow()
     stack->addWidget(patientView);
     connect(patientView, &PatientView::backButton_Event, this, &MainWindow::switchToWelcomeView);
 
+    // # 6
+    doctorView = new DoctorView(this);
+    stack->addWidget(doctorView);
+    connect(doctorView, &DoctorView::backButton_Event, this, &MainWindow::switchToWelcomeView);
+
     // #####
     // ## Other:
     // #####
@@ -64,7 +69,7 @@ MainWindow::MainWindow()
     connect(loginPatientView, &LoginPatientView::loggedIn, this, &MainWindow::switchToPatientView);
 
     connect(loginDoctorView, &LoginDoctorView::loggedIn, doctor, &Doctor::initDoctor);
-    connect(loginDoctorView, &LoginDoctorView::loggedIn, this, &MainWindow::switchToPatientView);
+    connect(loginDoctorView, &LoginDoctorView::loggedIn, this, &MainWindow::switchToDoctorView);
 
     connect(patientRegistrationView, &PatientRegistrationView::registered, patient, &Patient::initPatient);
 
@@ -102,4 +107,10 @@ void MainWindow::switchToPatientView()
 {
     patientView->init();
     stack->setCurrentIndex(5);
+}
+
+void MainWindow::switchToDoctorView()
+{
+    doctorView->init();
+    stack->setCurrentIndex(6);
 }
