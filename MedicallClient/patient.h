@@ -8,7 +8,7 @@
 #include <QVBoxLayout>
 
 #include "networkmanager.h"
-#include "loginview.h"
+#include "loginpatientview.h"
 
 class Patient : public QObject
 {

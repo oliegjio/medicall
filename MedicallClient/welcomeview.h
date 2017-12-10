@@ -10,12 +10,14 @@ class WelcomeView : public QWidget
     Q_OBJECT
 
 private slots:
-    void loginButton_Clicked();
+    void loginPatientButton_Clicked();
+    void loginDoctorButton_Clicked();
     void registerPatientButton_Clicked();
     void registerDoctorButton_Clicked();
 
 signals:
-    void loginButton_Event();
+    void loginPatientButton_Event();
+    void loginDoctorButton_Event();
     void registerPatientButton_Event();
     void registerDoctorButton_Event();
 

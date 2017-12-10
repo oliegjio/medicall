@@ -27,22 +27,26 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     welcomeview.cpp \
-    loginview.cpp \
     networkmanager.cpp \
     patient.cpp \
     patientregistrationview.cpp \
     doctorregistrationview.cpp \
     patientview.cpp \
-    recomendationwidget.cpp
+    recomendationwidget.cpp \
+    loginpatientview.cpp \
+    logindoctorview.cpp \
+    doctor.cpp
 
 HEADERS += \
         mainwindow.h \
     welcomeview.h \
-    loginview.h \
     networkmanager.h \
     patient.h \
     patientregistrationview.h \
     doctorregistrationview.h \
     patientview.h \
-    recomendationwidget.h
+    recomendationwidget.h \
+    loginpatientview.h \
+    logindoctorview.h \
+    doctor.h
 

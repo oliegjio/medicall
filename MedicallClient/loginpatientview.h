@@ -11,7 +11,7 @@
 
 #include "networkmanager.h"
 
-class LoginView : public QWidget
+class LoginPatientView : public QWidget
 {
     Q_OBJECT
 
@@ -26,8 +26,8 @@ signals:
     void loggedIn(QVariantHash& data);
 
 public:
-    LoginView(QWidget* parent = 0);
-    ~LoginView();
+    LoginPatientView(QWidget* parent = 0);
+    ~LoginPatientView();
 
 private:
     QNetworkAccessManager* login_NetworkManager;

@@ -17,7 +17,7 @@ void Patient::initPatient(QVariantHash data)
 {
     token = data["token"].value<QString>();
 
-    QHash<QString, QVariant> user = data["user"].toHash();
+    QHash<QString, QVariant> user = data["patient"].toHash();
 
     username = user["username"].value<QString>();
     fullName = user["fullName"].value<QString>();

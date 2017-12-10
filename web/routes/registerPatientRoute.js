@@ -13,20 +13,20 @@ var init = (app) => {
     if (b.password != b.passwordRepeat)
       return response.sendStatus(406)
 
-    var user = new PatientModel(b)
+    var patient = new PatientModel(b)
 
-    bcrypt.hash(user.password, 10)
+    bcrypt.hash(patient.password, 10)
     .then((hash) => {
-      user.password = hash
-      user.commit()
+      patient.password = hash
+      PatientModel.commit(patient)
 
       .then((info) => {
-        var payload = { id: user.id }
+        var payload = { id: patient.id }
         var token = jwt.encode(payload, config.jwtSecret)
 
         return response.json({
           token: token,
-          user: user
+          patient: patient
         })
       })
 

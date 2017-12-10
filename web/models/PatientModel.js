@@ -5,7 +5,7 @@ class PatientModel {
 
   constructor(patient) {
     if (!PatientModel.validate(patient)) {
-      console.error("Not enought arguments for PatientModel")
+      console.error('Not enought arguments for PatientModel')
       return
     }
     Object.assign(this, patient)
@@ -24,59 +24,80 @@ class PatientModel {
 
   static getById(id) {
     return new Promise((resolve, reject) => {
-
-      var callback = (error, user) => {
-        if (error)  reject(error)
-        if (!user) reject("No such user!")
-        resolve(user)
-      }
       db.get(
-        `select * from 'users' where id = ?`,
+        `SELECT * FROM patients WHERE id = ?`,
         [id],
-        callback)
+        (error, user) => {
+          if (error)  reject(error)
+          if (!user) reject('No such user!')
+          resolve(user)
+        })
     })
   }
 
-  static getFromUsername(username) {
+  static getByUsername(username) {
     return new Promise((resolve, reject) => {
-      var callback = (error, user) => {
-        if (error) reject(error)
-        if (!user) reject("No such user!")
-        resolve(user)
-      }
       db.get(
-        `select * from 'users' where username = ?`,
+        `SELECT * FROM patients WHERE username = ?`,
         [username],
-        callback)
+        (error, user) => {
+          if (error) reject(error)
+          if (!user) reject('No such user!')
+          resolve(user)
+        })
     })
   }
 
-  commit() {
+  static commit(patient) {
     return new Promise((resolve, reject) => {
-      if (!PatientModel.validate(this))
-        reject("Not enought argument to commit PatientModel!")
-
-      var callback = (error) => {
-        if (error) reject(error)
-        resolve(this)
-      }
       db.run(`
-          insert into
-          'users'
-          (
-            'username', 'email', 'password',
-            'fullName', 'birthDate', 'location',
-            'gender', 'weight', 'height',
-            'bloodType'
-          )
-          values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        `,[
-          this.username, this.email, this.password,
-          this.fullName, this.birthDate, this.location,
-          this.gender, this.weight, this.height,
-          this.bloodType
-        ],
-        callback)
+        INSERT INTO patients
+        (
+          username, email, password,
+          fullName, birthDate, location,
+          gender, weight, height,
+          bloodType
+        )
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, [
+        patient.username, patient.email, patient.password,
+        patient.fullName, patient.birthDate, patient.location,
+        patient.gender, patient.weight, patient.height,
+        patient.bloodType],
+        (error) => {
+          if (error) reject(error)
+          resolve(this)
+        })
+    })
+  }
+
+  static addDoctor(doctorId, userId) {
+    return new Promise((resolve, reject) => {
+      db.run(`
+        INSERT INTO patients_doctors
+        (doctor_id, patient_id)
+        VALUES (?, ?)`,
+        [doctorId, userId],
+        (error) => {
+          if (error) reject(error)
+          resolve(this)
+        })
+    })
+  }
+
+  static getDoctors(patientId) {
+    return new Promise((resolve, reject) => {
+      db.all(
+        `SELECT * FROM doctors
+        LEFT JOIN patients_doctors
+        ON patients_doctors.patient_id = doctors.id
+        WHERE patients_doctors.patient_id = ?`,
+        [patientId],
+        (error, doctors) => {
+          if (error) reject(error)
+          if (doctors.length == 0)
+            reject('This user does not have any doctors!')
+          resolve(doctors)
+        })
     })
   }
 }

@@ -8,7 +8,7 @@ class RecomendationModel {
     Object.assign(this, recomendation)
   }
 
-  statis.validate(obj) {
+  static validate(obj) {
     if (!obj.date    || !obj.title ||
         !obj.content || !obj.doctor)
         return false

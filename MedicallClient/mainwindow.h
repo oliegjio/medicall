@@ -6,11 +6,13 @@
 #include "QDesktopWidget"
 
 #include "welcomeview.h"
-#include "loginview.h"
+#include "loginpatientview.h"
 #include "patientregistrationview.h"
 #include "doctorregistrationview.h"
 #include "patientview.h"
 #include "patient.h"
+#include "logindoctorview.h"
+#include "doctor.h"
 
 class MainWindow : public QMainWindow
 {
@@ -18,7 +20,8 @@ class MainWindow : public QMainWindow
 
 public slots:
     void switchToWelcomeView();
-    void switchToLoginView();
+    void switchToLoginPatientView();
+    void switchToLoginDoctorView();
     void switchToPatientRegistrationView();
     void switchToDoctorRegistrationView();
     void switchToPatientView();

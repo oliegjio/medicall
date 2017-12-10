@@ -1,6 +1,6 @@
-#include "loginview.h"
+#include "loginpatientview.h"
 
-LoginView::LoginView(QWidget* parent) : QWidget(parent)
+LoginPatientView::LoginPatientView(QWidget* parent) : QWidget(parent)
 {
     // #####
     // ## Setup:
@@ -13,7 +13,7 @@ LoginView::LoginView(QWidget* parent) : QWidget(parent)
     formLayout->setAlignment(Qt::AlignCenter);
 
     login_NetworkManager = new QNetworkAccessManager();
-    connect(login_NetworkManager, &QNetworkAccessManager::finished, this, &LoginView::login_Finished);
+    connect(login_NetworkManager, &QNetworkAccessManager::finished, this, &LoginPatientView::login_Finished);
 
     QFont logoFont("Arial", 75);
 
@@ -71,19 +71,19 @@ LoginView::LoginView(QWidget* parent) : QWidget(parent)
     setLayout(layout);
 }
 
-LoginView::~LoginView() {}
+LoginPatientView::~LoginPatientView() {}
 
-void LoginView::loginButton_Clicked()
+void LoginPatientView::loginButton_Clicked()
 {
     QJsonObject data {
         {"username", usernameLine->text()},
         {"password", passwordLine->text()}
     };
 
-    NetworkManager::postJson(login_NetworkManager, QUrl("http://localhost:8000/login/"), data);
+    NetworkManager::postJson(login_NetworkManager, QUrl("http://localhost:8000/login-patient/"), data);
 }
 
-void LoginView::login_Finished(QNetworkReply* reply)
+void LoginPatientView::login_Finished(QNetworkReply* reply)
 {
     if (reply->error()) {
         qDebug() << reply->errorString();
@@ -101,4 +101,4 @@ void LoginView::login_Finished(QNetworkReply* reply)
     emit loggedIn(data);
 }
 
-void LoginView::backButton_Clicked() { emit backButton_Event(); }
+void LoginPatientView::backButton_Clicked() { emit backButton_Event(); }
