@@ -1,10 +1,11 @@
-const PatientModel = require('../models/PatientModel')
+const PatientModel = require('../../models/PatientModel')
 const bcrypt = require('bcrypt')
-const db = require('../database/db')
+const db = require('../db')
 
 db.serialize(() => {
+
   // ####
-  // ## Patient:
+  // ## =========>
   // ####
   bcrypt.hash('asdf', 10)
   .then((hash) => {
@@ -28,29 +29,7 @@ db.serialize(() => {
   })
 
   // ####
-  // ## Doctor:
-  // ####
-  bcrypt.hash('asdf', 10)
-  .then((hash) => {
-    db.run(`
-      insert into 'doctors'
-      ('fullName', 'password', 'speciality',
-      'phoneNumber', 'username', 'email',
-      'socialNetworks')
-      values (?, ?, ?, ?, ?, ?, ?)`,
-      ['Vasia', hash, 'motherfucker',
-      '+666', 'doc1', 'doc1@yaya.ru',
-      'vk.com/doc1'],
-      (error) => {
-        if (error) console.log(error)
-      })
-  })
-  .catch((error) => {
-    console.error(error)
-  })
-
-  // ####
-  // ## Patient:
+  // ## =========>
   // ####
   bcrypt.hash('asdf', 10)
   .then((hash) => {

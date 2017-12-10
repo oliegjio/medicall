@@ -2,21 +2,21 @@ const auth = require('../app/auth')()
 const PatientModel = require('../models/PatientModel')
 
 var init = (app) => {
-  app.post('/user/:id', auth.authenticate(), (request, response) => {
+  app.post('/patient/:id',
+           auth.authenticate(),
+           (request, response) => {
 
     PatientModel.getById(request.params.id)
 
-    .then((user) => {
-      if (user) {
-        response.json(user)
-        return
-      }
-      response.sendStatus(404)
+    .then((patient) => {
+      if (patient)
+        return response.json(patient)
+      return response.sendStatus(404)
     })
 
     .catch((error) => {
       console.error(error)
-      response.sendStatus(406)
+      return response.sendStatus(406)
     })
   })
 }

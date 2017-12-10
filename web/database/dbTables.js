@@ -1,6 +1,5 @@
 const db = require('../database/db')
 
-
 db.serialize(() => {
   // ####
   // ## Patients:
@@ -38,6 +37,17 @@ db.serialize(() => {
       socialNetworks TEXT NOT NULL)`)
 
   // ####
+  // ## Patients-Doctors:
+  // ####
+  db.run(`DROP TABLE IF EXISTS patients_doctors`)
+  db.run(`
+    CREATE TABLE IF NOT EXISTS patients_doctors
+    (
+      doctor_id INTEGER,
+      patient_id INTEGER,
+      PRIMARY KEY (doctor_id, patient_id))`)
+
+  // ####
   // ## Recomendations:
   // ####
   db.run(`DROP TABLE IF EXISTS recomendations`)
@@ -50,15 +60,4 @@ db.serialize(() => {
       content TEXT NOT NULL,
       doctor INTEGER NOT NULL,
       FOREIGN KEY (doctor) REFERENCES doctors(id))`)
-
-  // ####
-  // ## Patients-Doctors:
-  // ####
-  db.run(`DROP TABLE IF EXISTS patients_doctors`)
-  db.run(`
-    CREATE TABLE IF NOT EXISTS patients_doctors
-    (
-      doctor_id INTEGER,
-      patient_id INTEGER,
-      PRIMARY KEY (doctor_id, patient_id))`)
 })

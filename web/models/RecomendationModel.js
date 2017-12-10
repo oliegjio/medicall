@@ -15,6 +15,34 @@ class RecomendationModel {
       else
         return true
   }
+
+  static getById(id) {
+    return new Promise((resolve, reject) => {
+      db.get(
+        `SELECT * FROM recomendations WHERE id = ?`,
+        [id],
+        (error, recomendation) => {
+          if (error)  reject(error)
+          if (!recomendation) reject('No such recomendation!')
+          resolve(recomendation)
+        })
+    })
+  }
+
+  static commit(recomendation) {
+    return new Promise((resolve, reject) => {
+      db.run(`
+        INSERT INTO recomendations
+        (title, date, content, doctor)
+        VALUES (?, ?, ?, ?)`, [
+        recomendation.title, recomendation.date,
+        recomendation.content, recomendation.doctor,],
+        (error) => {
+          if (error) reject(error)
+          resolve(this)
+        })
+    })
+  }
 }
 
 module.exports = RecomendationModel
