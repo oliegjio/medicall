@@ -72,7 +72,7 @@ LoginDoctorView::LoginDoctorView(QWidget* parent) : QWidget(parent)
 
     // #####
     // ## Other:
-    // #####
+    // #####2
 
     layout->addStretch(3);
 

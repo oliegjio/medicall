@@ -4,7 +4,7 @@ const DoctorModel = require('../models/DoctorModel')
 const bcrypt = require('bcrypt')
 
 var init = (app) => {
-  app.post("/login-doctor", function(request, response) {
+  app.post('/login-doctor', function(request, response) {
 
       if (request.body.username && request.body.password) {
           var username = request.body.username

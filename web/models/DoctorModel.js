@@ -85,7 +85,7 @@ class DoctorModel {
       db.all(
         `SELECT * FROM patients
         LEFT JOIN patients_doctors
-        ON patients_doctors.doctor_id = patients.id
+        ON patients_doctors.patient_id = patients.id
         WHERE patients_doctors.doctor_id = ?`,
         [doctorId],
         (error, patients) => {

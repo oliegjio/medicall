@@ -4,7 +4,7 @@ const jwt = require('jwt-simple')
 const config = require('../app/config')
 
 var init = (app) => {
-  app.post("/register-doctor", function(request, response) {
+  app.post('/register-doctor', function(request, response) {
 
     var b = request.body
     if (!DoctorModel.validate(b))

@@ -89,12 +89,12 @@ class PatientModel {
       db.all(
         `SELECT * FROM doctors
         LEFT JOIN patients_doctors
-        ON patients_doctors.patient_id = doctors.id
+        ON patients_doctors.doctor_id = doctors.id
         WHERE patients_doctors.patient_id = ?`,
         [patientId],
         (error, doctors) => {
           if (error) reject(error)
-          if (doctors.length == 0)
+          if (!doctors || doctors.length == 0)
             reject('This user does not have any doctors!')
           resolve(doctors)
         })

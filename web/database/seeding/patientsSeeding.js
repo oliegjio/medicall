@@ -9,7 +9,7 @@ db.serialize(() => {
   // ####
   bcrypt.hash('asdf', 10)
   .then((hash) => {
-    var patient1 = new PatientModel({
+    var patient = new PatientModel({
       username: 'test3',
       password: hash,
       email: 'test3@gmail.com',
@@ -21,8 +21,13 @@ db.serialize(() => {
       birthDate: '19.02.1973',
       fullName: 'John Doe'
     })
-    PatientModel.commit(patient1)
+    PatientModel.commit(patient)
     .catch((error) => { console.error(error) })
+
+    PatientModel.addDoctor(1, 1)
+    .catch((error) => {
+      console.error(error)
+    })
   })
   .catch((error) => {
     console.error(error)
@@ -33,7 +38,7 @@ db.serialize(() => {
   // ####
   bcrypt.hash('asdf', 10)
   .then((hash) => {
-    var patient1 = new PatientModel({
+    var patient = new PatientModel({
       username: 'test4',
       password: hash,
       email: 'test4@gmail.com',
@@ -45,13 +50,8 @@ db.serialize(() => {
       birthDate: '19.02.1973',
       fullName: 'John Doe'
     })
-    PatientModel.commit(patient1)
+    PatientModel.commit(patient)
     .catch((error) => { console.error(error) })
-
-    PatientModel.addDoctor(1, 1)
-    .catch((error) => {
-      console.error(error)
-    })
 
     PatientModel.addDoctor(1, 2)
     .catch((error) => {

@@ -60,4 +60,10 @@ db.serialize(() => {
       content TEXT NOT NULL,
       doctor INTEGER NOT NULL,
       FOREIGN KEY (doctor) REFERENCES doctors(id))`)
+
+  // ####
+  // ## Seeding:
+  // ####
+  require('./seeding/doctorsSeeding')
+  require('./seeding/patientsSeeding')
 })
