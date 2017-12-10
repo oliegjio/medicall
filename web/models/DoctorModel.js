@@ -1,4 +1,4 @@
-const db = require('../app/db')
+const db = require('../database/db')
 const bcrypt = require('bcrypt')
 
 class DoctorModel {
@@ -55,7 +55,7 @@ class DoctorModel {
           fullName, speciality, phoneNumber,
           socialNetworks
         )
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, [
+        VALUES (?, ?, ?, ?, ?, ?, ?)`, [
         doctor.username, doctor.email, doctor.password,
         doctor.fullName, doctor.speciality, doctor.phoneNumber,
         doctor.socialNetworks],

@@ -38,6 +38,7 @@ private:
     QLineEdit* password2Line;
     QLineEdit* specialityLine;
     QLineEdit* phoneNumberLine;
+    QLineEdit* socialNetworksLine;
 
     QNetworkAccessManager* register_NetworkManager;
 };

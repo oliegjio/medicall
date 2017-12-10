@@ -74,6 +74,11 @@ DoctorRegistrationView::DoctorRegistrationView(QWidget* parent) : QWidget(parent
     phoneNumberLine = new QLineEdit(this);
     formLayout->addRow(phoneNumberLabel, phoneNumberLine);
 
+    // # Social Networks:
+    QLabel* socialNetworksLabel = new QLabel("Соц. сети:");
+    socialNetworksLine = new QLineEdit(this);
+    formLayout->addRow(socialNetworksLabel, socialNetworksLine);
+
     // # Buttons:
     QPushButton* backButton = new QPushButton("Назад");
     connect(backButton, SIGNAL(clicked()), this, SLOT(backButton_Clicked()));
@@ -104,7 +109,8 @@ void DoctorRegistrationView::registerButton_Clicked()
         {"fullName", fullNameLine->text()},
         {"email", emailLine->text()},
         {"speciality", specialityLine->text()},
-        {"phoneNumber", phoneNumberLine->text()}
+        {"phoneNumber", phoneNumberLine->text()},
+        {"socialNetworks", socialNetworksLine->text()}
     };
 
     NetworkManager::postJson(register_NetworkManager, QUrl("http://localhost:8000/register-doctor/"), data);
@@ -114,5 +120,5 @@ void DoctorRegistrationView::backButton_Clicked() { emit backButton_Event(); }
 
 void DoctorRegistrationView::register_Finished(QNetworkReply* reply)
 {
-
+    qDebug() << reply->readAll();
 }

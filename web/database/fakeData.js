@@ -1,6 +1,6 @@
 const PatientModel = require('../models/PatientModel')
 const bcrypt = require('bcrypt')
-const db = require('./db')
+const db = require('../database/db')
 
 db.serialize(() => {
   // ####

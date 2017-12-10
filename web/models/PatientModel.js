@@ -1,4 +1,4 @@
-const db = require('../app/db')
+const db = require('../database/db')
 const bcrypt = require('bcrypt')
 
 class PatientModel {
