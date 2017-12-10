@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_LoginDoctorView_t {
-    QByteArrayData data[12];
-    char stringdata0[155];
+    QByteArrayData data[11];
+    char stringdata0[136];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -38,17 +38,16 @@ QT_MOC_LITERAL(3, 35, 16), // "backButton_Event"
 QT_MOC_LITERAL(4, 52, 8), // "loggedIn"
 QT_MOC_LITERAL(5, 61, 13), // "QVariantHash&"
 QT_MOC_LITERAL(6, 75, 4), // "data"
-QT_MOC_LITERAL(7, 80, 19), // "loginButton_Clicked"
-QT_MOC_LITERAL(8, 100, 18), // "backButton_Clicked"
-QT_MOC_LITERAL(9, 119, 14), // "login_Finished"
-QT_MOC_LITERAL(10, 134, 14), // "QNetworkReply*"
-QT_MOC_LITERAL(11, 149, 5) // "reply"
+QT_MOC_LITERAL(7, 80, 14), // "login_Finished"
+QT_MOC_LITERAL(8, 95, 14), // "QNetworkReply*"
+QT_MOC_LITERAL(9, 110, 5), // "reply"
+QT_MOC_LITERAL(10, 116, 19) // "loginButton_Clicked"
 
     },
     "LoginDoctorView\0switchToLoginView\0\0"
     "backButton_Event\0loggedIn\0QVariantHash&\0"
-    "data\0loginButton_Clicked\0backButton_Clicked\0"
-    "login_Finished\0QNetworkReply*\0reply"
+    "data\0login_Finished\0QNetworkReply*\0"
+    "reply\0loginButton_Clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -58,7 +57,7 @@ static const uint qt_meta_data_LoginDoctorView[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       6,   14, // methods
+       5,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -66,14 +65,13 @@ static const uint qt_meta_data_LoginDoctorView[] = {
        3,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   44,    2, 0x06 /* Public */,
-       3,    0,   45,    2, 0x06 /* Public */,
-       4,    1,   46,    2, 0x06 /* Public */,
+       1,    0,   39,    2, 0x06 /* Public */,
+       3,    0,   40,    2, 0x06 /* Public */,
+       4,    1,   41,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       7,    0,   49,    2, 0x08 /* Private */,
-       8,    0,   50,    2, 0x08 /* Private */,
-       9,    1,   51,    2, 0x08 /* Private */,
+       7,    1,   44,    2, 0x08 /* Private */,
+      10,    0,   47,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
@@ -81,9 +79,8 @@ static const uint qt_meta_data_LoginDoctorView[] = {
     QMetaType::Void, 0x80000000 | 5,    6,
 
  // slots: parameters
+    QMetaType::Void, 0x80000000 | 8,    9,
     QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 10,   11,
 
        0        // eod
 };
@@ -97,15 +94,14 @@ void LoginDoctorView::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         case 0: _t->switchToLoginView(); break;
         case 1: _t->backButton_Event(); break;
         case 2: _t->loggedIn((*reinterpret_cast< QVariantHash(*)>(_a[1]))); break;
-        case 3: _t->loginButton_Clicked(); break;
-        case 4: _t->backButton_Clicked(); break;
-        case 5: _t->login_Finished((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
+        case 3: _t->login_Finished((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
+        case 4: _t->loginButton_Clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         switch (_id) {
         default: *reinterpret_cast<int*>(_a[0]) = -1; break;
-        case 5:
+        case 3:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
             case 0:
@@ -164,13 +160,13 @@ int LoginDoctorView::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 5;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 5;
     }
     return _id;
 }

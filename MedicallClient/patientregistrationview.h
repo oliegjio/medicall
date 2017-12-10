@@ -22,7 +22,6 @@ signals:
     void registered(QVariantHash& data);
 
 private slots:
-    void backButton_Clicked();
     void registerButton_Clicked();
     void register_Finished(QNetworkReply* reply);
 

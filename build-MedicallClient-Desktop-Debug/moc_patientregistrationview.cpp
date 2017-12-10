@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_PatientRegistrationView_t {
-    QByteArrayData data[11];
-    char stringdata0[153];
+    QByteArrayData data[10];
+    char stringdata0[134];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -37,17 +37,16 @@ QT_MOC_LITERAL(2, 41, 0), // ""
 QT_MOC_LITERAL(3, 42, 10), // "registered"
 QT_MOC_LITERAL(4, 53, 13), // "QVariantHash&"
 QT_MOC_LITERAL(5, 67, 4), // "data"
-QT_MOC_LITERAL(6, 72, 18), // "backButton_Clicked"
-QT_MOC_LITERAL(7, 91, 22), // "registerButton_Clicked"
-QT_MOC_LITERAL(8, 114, 17), // "register_Finished"
-QT_MOC_LITERAL(9, 132, 14), // "QNetworkReply*"
-QT_MOC_LITERAL(10, 147, 5) // "reply"
+QT_MOC_LITERAL(6, 72, 22), // "registerButton_Clicked"
+QT_MOC_LITERAL(7, 95, 17), // "register_Finished"
+QT_MOC_LITERAL(8, 113, 14), // "QNetworkReply*"
+QT_MOC_LITERAL(9, 128, 5) // "reply"
 
     },
     "PatientRegistrationView\0backButton_Event\0"
     "\0registered\0QVariantHash&\0data\0"
-    "backButton_Clicked\0registerButton_Clicked\0"
-    "register_Finished\0QNetworkReply*\0reply"
+    "registerButton_Clicked\0register_Finished\0"
+    "QNetworkReply*\0reply"
 };
 #undef QT_MOC_LITERAL
 
@@ -57,7 +56,7 @@ static const uint qt_meta_data_PatientRegistrationView[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -65,13 +64,12 @@ static const uint qt_meta_data_PatientRegistrationView[] = {
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   39,    2, 0x06 /* Public */,
-       3,    1,   40,    2, 0x06 /* Public */,
+       1,    0,   34,    2, 0x06 /* Public */,
+       3,    1,   35,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       6,    0,   43,    2, 0x08 /* Private */,
-       7,    0,   44,    2, 0x08 /* Private */,
-       8,    1,   45,    2, 0x08 /* Private */,
+       6,    0,   38,    2, 0x08 /* Private */,
+       7,    1,   39,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
@@ -79,8 +77,7 @@ static const uint qt_meta_data_PatientRegistrationView[] = {
 
  // slots: parameters
     QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 9,   10,
+    QMetaType::Void, 0x80000000 | 8,    9,
 
        0        // eod
 };
@@ -93,15 +90,14 @@ void PatientRegistrationView::qt_static_metacall(QObject *_o, QMetaObject::Call 
         switch (_id) {
         case 0: _t->backButton_Event(); break;
         case 1: _t->registered((*reinterpret_cast< QVariantHash(*)>(_a[1]))); break;
-        case 2: _t->backButton_Clicked(); break;
-        case 3: _t->registerButton_Clicked(); break;
-        case 4: _t->register_Finished((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
+        case 2: _t->registerButton_Clicked(); break;
+        case 3: _t->register_Finished((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         switch (_id) {
         default: *reinterpret_cast<int*>(_a[0]) = -1; break;
-        case 4:
+        case 3:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
             case 0:
@@ -153,13 +149,13 @@ int PatientRegistrationView::qt_metacall(QMetaObject::Call _c, int _id, void **_
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 4;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 5)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 4;
     }
     return _id;
 }

@@ -98,9 +98,12 @@ void PatientView::init()
 
     sideBarLayout->addStretch(1);
 
+    // # Back Button:
     QPushButton* backButton = new QPushButton("Назад");
     sideBarLayout->addWidget(backButton);
-    connect(backButton, SIGNAL(clicked()), this, SLOT(backButton_Clicked()));
+    connect(backButton,
+            &QPushButton::clicked,
+            [=] () { emit backButton_Event(); });
 
     // # Recomendations:
     QVector<RecomendationWidget*> recomendations;
@@ -124,5 +127,3 @@ void PatientView::init()
 
     setLayout(baseLayout);
 }
-
-void PatientView::backButton_Clicked() { emit backButton_Event(); }

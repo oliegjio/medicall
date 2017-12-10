@@ -13,7 +13,10 @@ LoginDoctorView::LoginDoctorView(QWidget* parent) : QWidget(parent)
     formLayout->setAlignment(Qt::AlignCenter);
 
     login_NetworkManager = new QNetworkAccessManager();
-    connect(login_NetworkManager, &QNetworkAccessManager::finished, this, &LoginDoctorView::login_Finished);
+    connect(login_NetworkManager,
+            &QNetworkAccessManager::finished,
+            this,
+            &LoginDoctorView::login_Finished);
 
     QFont logoFont("Arial", 75);
 
@@ -56,11 +59,16 @@ LoginDoctorView::LoginDoctorView(QWidget* parent) : QWidget(parent)
     // # Buttons:
     QPushButton* backButton = new QPushButton("Назад");
     formLayout->addWidget(backButton, 2, 0);
-    connect(backButton, SIGNAL(clicked()), this, SLOT(backButton_Clicked()));
+    connect(backButton,
+            &QPushButton::clicked,
+            [=] () { emit backButton_Event(); });
 
     QPushButton* loginButton = new QPushButton("Войти");
     formLayout->addWidget(loginButton, 2, 1);
-    connect(loginButton, SIGNAL(clicked()), this, SLOT(loginButton_Clicked()));
+    connect(loginButton,
+            SIGNAL(clicked()),
+            this,
+            SLOT(loginButton_Clicked()));
 
     // #####
     // ## Other:
@@ -80,7 +88,9 @@ void LoginDoctorView::loginButton_Clicked()
         {"password", passwordLine->text()}
     };
 
-    NetworkManager::postJson(login_NetworkManager, QUrl("http://localhost:8000/login-doctor/"), data);
+    NetworkManager::postJson(login_NetworkManager,
+                             QUrl("http://localhost:8000/login-doctor/"),
+                             data);
 }
 
 void LoginDoctorView::login_Finished(QNetworkReply* reply)
@@ -100,5 +110,3 @@ void LoginDoctorView::login_Finished(QNetworkReply* reply)
 
     emit loggedIn(data);
 }
-
-void LoginDoctorView::backButton_Clicked() { emit backButton_Event(); }

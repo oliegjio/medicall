@@ -19,7 +19,10 @@ PatientRegistrationView::PatientRegistrationView(QWidget* parent) : QWidget(pare
     QFont titleFont("Arial", 30);
 
     register_NetworkManager = new QNetworkAccessManager;
-    connect(register_NetworkManager, &QNetworkAccessManager::finished, this, &PatientRegistrationView::register_Finished);
+    connect(register_NetworkManager,
+            &QNetworkAccessManager::finished,
+            this,
+            &PatientRegistrationView::register_Finished);
 
     layout->addStretch(3);
 
@@ -29,6 +32,7 @@ PatientRegistrationView::PatientRegistrationView(QWidget* parent) : QWidget(pare
 
     middleLayout->addStretch(1);
 
+    // # Title
     QLabel* title = new QLabel("Регистрация:");
     title->setAlignment(Qt::AlignCenter);
     title->setFont(titleFont);
@@ -105,10 +109,15 @@ PatientRegistrationView::PatientRegistrationView(QWidget* parent) : QWidget(pare
 
     // # Buttons:
     QPushButton* backButton = new QPushButton("Назад");
-    connect(backButton, SIGNAL(clicked()), this, SLOT(backButton_Clicked()));
+    connect(backButton,
+            &QPushButton::clicked,
+            [=] () { emit backButton_Event(); });
 
     QPushButton* registerButton = new QPushButton("Зарегестрироваться");
-    connect(registerButton, SIGNAL(clicked()), this, SLOT(registerButton_Clicked()));
+    connect(registerButton,
+            SIGNAL(clicked()),
+            this,
+            SLOT(registerButton_Clicked()));
 
     formLayout->addRow(backButton, registerButton);
 
@@ -123,8 +132,6 @@ PatientRegistrationView::PatientRegistrationView(QWidget* parent) : QWidget(pare
 }
 
 PatientRegistrationView::~PatientRegistrationView() {}
-
-void PatientRegistrationView::backButton_Clicked() { emit backButton_Event(); }
 
 void PatientRegistrationView::registerButton_Clicked()
 {
@@ -142,7 +149,9 @@ void PatientRegistrationView::registerButton_Clicked()
         {"location", locationLine->text()},
     };
 
-    NetworkManager::postJson(register_NetworkManager, QUrl("http://localhost:8000/register-patient/"), data);
+    NetworkManager::postJson(register_NetworkManager,
+                             QUrl("http://localhost:8000/register-patient/"),
+                             data);
 }
 
 void PatientRegistrationView::register_Finished(QNetworkReply* reply)

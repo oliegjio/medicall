@@ -19,7 +19,10 @@ DoctorRegistrationView::DoctorRegistrationView(QWidget* parent) : QWidget(parent
     QFont titleFont("Arial", 30);
 
     register_NetworkManager = new QNetworkAccessManager;
-    connect(register_NetworkManager, &QNetworkAccessManager::finished, this, &DoctorRegistrationView::register_Finished);
+    connect(register_NetworkManager,
+            &QNetworkAccessManager::finished,
+            this,
+            &DoctorRegistrationView::register_Finished);
 
     layout->addStretch(3);
 
@@ -81,10 +84,15 @@ DoctorRegistrationView::DoctorRegistrationView(QWidget* parent) : QWidget(parent
 
     // # Buttons:
     QPushButton* backButton = new QPushButton("Назад");
-    connect(backButton, SIGNAL(clicked()), this, SLOT(backButton_Clicked()));
+    connect(backButton,
+            &QPushButton::clicked,
+            [=] () { emit backButton_Event(); });
 
     QPushButton* registerButton = new QPushButton("Зарегестрироваться");
-    connect(registerButton, SIGNAL(clicked()), this, SLOT(registerButton_Clicked()));
+    connect(registerButton,
+            SIGNAL(clicked()),
+            this,
+            SLOT(registerButton_Clicked()));
 
     formLayout->addRow(backButton, registerButton);
 
@@ -113,10 +121,10 @@ void DoctorRegistrationView::registerButton_Clicked()
         {"socialNetworks", socialNetworksLine->text()}
     };
 
-    NetworkManager::postJson(register_NetworkManager, QUrl("http://localhost:8000/register-doctor/"), data);
+    NetworkManager::postJson(register_NetworkManager,
+                             QUrl("http://localhost:8000/register-doctor/"),
+                             data);
 }
-
-void DoctorRegistrationView::backButton_Clicked() { emit backButton_Event(); }
 
 void DoctorRegistrationView::register_Finished(QNetworkReply* reply)
 {

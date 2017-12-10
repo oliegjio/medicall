@@ -13,7 +13,10 @@ LoginPatientView::LoginPatientView(QWidget* parent) : QWidget(parent)
     formLayout->setAlignment(Qt::AlignCenter);
 
     login_NetworkManager = new QNetworkAccessManager();
-    connect(login_NetworkManager, &QNetworkAccessManager::finished, this, &LoginPatientView::login_Finished);
+    connect(login_NetworkManager,
+            &QNetworkAccessManager::finished,
+            this,
+            &LoginPatientView::login_Finished);
 
     QFont logoFont("Arial", 75);
 
@@ -26,6 +29,7 @@ LoginPatientView::LoginPatientView(QWidget* parent) : QWidget(parent)
     // ## Widgets:
     // #####
 
+    // # Logo
     QLabel* logo = new QLabel("Medicall");
     logo->setAlignment(Qt::AlignCenter);
     logo->setFont(logoFont);
@@ -34,7 +38,7 @@ LoginPatientView::LoginPatientView(QWidget* parent) : QWidget(parent)
     layout->addStretch(1);
     layout->addLayout(formLayout);
 
-    // # usernameLine:
+    // # Username:
     QLabel* usernameLineLabel = new QLabel("Логин:");
     usernameLineLabel->setMaximumWidth(labelsWidth);
     formLayout->addWidget(usernameLineLabel, 0, 0);
@@ -43,7 +47,7 @@ LoginPatientView::LoginPatientView(QWidget* parent) : QWidget(parent)
     usernameLine->setMaximumWidth(linesWidth);
     formLayout->addWidget(usernameLine, 0, 1);
 
-    // # passwordLine:
+    // # Password:
     QLabel* passwordLineLabel = new QLabel("Пароль:");
     passwordLineLabel->setMaximumWidth(labelsWidth);
     formLayout->addWidget(passwordLineLabel, 1, 0);
@@ -56,12 +60,16 @@ LoginPatientView::LoginPatientView(QWidget* parent) : QWidget(parent)
     // # Buttons:
     QPushButton* backButton = new QPushButton("Назад");
     formLayout->addWidget(backButton, 2, 0);
-    connect(backButton, SIGNAL(clicked()), this, SLOT(backButton_Clicked()));
+    connect(backButton,
+            &QPushButton::clicked,
+            [=] () { emit backButton_Event(); });
 
     QPushButton* loginButton = new QPushButton("Войти");
     formLayout->addWidget(loginButton, 2, 1);
-    connect(loginButton, SIGNAL(clicked()), this, SLOT(loginButton_Clicked()));
-
+    connect(loginButton,
+            SIGNAL(clicked()),
+            this,
+            SLOT(loginButton_Clicked()));
     // #####
     // ## Other:
     // #####
@@ -80,7 +88,9 @@ void LoginPatientView::loginButton_Clicked()
         {"password", passwordLine->text()}
     };
 
-    NetworkManager::postJson(login_NetworkManager, QUrl("http://localhost:8000/login-patient/"), data);
+    NetworkManager::postJson(login_NetworkManager,
+                             QUrl("http://localhost:8000/login-patient/"),
+                             data);
 }
 
 void LoginPatientView::login_Finished(QNetworkReply* reply)
@@ -100,5 +110,3 @@ void LoginPatientView::login_Finished(QNetworkReply* reply)
 
     emit loggedIn(data);
 }
-
-void LoginPatientView::backButton_Clicked() { emit backButton_Event(); }

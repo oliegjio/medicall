@@ -19,6 +19,7 @@ WelcomeView::WelcomeView(QWidget* parent) : QWidget(parent)
     // ## Widgets:
     // #####
 
+    // # Logo:
     QLabel* logo = new QLabel("Medicall");
     logo->setAlignment(Qt::AlignCenter);
     logo->setFont(logoFont);
@@ -26,27 +27,39 @@ WelcomeView::WelcomeView(QWidget* parent) : QWidget(parent)
 
     layout->addStretch(1);
 
+    // # Login as Patient Button:
     QPushButton* loginPatientButton = new QPushButton("Войти как пациент");
     loginPatientButton->setMaximumWidth(buttonsWidth);
     layout->addWidget(loginPatientButton);
-    connect(loginPatientButton, SIGNAL(clicked()), this, SLOT(loginPatientButton_Clicked()));
+    connect(loginPatientButton,
+            &QPushButton::clicked,
+            [=] () { emit loginPatientButton_Event(); });
 
+    // # Login as Doctor Button:
     QPushButton* loginDoctorButton = new QPushButton("Войти как доктор");
     loginDoctorButton->setMaximumWidth(buttonsWidth);
     layout->addWidget(loginDoctorButton);
-    connect(loginDoctorButton, SIGNAL(clicked()), this, SLOT(loginDoctorButton_Clicked()));
+    connect(loginDoctorButton,
+            &QPushButton::clicked,
+            [=] () { emit loginDoctorButton_Event(); });
 
     layout->addStretch(1);
 
+    // # Register as Pacient:
     QPushButton* registerPatientButton = new QPushButton("Регистрация пациента");
     registerPatientButton->setMaximumWidth(buttonsWidth);
     layout->addWidget(registerPatientButton);
-    connect(registerPatientButton, SIGNAL(clicked()), this, SLOT(registerPatientButton_Clicked()));
+    connect(registerPatientButton,
+            &QPushButton::clicked,
+            [=] () { emit registerPatientButton_Event(); });
 
+    // # Register as Doctor:
     QPushButton* registerDoctorButton = new QPushButton("Регистрация доктора");
     registerDoctorButton->setMaximumWidth(buttonsWidth);
     layout->addWidget(registerDoctorButton);
-    connect(registerDoctorButton, SIGNAL(clicked()), this, SLOT(registerDoctorButton_Clicked()));
+    connect(registerDoctorButton,
+            &QPushButton::clicked,
+            [=] () { emit registerDoctorButton_Event(); });
 
     // #####
     // ## Other:
@@ -56,11 +69,3 @@ WelcomeView::WelcomeView(QWidget* parent) : QWidget(parent)
 
     setLayout(layout);
 }
-
-void WelcomeView::loginPatientButton_Clicked() { emit loginPatientButton_Event(); }
-
-void WelcomeView::loginDoctorButton_Clicked() { emit loginDoctorButton_Event(); }
-
-void WelcomeView::registerPatientButton_Clicked() { emit registerPatientButton_Event(); }
-
-void WelcomeView::registerDoctorButton_Clicked() { emit registerDoctorButton_Event(); }

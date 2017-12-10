@@ -1,6 +1,8 @@
 #include "networkmanager.h"
 
-QNetworkReply* NetworkManager::postForm(QNetworkAccessManager* manager, const QUrl& url, const QMap<QString, QString>& data)
+QNetworkReply* NetworkManager::postForm(QNetworkAccessManager* manager,
+                                        const QUrl& url,
+                                        const QMap<QString, QString>& data)
 {
     QNetworkRequest request(url);
 
@@ -28,7 +30,9 @@ QNetworkReply* NetworkManager::postEmpy(QNetworkAccessManager* manager, const QU
     return manager->post(request, new QHttpMultiPart());
 }
 
-QNetworkReply* NetworkManager::postJson(QNetworkAccessManager* manager, const QUrl& url, const QJsonObject& data)
+QNetworkReply* NetworkManager::postJson(QNetworkAccessManager* manager,
+                                        const QUrl& url,
+                                        const QJsonObject& data)
 {
     QNetworkRequest request(url);
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
@@ -39,7 +43,9 @@ QNetworkReply* NetworkManager::postJson(QNetworkAccessManager* manager, const QU
     return manager->post(request, array);
 }
 
-QNetworkReply* NetworkManager::postJsonToken(QNetworkAccessManager* manager, const QUrl& url, const QString& token)
+QNetworkReply* NetworkManager::postJsonToken(QNetworkAccessManager* manager,
+                                             const QUrl& url,
+                                             const QString& token)
 {
     QNetworkRequest request(url);
 

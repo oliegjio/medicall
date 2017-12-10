@@ -23,7 +23,6 @@ signals:
 
 private slots:
     void registerButton_Clicked();
-    void backButton_Clicked();
     void register_Finished(QNetworkReply* reply);
 
 public:

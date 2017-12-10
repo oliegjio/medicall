@@ -16,9 +16,8 @@ class LoginDoctorView : public QWidget
     Q_OBJECT
 
 private slots:
-    void loginButton_Clicked();
-    void backButton_Clicked();
     void login_Finished(QNetworkReply* reply);
+    void loginButton_Clicked();
 
 signals:
     void switchToLoginView();

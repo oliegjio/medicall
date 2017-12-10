@@ -25,7 +25,7 @@ void DoctorView::init()
     contentLayout->setContentsMargins(0, 0, 0, 0);
 
     // ####
-    // ## Sidebar Widgets:
+    // ## Topbar Widgets:
     // ####
 
     // # Username Title:
@@ -36,9 +36,12 @@ void DoctorView::init()
 
     topBarLayout->addStretch(1);
 
+    // # Back Button:
     QPushButton* backButton = new QPushButton("Назад");
     topBarLayout->addWidget(backButton);
-    connect(backButton, SIGNAL(clicked()), this, SLOT(backButton_Clicked()));
+    connect(backButton,
+            &QPushButton::clicked,
+            [=] () { emit backButton_Event(); });
 
     // # Recomendations:
     QVector<RecomendationWidget*> recomendations;
@@ -62,5 +65,3 @@ void DoctorView::init()
 
     setLayout(baseLayout);
 }
-
-void DoctorView::backButton_Clicked() { emit backButton_Event(); }

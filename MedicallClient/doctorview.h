@@ -17,9 +17,6 @@ class DoctorView : public QWidget
 signals:
     void backButton_Event();
 
-private slots:
-    void backButton_Clicked();
-
 public:
     DoctorView(QWidget* parent = 0);
     ~DoctorView();
