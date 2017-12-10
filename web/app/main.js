@@ -30,6 +30,7 @@ require('../routes/patientRoute').init(app)
 require('../routes/doctorRoute').init(app)
 require('../routes/registerPatientRoute').init(app)
 require('../routes/registerDoctorRoute').init(app)
+require('../routes/recomendationsPatientRoute').init(app)
 
 // ####
 // ## Other:

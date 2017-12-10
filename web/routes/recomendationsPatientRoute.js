@@ -1,4 +1,5 @@
 const RecomendationModel = require('../models/RecomendationModel')
+const auth = require('../app/auth')()
 
 var init = (app) => {
   app.post('/recomendations/patient/:id',
