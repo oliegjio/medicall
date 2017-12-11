@@ -26,6 +26,7 @@ public:
 
 private:
     QImage image;
+    QCamera* camera;
 };
 
 #endif // SURVEYVIEW_H

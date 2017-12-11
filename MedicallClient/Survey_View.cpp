@@ -1,8 +1,6 @@
 #include "Survey_View.h"
 
-Survey_View::Survey_View(QWidget* parent) : QWidget(parent) {}
-
-void Survey_View::init()
+Survey_View::Survey_View(QWidget* parent) : QWidget(parent)
 {
     QVBoxLayout* base_Layout = new QVBoxLayout();
     base_Layout->setAlignment(Qt::AlignCenter);
@@ -28,13 +26,12 @@ void Survey_View::init()
     base_Layout->addLayout(buttons_Layout);
     buttons_Layout->addStretch(1);
 
-    if (QCameraInfo::availableCameras().count() > 0)
+    if (QCameraInfo::availableCameras().count() <= 0)
         QMessageBox(QMessageBox::NoIcon, "Ошибка", "Не обнаружено вебкамеры!").exec();
 
     QCameraViewfinder* viewFinder = new QCameraViewfinder();
-    QCamera* camera = new QCamera(QCamera::FrontFace);
+    camera = new QCamera(QCamera::FrontFace);
     camera->setViewfinder(viewFinder);
-    camera->start();
     base_Layout->addWidget(viewFinder);
 
     // # Back Button:
@@ -48,4 +45,14 @@ void Survey_View::init()
     buttons_Layout->addStretch(1);
 
     setLayout(base_Layout);
+}
+
+void Survey_View::init()
+{
+    if (QCameraInfo::availableCameras().count() <= 0)
+    {
+        QMessageBox(QMessageBox::NoIcon, "Ошибка", "Не обнаружено вебкамеры!").exec();
+        return;
+    }
+    camera->start();
 }
