@@ -25,8 +25,19 @@ void PatientView::init()
     QScrollArea* scrollArea = new QScrollArea();
     scrollArea->setVerticalScrollBarPolicy( Qt::ScrollBarAlwaysOn );
 
-    QVBoxLayout* contentLayout = new QVBoxLayout();
+    contentLayout = new QVBoxLayout();
+    contentLayout->setAlignment(Qt::AlignTop);
     contentLayout->setContentsMargins(0, 0, 0, 0);
+
+    QNetworkAccessManager* getRecomendations_NetworkManager = new QNetworkAccessManager();
+    connect(getRecomendations_NetworkManager,
+            &QNetworkAccessManager::finished,
+            this,
+            &PatientView::getRecomendations_Finished);
+    QUrl getRecomendatinos_Url("http://localhost:8000/recomendations/patient/" + patient->id);
+    NetworkManager::postJsonToken(getRecomendations_NetworkManager,
+                                  getRecomendatinos_Url,
+                                  patient->token);
 
     // ####
     // ## Sidebar Widgets:
@@ -105,15 +116,6 @@ void PatientView::init()
             &QPushButton::clicked,
             [=] () { emit backButton_Event(); });
 
-    // # Recomendations:
-    QVector<RecomendationWidget*> recomendations;
-    for (int i = 0; i < 5; i++)
-    {
-        RecomendationWidget* recomendation = new RecomendationWidget();
-        recomendations.append(recomendation);
-        contentLayout->addWidget(recomendation);
-    }
-
     // ####
     // ## Other:
     // ####
@@ -126,4 +128,39 @@ void PatientView::init()
     baseLayout->addWidget(scrollArea, 3);
 
     setLayout(baseLayout);
+}
+
+void PatientView::getRecomendations_Finished(QNetworkReply* reply)
+{
+    if (reply->error()) {
+        qDebug() << reply->errorString();
+        return;
+    }
+
+    QByteArray replyData = reply->readAll();
+
+    QVariant statusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
+
+    if (!statusCode.isValid() || replyData.isEmpty()) return;
+
+    QVariantHash data = NetworkManager::jsonToHash(replyData);
+
+    // # Recomendations:
+    QVector<RecomendationWidget*> recomendationWidgets;
+
+    QVariantHash::iterator i;
+    for (i = data.begin(); i != data.end(); i++)
+    {
+        QString title = i.value().toHash()["title"].value<QString>();
+        QString date = i.value().toHash()["date"].value<QString>();
+        QString content = i.value().toHash()["content"].value<QString>();
+        QString doctor = i.value().toHash()["doctor"].value<QString>();
+        QString patient = i.value().toHash()["patient"].value<QString>();
+
+        RecomendationWidget* recomendationWidget =
+                new RecomendationWidget(title, date, content, doctor, patient);
+
+        recomendationWidgets.append(recomendationWidget);
+        contentLayout->addWidget(recomendationWidget);
+    }
 }

@@ -25,8 +25,8 @@ public slots:
     void switchToLoginDoctorView();
     void switchToPatientRegistrationView();
     void switchToDoctorRegistrationView();
-    void switchToPatientView();
-    void switchToDoctorView();
+    void switchToPatientView(QVariantHash data);
+    void switchToDoctorView(QVariantHash data);
 
 public:
     MainWindow();
@@ -37,6 +37,8 @@ public:
 private:
     PatientView* patientView;
     DoctorView* doctorView;
+    Patient* patient;
+    Doctor* doctor;
 };
 
 #endif // MAINWINDOW_H

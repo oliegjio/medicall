@@ -24,6 +24,7 @@ private:
 public:
     static Doctor* getInstance();
 
+    QString id;
     QString token;
     QString username;
     QString email;

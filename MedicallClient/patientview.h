@@ -14,6 +14,9 @@ class PatientView : public QWidget
 {
     Q_OBJECT
 
+public slots:
+    void getRecomendations_Finished(QNetworkReply* reply);
+
 signals:
     void backButton_Event();
 
@@ -22,6 +25,9 @@ public:
     ~PatientView();
 
     void init();
+
+private:
+    QVBoxLayout* contentLayout;
 };
 
 #endif // PATIENTVIEW_H

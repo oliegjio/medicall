@@ -15,10 +15,12 @@ Patient* Patient::instance = 0;
 
 void Patient::initPatient(QVariantHash data)
 {
+    qDebug() << data;
     token = data["token"].value<QString>();
 
     QHash<QString, QVariant> user = data["patient"].toHash();
 
+    id = user["id"].value<QString>();
     username = user["username"].value<QString>();
     fullName = user["fullName"].value<QString>();
     weight = user["weight"].value<QString>();

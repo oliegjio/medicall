@@ -554,6 +554,7 @@ moc_mainwindow.cpp: ../MedicallClient/welcomeview.h \
 		../MedicallClient/recomendationwidget.h \
 		../MedicallClient/logindoctorview.h \
 		../MedicallClient/doctor.h \
+		../MedicallClient/doctorview.h \
 		../MedicallClient/mainwindow.h \
 		moc_predefs.h \
 		/usr/bin/moc
@@ -654,7 +655,8 @@ main.o: ../MedicallClient/main.cpp ../MedicallClient/mainwindow.h \
 		../MedicallClient/patient.h \
 		../MedicallClient/recomendationwidget.h \
 		../MedicallClient/logindoctorview.h \
-		../MedicallClient/doctor.h
+		../MedicallClient/doctor.h \
+		../MedicallClient/doctorview.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../MedicallClient/main.cpp
 
 mainwindow.o: ../MedicallClient/mainwindow.cpp ../MedicallClient/mainwindow.h \
@@ -667,7 +669,8 @@ mainwindow.o: ../MedicallClient/mainwindow.cpp ../MedicallClient/mainwindow.h \
 		../MedicallClient/patient.h \
 		../MedicallClient/recomendationwidget.h \
 		../MedicallClient/logindoctorview.h \
-		../MedicallClient/doctor.h
+		../MedicallClient/doctor.h \
+		../MedicallClient/doctorview.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../MedicallClient/mainwindow.cpp
 
 welcomeview.o: ../MedicallClient/welcomeview.cpp ../MedicallClient/welcomeview.h

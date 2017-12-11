@@ -9,8 +9,13 @@ var init = (app) => {
     RecomendationModel.getByPatient(request.params.id)
 
     .then((recomendations) => {
-      if (recomendations)
-        return response.json(recomendations)
+      if (recomendations) {
+        var recomendationsObject = {}
+        recomendations.forEach((element, index) => {
+          recomendationsObject[index] = element
+        })
+        return response.json(recomendationsObject)
+      }
       return response.sendStatus(404)
     })
 

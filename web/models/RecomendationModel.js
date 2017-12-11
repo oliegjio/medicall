@@ -48,7 +48,7 @@ class RecomendationModel {
 
   static getByPatient(patientId) {
     return new Promise((resolve, reject) => {
-      db.get(
+      db.all(
         `SELECT * FROM recomendations WHERE patient = ?`,
         [patientId],
         (error, recomendations) => {

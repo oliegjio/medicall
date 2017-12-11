@@ -19,6 +19,7 @@ void Doctor::initDoctor(QVariantHash data)
 
     QHash<QString, QVariant> user = data["doctor"].toHash();
 
+    id = user["id"].value<QString>();
     username = user["username"].value<QString>();
     fullName = user["fullName"].value<QString>();
     socialNetworks = user["socialNetworks"].value<QString>();

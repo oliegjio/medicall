@@ -44,13 +44,13 @@ void DoctorView::init()
             [=] () { emit backButton_Event(); });
 
     // # Recomendations:
-    QVector<RecomendationWidget*> recomendations;
-    for (int i = 0; i < 5; i++)
-    {
-        RecomendationWidget* recomendation = new RecomendationWidget();
-        recomendations.append(recomendation);
-        contentLayout->addWidget(recomendation);
-    }
+//    QVector<RecomendationWidget*> recomendations;
+//    for (int i = 0; i < 5; i++)
+//    {
+//        RecomendationWidget* recomendation = new RecomendationWidget();
+//        recomendations.append(recomendation);
+//        contentLayout->addWidget(recomendation);
+//    }
 
     // ####
     // ## Other:

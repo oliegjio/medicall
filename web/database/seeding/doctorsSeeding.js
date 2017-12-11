@@ -21,4 +21,23 @@ db.serialize(() => {
   .catch((error) => {
     console.error(error)
   })
+
+  bcrypt.hash('asdf', 10)
+  .then((hash) => {
+    db.run(`
+      insert into 'doctors'
+      ('fullName', 'password', 'speciality',
+      'phoneNumber', 'username', 'email',
+      'socialNetworks')
+      values (?, ?, ?, ?, ?, ?, ?)`,
+      ['Vasia', hash, 'motherfucker',
+      '+666', 'doc2', 'doc2@yaya.ru',
+      'vk.com/doc1'],
+      (error) => {
+        if (error) console.log(error)
+      })
+  })
+  .catch((error) => {
+    console.error(error)
+  })
 })

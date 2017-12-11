@@ -14,16 +14,15 @@ class Patient : public QObject
 {
     Q_OBJECT
 
-public slots:
-    void initPatient(QVariantHash data);
-
 private:
     Patient();
     static Patient* instance;
 
 public:
     static Patient* getInstance();
+    void initPatient(QVariantHash data);
 
+    QString id;
     QString token;
     QString username;
     QString email;

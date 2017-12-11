@@ -6,6 +6,9 @@ MainWindow::MainWindow()
     // ## Setup:
     // #####
 
+    patient = Patient::getInstance();
+    doctor = Doctor::getInstance();
+
     resize(QDesktopWidget().availableGeometry(this).size() * 0.6);
     setWindowTitle("Medicall");
 
@@ -16,14 +19,12 @@ MainWindow::MainWindow()
     QFont defaultFont("Arial", 15);
     setFont(defaultFont);
 
-    Patient* patient = Patient::getInstance();
-    Doctor* doctor = Doctor::getInstance();
-
     // #####
     // ## Stack:
     // #####
 
     // # 0
+    // # Welcome View:
     WelcomeView* welcomeView = new WelcomeView(this);
     stack->addWidget(welcomeView);
 
@@ -45,30 +46,46 @@ MainWindow::MainWindow()
             &MainWindow::switchToDoctorRegistrationView);
 
     // # 1
+    // # Login Patient View:
     LoginPatientView* loginPatientView = new LoginPatientView(this);
     stack->addWidget(loginPatientView);
     connect(loginPatientView,
             &LoginPatientView::backButton_Event,
             this,
             &MainWindow::switchToWelcomeView);
+    connect(loginPatientView,
+            &LoginPatientView::loggedIn,
+            this,
+            &MainWindow::switchToPatientView);
 
     // # 2
+    // # Login Doctor View:
     LoginDoctorView* loginDoctorView = new LoginDoctorView(this);
     stack->addWidget(loginDoctorView);
     connect(loginDoctorView,
             &LoginDoctorView::backButton_Event,
             this,
             &MainWindow::switchToWelcomeView);
+    connect(loginDoctorView,
+            &LoginDoctorView::loggedIn,
+            this,
+            &MainWindow::switchToDoctorView);
 
     // # 3
+    // # Patient Registration View:
     PatientRegistrationView* patientRegistrationView = new PatientRegistrationView(this);
     stack->addWidget(patientRegistrationView);
     connect(patientRegistrationView,
             &PatientRegistrationView::backButton_Event,
             this,
             &MainWindow::switchToWelcomeView);
+    connect(patientRegistrationView,
+            &PatientRegistrationView::registered,
+            patient,
+            &Patient::initPatient);
 
     // # 4
+    // # Doctor Registration View:
     DoctorRegistrationView* doctorRegistrationView = new DoctorRegistrationView(this);
     stack->addWidget(doctorRegistrationView);
     connect(doctorRegistrationView,
@@ -76,7 +93,9 @@ MainWindow::MainWindow()
             this,
             &MainWindow::switchToWelcomeView);
 
+
     // # 5
+    // # Patient View:
     patientView = new PatientView(this);
     stack->addWidget(patientView);
     connect(patientView,
@@ -85,6 +104,7 @@ MainWindow::MainWindow()
             &MainWindow::switchToWelcomeView);
 
     // # 6
+    // # Doctor View:
     doctorView = new DoctorView(this);
     stack->addWidget(doctorView);
     connect(doctorView,
@@ -95,29 +115,6 @@ MainWindow::MainWindow()
     // #####
     // ## Other:
     // #####
-
-    connect(loginPatientView,
-            &LoginPatientView::loggedIn,
-            patient,
-            &Patient::initPatient);
-    connect(loginPatientView,
-            &LoginPatientView::loggedIn,
-            this,
-            &MainWindow::switchToPatientView);
-
-    connect(loginDoctorView,
-            &LoginDoctorView::loggedIn,
-            doctor,
-            &Doctor::initDoctor);
-    connect(loginDoctorView,
-            &LoginDoctorView::loggedIn,
-            this,
-            &MainWindow::switchToDoctorView);
-
-    connect(patientRegistrationView,
-            &PatientRegistrationView::registered,
-            patient,
-            &Patient::initPatient);
 
     setStyleSheet("background-color: white;");
 }
@@ -134,14 +131,16 @@ void MainWindow::switchToPatientRegistrationView() { stack->setCurrentIndex(3); 
 
 void MainWindow::switchToDoctorRegistrationView() { stack->setCurrentIndex(4); }
 
-void MainWindow::switchToPatientView()
+void MainWindow::switchToPatientView(QVariantHash data)
 {
+    patient->initPatient(data);
     patientView->init();
     stack->setCurrentIndex(5);
 }
 
-void MainWindow::switchToDoctorView()
+void MainWindow::switchToDoctorView(QVariantHash data)
 {
+    doctor->initDoctor(data);
     doctorView->init();
     stack->setCurrentIndex(6);
 }

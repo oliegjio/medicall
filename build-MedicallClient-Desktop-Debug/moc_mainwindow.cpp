@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[9];
-    char stringdata0[183];
+    QByteArrayData data[10];
+    char stringdata0[188];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -39,7 +39,8 @@ QT_MOC_LITERAL(4, 57, 23), // "switchToLoginDoctorView"
 QT_MOC_LITERAL(5, 81, 31), // "switchToPatientRegistrationView"
 QT_MOC_LITERAL(6, 113, 30), // "switchToDoctorRegistrationView"
 QT_MOC_LITERAL(7, 144, 19), // "switchToPatientView"
-QT_MOC_LITERAL(8, 164, 18) // "switchToDoctorView"
+QT_MOC_LITERAL(8, 164, 4), // "data"
+QT_MOC_LITERAL(9, 169, 18) // "switchToDoctorView"
 
     },
     "MainWindow\0switchToWelcomeView\0\0"
@@ -47,7 +48,7 @@ QT_MOC_LITERAL(8, 164, 18) // "switchToDoctorView"
     "switchToLoginDoctorView\0"
     "switchToPatientRegistrationView\0"
     "switchToDoctorRegistrationView\0"
-    "switchToPatientView\0switchToDoctorView"
+    "switchToPatientView\0data\0switchToDoctorView"
 };
 #undef QT_MOC_LITERAL
 
@@ -70,8 +71,8 @@ static const uint qt_meta_data_MainWindow[] = {
        4,    0,   51,    2, 0x0a /* Public */,
        5,    0,   52,    2, 0x0a /* Public */,
        6,    0,   53,    2, 0x0a /* Public */,
-       7,    0,   54,    2, 0x0a /* Public */,
-       8,    0,   55,    2, 0x0a /* Public */,
+       7,    1,   54,    2, 0x0a /* Public */,
+       9,    1,   57,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void,
@@ -79,8 +80,8 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::QVariantHash,    8,
+    QMetaType::Void, QMetaType::QVariantHash,    8,
 
        0        // eod
 };
@@ -96,12 +97,11 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 2: _t->switchToLoginDoctorView(); break;
         case 3: _t->switchToPatientRegistrationView(); break;
         case 4: _t->switchToDoctorRegistrationView(); break;
-        case 5: _t->switchToPatientView(); break;
-        case 6: _t->switchToDoctorView(); break;
+        case 5: _t->switchToPatientView((*reinterpret_cast< QVariantHash(*)>(_a[1]))); break;
+        case 6: _t->switchToDoctorView((*reinterpret_cast< QVariantHash(*)>(_a[1]))); break;
         default: ;
         }
     }
-    Q_UNUSED(_a);
 }
 
 const QMetaObject MainWindow::staticMetaObject = {
