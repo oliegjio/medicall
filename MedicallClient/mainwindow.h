@@ -30,6 +30,10 @@ public slots:
     void switchToPatientView(QVariantHash data);
     void switchToDoctorView(QVariantHash data);
 
+private slots:
+    void patientRegistration_Finished(QVariantHash data);
+    void doctorRegistration_Finished(QVariantHash data);
+
 public:
     MainWindow();
     ~MainWindow();

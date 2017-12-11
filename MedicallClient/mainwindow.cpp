@@ -85,8 +85,8 @@ MainWindow::MainWindow()
             &MainWindow::switchToWelcomeView);
     connect(patientRegistrationView,
             &PatientRegistrationView::registered,
-            patient,
-            &Patient::initPatient);
+            this,
+            &MainWindow::patientRegistration_Finished);
 
     // # 4
     // # Doctor Registration View:
@@ -96,6 +96,10 @@ MainWindow::MainWindow()
             &DoctorRegistrationView::backButton_Event,
             this,
             &MainWindow::switchToWelcomeView);
+    connect(doctorRegistrationView,
+            &DoctorRegistrationView::registered,
+            this,
+            &MainWindow::doctorRegistration_Finished);
 
 
     // # 5
@@ -161,4 +165,16 @@ void MainWindow::switchToDoctorView(QVariantHash data)
     doctor->initDoctor(data);
     doctorView->init();
     stack->setCurrentIndex(6);
+}
+
+void MainWindow::patientRegistration_Finished(QVariantHash data)
+{
+    switchToLoginPatientView();
+    patient->initPatient(data);
+}
+
+void MainWindow::doctorRegistration_Finished(QVariantHash data)
+{
+    switchToLoginDoctorView();
+    doctor->initDoctor(data);
 }

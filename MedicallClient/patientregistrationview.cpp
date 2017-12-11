@@ -33,7 +33,7 @@ PatientRegistrationView::PatientRegistrationView(QWidget* parent) : QWidget(pare
     middleLayout->addStretch(1);
 
     // # Title
-    QLabel* title = new QLabel("Регистрация:");
+    QLabel* title = new QLabel("Регистрация пациента:");
     title->setAlignment(Qt::AlignCenter);
     title->setFont(titleFont);
     layout->addWidget(title);

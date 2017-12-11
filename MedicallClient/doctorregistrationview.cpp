@@ -32,7 +32,7 @@ DoctorRegistrationView::DoctorRegistrationView(QWidget* parent) : QWidget(parent
 
     middleLayout->addStretch(1);
 
-    QLabel* title = new QLabel("Регистрация:");
+    QLabel* title = new QLabel("Регистрация доктора:");
     title->setAlignment(Qt::AlignCenter);
     title->setFont(titleFont);
     layout->addWidget(title);
@@ -129,5 +129,17 @@ void DoctorRegistrationView::registerButton_Clicked()
 
 void DoctorRegistrationView::register_Finished(QNetworkReply* reply)
 {
+    if (reply->error()) {
+        qDebug() << reply->errorString();
+        return;
+    }
 
+    QByteArray replyData = reply->readAll();
+    QVariant statusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
+
+    if (!statusCode.isValid() || replyData.isEmpty()) return;
+
+    QVariantHash data = NetworkManager::jsonToHash(replyData);
+
+    emit registered(data);
 }

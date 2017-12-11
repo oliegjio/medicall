@@ -20,6 +20,7 @@ class DoctorRegistrationView : public QWidget
 
 signals:
     void backButton_Event();
+    void registered(QVariantHash data);
 
 private slots:
     void registerButton_Clicked();
