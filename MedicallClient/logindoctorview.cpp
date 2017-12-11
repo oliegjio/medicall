@@ -29,6 +29,7 @@ LoginDoctorView::LoginDoctorView(QWidget* parent) : QWidget(parent)
     // ## Widgets:
     // #####
 
+    // # Logo:
     QLabel* logo = new QLabel("Medicall");
     logo->setAlignment(Qt::AlignCenter);
     logo->setFont(logoFont);
@@ -37,7 +38,7 @@ LoginDoctorView::LoginDoctorView(QWidget* parent) : QWidget(parent)
     layout->addStretch(1);
     layout->addLayout(formLayout);
 
-    // # usernameLine:
+    // # Username Line:
     QLabel* usernameLineLabel = new QLabel("Логин:");
     usernameLineLabel->setMaximumWidth(labelsWidth);
     formLayout->addWidget(usernameLineLabel, 0, 0);
@@ -46,7 +47,7 @@ LoginDoctorView::LoginDoctorView(QWidget* parent) : QWidget(parent)
     usernameLine->setMaximumWidth(linesWidth);
     formLayout->addWidget(usernameLine, 0, 1);
 
-    // # passwordLine:
+    // # Password Line:
     QLabel* passwordLineLabel = new QLabel("Пароль:");
     passwordLineLabel->setMaximumWidth(labelsWidth);
     formLayout->addWidget(passwordLineLabel, 1, 0);
@@ -56,13 +57,14 @@ LoginDoctorView::LoginDoctorView(QWidget* parent) : QWidget(parent)
     passwordLine->setEchoMode(QLineEdit::Password);
     formLayout->addWidget(passwordLine, 1, 1);
 
-    // # Buttons:
+    // # Back Button:
     QPushButton* backButton = new QPushButton("Назад");
     formLayout->addWidget(backButton, 2, 0);
     connect(backButton,
             &QPushButton::clicked,
             [=] () { emit backButton_Event(); });
 
+    // # Login Button
     QPushButton* loginButton = new QPushButton("Войти");
     formLayout->addWidget(loginButton, 2, 1);
     connect(loginButton,
@@ -72,7 +74,7 @@ LoginDoctorView::LoginDoctorView(QWidget* parent) : QWidget(parent)
 
     // #####
     // ## Other:
-    // #####2
+    // #####
 
     layout->addStretch(3);
 

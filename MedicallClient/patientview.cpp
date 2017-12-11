@@ -109,6 +109,13 @@ void PatientView::init()
 
     sideBarLayout->addStretch(1);
 
+    // # Take Survery Button:
+    QPushButton* takeSurveyButton = new QPushButton("Пройти обследование");
+    sideBarLayout->addWidget(takeSurveyButton);
+    connect(takeSurveyButton,
+            &QPushButton::clicked,
+            [=] () { emit takeSurveyButton_Event(); });
+
     // # Back Button:
     QPushButton* backButton = new QPushButton("Назад");
     sideBarLayout->addWidget(backButton);

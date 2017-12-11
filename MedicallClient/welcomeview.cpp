@@ -61,6 +61,16 @@ WelcomeView::WelcomeView(QWidget* parent) : QWidget(parent)
             &QPushButton::clicked,
             [=] () { emit registerDoctorButton_Event(); });
 
+    layout->addStretch(1);
+
+    // # Exit Button:
+    QPushButton* exitButton = new QPushButton("Выйти");
+    exitButton->setMaximumWidth(buttonsWidth);
+    layout->addWidget(exitButton);
+    connect(exitButton,
+            &QPushButton::clicked,
+            [=] () { emit exitButton_Event(); });
+
     // #####
     // ## Other:
     // #####

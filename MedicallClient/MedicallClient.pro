@@ -36,7 +36,8 @@ SOURCES += \
     loginpatientview.cpp \
     logindoctorview.cpp \
     doctor.cpp \
-    doctorview.cpp
+    doctorview.cpp \
+    surveyview.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -50,5 +51,8 @@ HEADERS += \
     loginpatientview.h \
     logindoctorview.h \
     doctor.h \
-    doctorview.h
+    doctorview.h \
+    surveyview.h
 
+INCLUDEPATH += /usr/include/opencv
+LIBS += -L/usr/lib -lopencv_core -lopencv_imgcodecs -lopencv_highgui

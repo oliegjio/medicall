@@ -128,5 +128,5 @@ void DoctorRegistrationView::registerButton_Clicked()
 
 void DoctorRegistrationView::register_Finished(QNetworkReply* reply)
 {
-    qDebug() << reply->readAll();
+
 }

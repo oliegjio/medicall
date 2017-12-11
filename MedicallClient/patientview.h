@@ -19,6 +19,7 @@ public slots:
 
 signals:
     void backButton_Event();
+    void takeSurveyButton_Event();
 
 public:
     PatientView(QWidget* parent = 0);

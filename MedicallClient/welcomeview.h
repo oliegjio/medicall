@@ -14,6 +14,7 @@ signals:
     void loginDoctorButton_Event();
     void registerPatientButton_Event();
     void registerDoctorButton_Event();
+    void exitButton_Event();
 
 public:
     WelcomeView(QWidget* parent = 0);

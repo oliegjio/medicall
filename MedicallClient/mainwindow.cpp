@@ -44,6 +44,10 @@ MainWindow::MainWindow()
             &WelcomeView::registerDoctorButton_Event,
             this,
             &MainWindow::switchToDoctorRegistrationView);
+    connect(welcomeView,
+            &WelcomeView::exitButton_Event,
+            this,
+            &QMainWindow::close);
 
     // # 1
     // # Login Patient View:
@@ -102,6 +106,10 @@ MainWindow::MainWindow()
             &PatientView::backButton_Event,
             this,
             &MainWindow::switchToWelcomeView);
+    connect(patientView,
+            &PatientView::takeSurveyButton_Event,
+            this,
+            &MainWindow::switchToSurveyView);
 
     // # 6
     // # Doctor View:
@@ -111,6 +119,14 @@ MainWindow::MainWindow()
             &DoctorView::backButton_Event,
             this,
             &MainWindow::switchToWelcomeView);
+
+    // # 7
+    // # Survey View:
+    surveyView = new SurveyView(this);
+    stack->addWidget(surveyView);
+    connect(surveyView,
+            &SurveyView::backButton_Event,
+            [=] () { stack->setCurrentIndex(5); });
 
     // #####
     // ## Other:
@@ -130,6 +146,8 @@ void MainWindow::switchToLoginDoctorView() { stack->setCurrentIndex(2); }
 void MainWindow::switchToPatientRegistrationView() { stack->setCurrentIndex(3); }
 
 void MainWindow::switchToDoctorRegistrationView() { stack->setCurrentIndex(4); }
+
+void MainWindow::switchToSurveyView() { stack->setCurrentIndex(7); }
 
 void MainWindow::switchToPatientView(QVariantHash data)
 {
