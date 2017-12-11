@@ -6,17 +6,15 @@ DoctorRegistration_View::DoctorRegistration_View(QWidget* parent) : QWidget(pare
     // ## Setup:
     // #####
 
-    QVBoxLayout* layout = new QVBoxLayout(this);
-    layout->setAlignment(Qt::AlignCenter);
+    QVBoxLayout* base_Layout = new QVBoxLayout(this);
+    base_Layout->setAlignment(Qt::AlignCenter);
 
-    QHBoxLayout* middleLayout = new QHBoxLayout(this);
-    middleLayout->setAlignment(Qt::AlignCenter);
+    QHBoxLayout* middle_Layout = new QHBoxLayout(this);
+    middle_Layout->setAlignment(Qt::AlignCenter);
 
-    QFormLayout* formLayout  = new QFormLayout(this);
-    formLayout->setHorizontalSpacing(30);
-    formLayout->setVerticalSpacing(10);
-
-    QFont titleFont("Arial", 30);
+    QFormLayout* form_Layout  = new QFormLayout(this);
+    form_Layout->setHorizontalSpacing(30);
+    form_Layout->setVerticalSpacing(10);
 
     register_NetworkManager = new QNetworkAccessManager;
     connect(register_NetworkManager,
@@ -24,87 +22,87 @@ DoctorRegistration_View::DoctorRegistration_View(QWidget* parent) : QWidget(pare
             this,
             &DoctorRegistration_View::register_Finished);
 
-    layout->addStretch(3);
+    base_Layout->addStretch(3);
 
     // #####
     // ## Widgets:
     // #####
 
-    middleLayout->addStretch(1);
+    middle_Layout->addStretch(1);
 
-    QLabel* title = new QLabel("Регистрация доктора:");
-    title->setAlignment(Qt::AlignCenter);
-    title->setFont(titleFont);
-    layout->addWidget(title);
+    QLabel* title_Label = new QLabel("Регистрация доктора:");
+    title_Label->setAlignment(Qt::AlignCenter);
+    title_Label->setFont(QFont("Arial", 30));
+    base_Layout->addWidget(title_Label);
 
-    layout->addLayout(middleLayout);
-    middleLayout->addLayout(formLayout);
+    base_Layout->addLayout(middle_Layout);
+    middle_Layout->addLayout(form_Layout);
 
     // # Full name:
-    QLabel* fullNameLabel = new QLabel("ФИО:");
+    QLabel* fullName_Label = new QLabel("ФИО:");
     fullName_Line = new QLineEdit(this);
-    formLayout->addRow(fullNameLabel, fullName_Line);
+    form_Layout->addRow(fullName_Label, fullName_Line);
 
     // # Username:
-    QLabel* usernameLabel = new QLabel("Логин:");
+    QLabel* username_Label = new QLabel("Логин:");
     username_Line = new QLineEdit(this);
-    formLayout->addRow(usernameLabel, username_Line);
+    form_Layout->addRow(username_Label, username_Line);
 
     // # E-Mail:
-    QLabel* emailLabel = new QLabel("Эл-Почта:");
+    QLabel* email_Label = new QLabel("Эл-Почта:");
     email_Line = new QLineEdit(this);
-    formLayout->addRow(emailLabel, email_Line);
+    form_Layout->addRow(email_Label, email_Line);
 
     // # Password 1:
-    QLabel* password1Label = new QLabel("Пароль:");
+    QLabel* password1_Label = new QLabel("Пароль:");
     password1_Line = new QLineEdit(this);
     password1_Line->setEchoMode(QLineEdit::Password);
-    formLayout->addRow(password1Label, password1_Line);
+    form_Layout->addRow(password1_Label, password1_Line);
 
     // # Password 2:
-    QLabel* password2Label = new QLabel("Повторите пароль:");
+    QLabel* password2_Label = new QLabel("Повторите пароль:");
     password2_Line = new QLineEdit(this);
     password2_Line->setEchoMode(QLineEdit::Password);
-    formLayout->addRow(password2Label, password2_Line);
+    form_Layout->addRow(password2_Label, password2_Line);
 
     // # Speciality:
-    QLabel* specialityLabel = new QLabel("Специализация:");
+    QLabel* speciality_Label = new QLabel("Специализация:");
     speciality_Line = new QLineEdit(this);
-    formLayout->addRow(specialityLabel, speciality_Line);
+    form_Layout->addRow(speciality_Label, speciality_Line);
 
     // # Phone Number:
-    QLabel* phoneNumberLabel = new QLabel("Номер телефона:");
+    QLabel* phoneNumber_Label = new QLabel("Номер телефона:");
     phoneNumber_Line = new QLineEdit(this);
-    formLayout->addRow(phoneNumberLabel, phoneNumber_Line);
+    form_Layout->addRow(phoneNumber_Label, phoneNumber_Line);
 
     // # Social Networks:
-    QLabel* socialNetworksLabel = new QLabel("Соц. сети:");
+    QLabel* socialNetworks_Label = new QLabel("Соц. сети:");
     socialNetworks_Line = new QLineEdit(this);
-    formLayout->addRow(socialNetworksLabel, socialNetworks_Line);
+    form_Layout->addRow(socialNetworks_Label, socialNetworks_Line);
 
     // # Back Button:
-    QPushButton* backButton = new QPushButton("Назад");
-    connect(backButton,
+    QPushButton* back_Button = new QPushButton("Назад");
+    connect(back_Button,
             &QPushButton::clicked,
             [=] () { emit backButton_Clicked(); });
 
     // # Register Button:
-    QPushButton* registerButton = new QPushButton("Зарегестрироваться");
-    connect(registerButton,
+    QPushButton* register_Button = new QPushButton("Зарегестрироваться");
+    connect(register_Button,
             SIGNAL(clicked()),
             this,
             SLOT(registerButton_Clicked()));
 
-    formLayout->addRow(backButton, registerButton);
+    form_Layout->addRow(back_Button, register_Button);
 
     // #####
     // ## Other:
     // #####
 
-    middleLayout->addStretch(1);
-    layout->addStretch(3);
+    middle_Layout->addStretch(1);
+    base_Layout->addStretch(3);
 
-    setLayout(layout);
+    setLayout(base_Layout);
 }
 
 DoctorRegistration_View::~DoctorRegistration_View() {}

@@ -2,8 +2,8 @@
 
 Survey_View::Survey_View(QWidget* parent) : QWidget(parent)
 {
-    QVBoxLayout* baseLayout = new QVBoxLayout();
-    baseLayout->setAlignment(Qt::AlignCenter);
+    QVBoxLayout* base_Layout = new QVBoxLayout();
+    base_Layout->setAlignment(Qt::AlignCenter);
 
     cv::Mat inputImage = cv::imread("/home/archie/Wallpapers/toph.png");
 //    if(!inputImage.empty()) cv::imshow("Display Image", inputImage);
@@ -17,23 +17,23 @@ Survey_View::Survey_View(QWidget* parent) : QWidget(parent)
                           .rgbSwapped()
                           .scaled(imageSize, Qt::KeepAspectRatio, Qt::SmoothTransformation);
 
-    QLabel* imageLabel = new QLabel();
-    imageLabel->setPixmap(QPixmap::fromImage(image));
-    imageLabel->setAlignment(Qt::AlignCenter);
-    baseLayout->addWidget(imageLabel);
+    QLabel* image_Label = new QLabel();
+    image_Label->setPixmap(QPixmap::fromImage(image));
+    image_Label->setAlignment(Qt::AlignCenter);
+    base_Layout->addWidget(image_Label);
 
-    QHBoxLayout* buttonsLayout = new QHBoxLayout();
-    baseLayout->addLayout(buttonsLayout);
-    buttonsLayout->addStretch(1);
+    QHBoxLayout* buttons_Layout = new QHBoxLayout();
+    base_Layout->addLayout(buttons_Layout);
+    buttons_Layout->addStretch(1);
 
     // # Back Button:
-    QPushButton* backButton = new QPushButton("Назад");
-    buttonsLayout->addWidget(backButton);
-    connect(backButton,
+    QPushButton* back_Button = new QPushButton("Назад");
+    buttons_Layout->addWidget(back_Button);
+    connect(back_Button,
             &QPushButton::clicked,
             [=] () { emit backButton_Clicked(); });
 
-    buttonsLayout->addStretch(1);
+    buttons_Layout->addStretch(1);
 
-    setLayout(baseLayout);
+    setLayout(base_Layout);
 }

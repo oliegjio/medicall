@@ -6,68 +6,66 @@ Welcome_View::Welcome_View(QWidget* parent) : QWidget(parent)
     // ## Setup:
     // #####
 
-    QVBoxLayout* layout = new QVBoxLayout();
-    layout->setAlignment(Qt::AlignCenter);
-
-    QFont logoFont("Arial", 75);
+    QVBoxLayout* base_Layout = new QVBoxLayout();
+    base_Layout->setAlignment(Qt::AlignCenter);
 
     int buttonsWidth = 450;
 
-    layout->addStretch(3);
+    base_Layout->addStretch(3);
 
     // #####
     // ## Widgets:
     // #####
 
     // # Logo:
-    QLabel* logo = new QLabel("Medicall");
-    logo->setAlignment(Qt::AlignCenter);
-    logo->setFont(logoFont);
-    layout->addWidget(logo);
+    QLabel* logo_Label = new QLabel("Medicall");
+    logo_Label->setAlignment(Qt::AlignCenter);
+    logo_Label->setFont(QFont("Arial", 75));
+    base_Layout->addWidget(logo_Label);
 
-    layout->addStretch(1);
+    base_Layout->addStretch(1);
 
     // # Login as Patient Button:
-    QPushButton* loginPatientButton = new QPushButton("Войти как пациент");
-    loginPatientButton->setMaximumWidth(buttonsWidth);
-    layout->addWidget(loginPatientButton);
-    connect(loginPatientButton,
+    QPushButton* patientLogin_Button = new QPushButton("Войти как пациент");
+    patientLogin_Button->setMaximumWidth(buttonsWidth);
+    base_Layout->addWidget(patientLogin_Button);
+    connect(patientLogin_Button,
             &QPushButton::clicked,
             [=] () { emit patientLoginButton_Clicked(); });
 
     // # Login as Doctor Button:
-    QPushButton* loginDoctorButton = new QPushButton("Войти как доктор");
-    loginDoctorButton->setMaximumWidth(buttonsWidth);
-    layout->addWidget(loginDoctorButton);
-    connect(loginDoctorButton,
+    QPushButton* doctorLogin_Button = new QPushButton("Войти как доктор");
+    doctorLogin_Button->setMaximumWidth(buttonsWidth);
+    base_Layout->addWidget(doctorLogin_Button);
+    connect(doctorLogin_Button,
             &QPushButton::clicked,
             [=] () { emit doctorLoginButton_Clicked(); });
 
-    layout->addStretch(1);
+    base_Layout->addStretch(1);
 
     // # Register as Pacient:
-    QPushButton* registerPatientButton = new QPushButton("Регистрация пациента");
-    registerPatientButton->setMaximumWidth(buttonsWidth);
-    layout->addWidget(registerPatientButton);
-    connect(registerPatientButton,
+    QPushButton* patientRegistration_Button = new QPushButton("Регистрация пациента");
+    patientRegistration_Button->setMaximumWidth(buttonsWidth);
+    base_Layout->addWidget(patientRegistration_Button);
+    connect(patientRegistration_Button,
             &QPushButton::clicked,
             [=] () { emit patientLoginButton_Clicked(); });
 
     // # Register as Doctor:
-    QPushButton* registerDoctorButton = new QPushButton("Регистрация доктора");
-    registerDoctorButton->setMaximumWidth(buttonsWidth);
-    layout->addWidget(registerDoctorButton);
-    connect(registerDoctorButton,
+    QPushButton* doctorRegistration_Button = new QPushButton("Регистрация доктора");
+    doctorRegistration_Button->setMaximumWidth(buttonsWidth);
+    base_Layout->addWidget(doctorRegistration_Button);
+    connect(doctorRegistration_Button,
             &QPushButton::clicked,
             [=] () { emit doctorRegisterButton_Clicked(); });
 
-    layout->addStretch(1);
+    base_Layout->addStretch(1);
 
     // # Exit Button:
-    QPushButton* exitButton = new QPushButton("Выйти");
-    exitButton->setMaximumWidth(buttonsWidth);
-    layout->addWidget(exitButton);
-    connect(exitButton,
+    QPushButton* exit_Button = new QPushButton("Выйти");
+    exit_Button->setMaximumWidth(buttonsWidth);
+    base_Layout->addWidget(exit_Button);
+    connect(exit_Button,
             &QPushButton::clicked,
             [=] () { emit exitButton_Clicked(); });
 
@@ -75,7 +73,7 @@ Welcome_View::Welcome_View(QWidget* parent) : QWidget(parent)
     // ## Other:
     // #####
 
-    layout->addStretch(3);
+    base_Layout->addStretch(3);
 
-    setLayout(layout);
+    setLayout(base_Layout);
 }

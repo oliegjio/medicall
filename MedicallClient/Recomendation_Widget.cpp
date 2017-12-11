@@ -1,11 +1,8 @@
 #include "Recomendation_Widget.h"
 
-Recomendation_Widget::Recomendation_Widget(QString title,
-                                         QString date,
-                                         QString content,
-                                         QString doctor,
-                                         QString patient,
-                                         QWidget* parent) : QWidget(parent)
+Recomendation_Widget::Recomendation_Widget(QString title, QString date, QString content,
+                                           QString doctor, QString patient,
+                                           QWidget* parent) : QWidget(parent)
 {
     // ####
     // ## Setup:
@@ -17,35 +14,32 @@ Recomendation_Widget::Recomendation_Widget(QString title,
     this->doctor = doctor;
     this->patient = patient;
 
-    QVBoxLayout* baseLayout = new QVBoxLayout();
-    baseLayout->setAlignment(Qt::AlignTop);    
+    QVBoxLayout* base_Layout = new QVBoxLayout();
+    base_Layout->setAlignment(Qt::AlignTop);
 
     // ####
     // ## Widgets:
     // ####
 
-    QFont titleLabel_Font("Arial", 18);
-    QLabel* titleLabel = new QLabel(title);
-    titleLabel->setFont(titleLabel_Font);
-    baseLayout->addWidget(titleLabel);
+    QLabel* title_Label = new QLabel(title);
+    title_Label->setFont(QFont("Arial", 18));
+    base_Layout->addWidget(title_Label);
 
-    QFont dateLabel_Font("Arial", 8);
-    QLabel* dateLabel = new QLabel(date);
-    dateLabel->setFont(dateLabel_Font);
-    baseLayout->addWidget(dateLabel);
+    QLabel* date_Label = new QLabel(date);
+    date_Label->setFont(QFont("Arial", 8));
+    base_Layout->addWidget(date_Label);
 
-    QFont contentLabel_Font("Arial", 12);
-    QTextEdit* contentLine = new QTextEdit(content);
-    contentLine->setFont(contentLabel_Font);
-    contentLine->setFrameStyle(QFrame::NoFrame);
-    contentLine->setTextInteractionFlags(Qt::TextSelectableByMouse);
-    baseLayout->addWidget(contentLine);
+    QTextEdit* content_Line = new QTextEdit(content);
+    content_Line->setFont(QFont("Arial", 12));
+    content_Line->setFrameStyle(QFrame::NoFrame);
+    content_Line->setTextInteractionFlags(Qt::TextSelectableByMouse);
+    base_Layout->addWidget(content_Line);
 
     // ####
     // ## Other:
     // ####
 
-    setLayout(baseLayout);
+    setLayout(base_Layout);
 }
 
 Recomendation_Widget::~Recomendation_Widget() {}

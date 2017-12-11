@@ -6,11 +6,11 @@ PatientLogin_View::PatientLogin_View(QWidget* parent) : QWidget(parent)
     // ## Setup:
     // #####
 
-    QVBoxLayout* layout = new QVBoxLayout();
-    layout->setAlignment(Qt::AlignCenter);
+    QVBoxLayout* base_Layout = new QVBoxLayout();
+    base_Layout->setAlignment(Qt::AlignCenter);
 
-    QGridLayout* formLayout  = new QGridLayout();
-    formLayout->setAlignment(Qt::AlignCenter);
+    QGridLayout* form_Layout  = new QGridLayout();
+    form_Layout->setAlignment(Qt::AlignCenter);
 
     login_NetworkManager = new QNetworkAccessManager();
     connect(login_NetworkManager,
@@ -21,57 +21,57 @@ PatientLogin_View::PatientLogin_View(QWidget* parent) : QWidget(parent)
     int linesWidth = 400;
     int labelsWidth = 150;
 
-    layout->addStretch(3);
+    base_Layout->addStretch(3);
 
     // #####
     // ## Widgets:
     // #####
 
     // # Logo:
-    QLabel* logo = new QLabel("Medicall");
-    logo->setAlignment(Qt::AlignCenter);
-    logo->setFont(QFont("Arial", 75));
-    layout->addWidget(logo);
+    QLabel* logo_Label = new QLabel("Medicall");
+    logo_Label->setAlignment(Qt::AlignCenter);
+    logo_Label->setFont(QFont("Arial", 75));
+    base_Layout->addWidget(logo_Label);
 
     // # Title:
-    QLabel* titleLabel = new QLabel("Войти пациентом:");
-    titleLabel->setAlignment(Qt::AlignCenter);
-    titleLabel->setFont(QFont("Arial", 25));
-    layout->addWidget(titleLabel);
+    QLabel* title_Label = new QLabel("Войти пациентом:");
+    title_Label->setAlignment(Qt::AlignCenter);
+    title_Label->setFont(QFont("Arial", 25));
+    base_Layout->addWidget(title_Label);
 
-    layout->addStretch(1);
-    layout->addLayout(formLayout);
+    base_Layout->addStretch(1);
+    base_Layout->addLayout(form_Layout);
 
     // # Username Line:
-    QLabel* usernameLineLabel = new QLabel("Логин:");
-    usernameLineLabel->setMaximumWidth(labelsWidth);
-    formLayout->addWidget(usernameLineLabel, 0, 0);
+    QLabel* username_Label = new QLabel("Логин:");
+    username_Label->setMaximumWidth(labelsWidth);
+    form_Layout->addWidget(username_Label, 0, 0);
 
     username_Line = new QLineEdit();
     username_Line->setMaximumWidth(linesWidth);
-    formLayout->addWidget(username_Line, 0, 1);
+    form_Layout->addWidget(username_Line, 0, 1);
 
     // # Password Line:
-    QLabel* passwordLineLabel = new QLabel("Пароль:");
-    passwordLineLabel->setMaximumWidth(labelsWidth);
-    formLayout->addWidget(passwordLineLabel, 1, 0);
+    QLabel* password_Label = new QLabel("Пароль:");
+    password_Label->setMaximumWidth(labelsWidth);
+    form_Layout->addWidget(password_Label, 1, 0);
 
     password_Line = new QLineEdit();
     password_Line->setMaximumWidth(linesWidth);
     password_Line->setEchoMode(QLineEdit::Password);
-    formLayout->addWidget(password_Line, 1, 1);
+    form_Layout->addWidget(password_Line, 1, 1);
 
     // # Back Button:
-    QPushButton* backButton = new QPushButton("Назад");
-    formLayout->addWidget(backButton, 2, 0);
-    connect(backButton,
+    QPushButton* back_Button = new QPushButton("Назад");
+    form_Layout->addWidget(back_Button, 2, 0);
+    connect(back_Button,
             &QPushButton::clicked,
             [=] () { emit backButton_Clicked(); });
 
     // # Login Button:
-    QPushButton* loginButton = new QPushButton("Войти");
-    formLayout->addWidget(loginButton, 2, 1);
-    connect(loginButton,
+    QPushButton* login_Button = new QPushButton("Войти");
+    form_Layout->addWidget(login_Button, 2, 1);
+    connect(login_Button,
             SIGNAL(clicked()),
             this,
             SLOT(loginButton_Clicked()));
@@ -79,9 +79,9 @@ PatientLogin_View::PatientLogin_View(QWidget* parent) : QWidget(parent)
     // ## Other:
     // #####
 
-    layout->addStretch(3);
+    base_Layout->addStretch(3);
 
-    setLayout(layout);
+    setLayout(base_Layout);
 }
 
 PatientLogin_View::~PatientLogin_View() {}

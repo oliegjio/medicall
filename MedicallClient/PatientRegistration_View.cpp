@@ -6,17 +6,15 @@ PatientRegistration_View::PatientRegistration_View(QWidget* parent) : QWidget(pa
     // ## Setup:
     // #####
 
-    QVBoxLayout* layout = new QVBoxLayout(this);
-    layout->setAlignment(Qt::AlignCenter);
+    QVBoxLayout* base_Layout = new QVBoxLayout(this);
+    base_Layout->setAlignment(Qt::AlignCenter);
 
-    QHBoxLayout* middleLayout = new QHBoxLayout(this);
-    middleLayout->setAlignment(Qt::AlignCenter);
+    QHBoxLayout* middle_Layout = new QHBoxLayout(this);
+    middle_Layout->setAlignment(Qt::AlignCenter);
 
-    QFormLayout* formLayout  = new QFormLayout(this);
-    formLayout->setHorizontalSpacing(30);
-    formLayout->setVerticalSpacing(10);
-
-    QFont titleFont("Arial", 30);
+    QFormLayout* form_Layout  = new QFormLayout(this);
+    form_Layout->setHorizontalSpacing(30);
+    form_Layout->setVerticalSpacing(10);
 
     register_NetworkManager = new QNetworkAccessManager;
     connect(register_NetworkManager,
@@ -24,112 +22,112 @@ PatientRegistration_View::PatientRegistration_View(QWidget* parent) : QWidget(pa
             this,
             &PatientRegistration_View::register_Finished);
 
-    layout->addStretch(3);
+    base_Layout->addStretch(3);
 
     // #####
     // ## Widgets:
     // #####
 
-    middleLayout->addStretch(1);
+    middle_Layout->addStretch(1);
 
     // # Title
-    QLabel* title = new QLabel("Регистрация пациента:");
-    title->setAlignment(Qt::AlignCenter);
-    title->setFont(titleFont);
-    layout->addWidget(title);
+    QLabel* title_Label = new QLabel("Регистрация пациента:");
+    title_Label->setAlignment(Qt::AlignCenter);
+    title_Label->setFont(QFont("Arial", 30));
+    base_Layout->addWidget(title_Label);
 
-    layout->addLayout(middleLayout);
-    middleLayout->addLayout(formLayout);
+    base_Layout->addLayout(middle_Layout);
+    middle_Layout->addLayout(form_Layout);
 
     // # Full name:
-    QLabel* fullNameLabel = new QLabel("ФИО:");
+    QLabel* fullName_Label = new QLabel("ФИО:");
     fullName_Line = new QLineEdit(this);
-    formLayout->addRow(fullNameLabel, fullName_Line);
+    form_Layout->addRow(fullName_Label, fullName_Line);
 
     // # Username:
-    QLabel* usernameLabel = new QLabel("Логин:");
+    QLabel* username_Label = new QLabel("Логин:");
     username_Line = new QLineEdit(this);
-    formLayout->addRow(usernameLabel, username_Line);
+    form_Layout->addRow(username_Label, username_Line);
 
     // # E-Mail:
-    QLabel* emailLabel = new QLabel("Эл-Почта:");
+    QLabel* email_Label = new QLabel("Эл-Почта:");
     email_Line = new QLineEdit(this);
-    formLayout->addRow(emailLabel, email_Line);
+    form_Layout->addRow(email_Label, email_Line);
 
     // # Password 1:
-    QLabel* password1Label = new QLabel("Пароль:");
+    QLabel* password1_Label = new QLabel("Пароль:");
     password1_Line = new QLineEdit(this);
     password1_Line->setEchoMode(QLineEdit::Password);
-    formLayout->addRow(password1Label, password1_Line);
+    form_Layout->addRow(password1_Label, password1_Line);
 
     // # Password 2:
-    QLabel* password2Label = new QLabel("Повторите пароль:");
+    QLabel* password2_Label = new QLabel("Повторите пароль:");
     password2_Line = new QLineEdit(this);
     password2_Line->setEchoMode(QLineEdit::Password);
-    formLayout->addRow(password2Label, password2_Line);
+    form_Layout->addRow(password2_Label, password2_Line);
 
     // # Birth Day:
-    QLabel* birthDateLabel = new QLabel("Дата рождения:");
+    QLabel* birthDate_Label = new QLabel("Дата рождения:");
     birthDate_Line = new QDateTimeEdit(this);
     birthDate_Line->setDisplayFormat("dd.MM.yyyy");
-    formLayout->addRow(birthDateLabel, birthDate_Line);
+    form_Layout->addRow(birthDate_Label, birthDate_Line);
 
     // # Location:
-    QLabel* localtionLabel = new QLabel("Место проживания:");
+    QLabel* localtion_Label = new QLabel("Место проживания:");
     location_Line = new QLineEdit(this);
-    formLayout->addRow(localtionLabel, location_Line);
+    form_Layout->addRow(localtion_Label, location_Line);
 
     // # Gender:
-    QLabel* genderLabel = new QLabel("Пол:");
+    QLabel* gender_Label = new QLabel("Пол:");
     gender_Line = new QComboBox(this);
     gender_Line->addItem("Мужской");
     gender_Line->addItem("Женский");
-    formLayout->addRow(genderLabel, gender_Line);
+    form_Layout->addRow(gender_Label, gender_Line);
 
     // # Weight:
-    QLabel* weightLabel = new QLabel("Вес:");
+    QLabel* weight_Label = new QLabel("Вес:");
     weight_Line = new QLineEdit(this);
     weight_Line->setValidator(new QDoubleValidator(0.0, 300.0, 3, this));
-    formLayout->addRow(weightLabel, weight_Line);
+    form_Layout->addRow(weight_Label, weight_Line);
 
     // # Height:
-    QLabel* heightLabel = new QLabel("Рост:");
+    QLabel* height_Label = new QLabel("Рост:");
     height_Line = new QLineEdit(this);
     height_Line->setValidator(new QDoubleValidator(0.0, 300.0, 3, this));
-    formLayout->addRow(heightLabel, height_Line);
+    form_Layout->addRow(height_Label, height_Line);
 
     // # Blood Type:
-    QLabel* bloodTypeLabel = new QLabel("Группа крови:");
+    QLabel* bloodType_Label = new QLabel("Группа крови:");
     bloodType_Line = new QComboBox(this);
     bloodType_Line->addItem("0");
     bloodType_Line->addItem("A");
     bloodType_Line->addItem("B");
     bloodType_Line->addItem("AB");
-    formLayout->addRow(bloodTypeLabel, bloodType_Line);
+    form_Layout->addRow(bloodType_Label, bloodType_Line);
 
     // # Back Button:
-    QPushButton* backButton = new QPushButton("Назад");
-    connect(backButton,
+    QPushButton* back_Button = new QPushButton("Назад");
+    connect(back_Button,
             &QPushButton::clicked,
             [=] () { emit backButton_Clicked(); });
 
     // # Register Button:
-    QPushButton* registerButton = new QPushButton("Зарегестрироваться");
-    connect(registerButton,
+    QPushButton* register_Button = new QPushButton("Зарегестрироваться");
+    connect(register_Button,
             SIGNAL(clicked()),
             this,
             SLOT(registerButton_Clicked()));
 
-    formLayout->addRow(backButton, registerButton);
+    form_Layout->addRow(back_Button, register_Button);
 
     // #####
     // ## Other:
     // #####
 
-    middleLayout->addStretch(1);
-    layout->addStretch(3);
+    middle_Layout->addStretch(1);
+    base_Layout->addStretch(3);
 
-    setLayout(layout);
+    setLayout(base_Layout);
 }
 
 PatientRegistration_View::~PatientRegistration_View() {}

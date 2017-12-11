@@ -12,15 +12,15 @@ void Patient_View::init()
 
     Patient_Model* patient = Patient_Model::getInstance();
 
-    QHBoxLayout* baseLayout = new QHBoxLayout();
+    QHBoxLayout* base_Layout = new QHBoxLayout();
 
-    QVBoxLayout* sideBarLayout = new QVBoxLayout();
-    sideBarLayout->setAlignment(Qt::AlignTop);
-    baseLayout->addLayout(sideBarLayout, 1);
+    QVBoxLayout* sideBar_Layout = new QVBoxLayout();
+    sideBar_Layout->setAlignment(Qt::AlignTop);
+    base_Layout->addLayout(sideBar_Layout, 1);
 
-    QFormLayout* userInfoLayout = new QFormLayout();
+    QFormLayout* userInfo_Layout = new QFormLayout();
 
-    QFont userInfoFont("Arial", 15);
+    QFont userInfo_Font("Arial", 15);
 
     QScrollArea* scrollArea = new QScrollArea();
     scrollArea->setVerticalScrollBarPolicy( Qt::ScrollBarAlwaysOn );
@@ -45,81 +45,81 @@ void Patient_View::init()
 
     // # Username Title:
     QFont usernameLabel_Font("Airal", 35);
-    QLabel* usernameLabel = new QLabel(patient->username);
-    usernameLabel->setFont(usernameLabel_Font);
-    sideBarLayout->addWidget(usernameLabel);
+    QLabel* username_Label = new QLabel(patient->username);
+    username_Label->setFont(usernameLabel_Font);
+    sideBar_Layout->addWidget(username_Label);
 
     // # Divider:
     QWidget* line = new QWidget;
     line->setFixedHeight(2);
     line->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
     line->setStyleSheet(QString("background-color: black;"));
-    sideBarLayout->addWidget(line);
+    sideBar_Layout->addWidget(line);
 
-    sideBarLayout->addLayout(userInfoLayout);
+    sideBar_Layout->addLayout(userInfo_Layout);
 
     // # E-Mail:
-    QLabel* emailLabel = new QLabel("E-Mail:");
-    emailLabel->setFont(userInfoFont);
-    QLabel* emailValue = new QLabel(patient->email);
-    emailValue->setFont(userInfoFont);
-    userInfoLayout->addRow(emailLabel, emailValue);
+    QLabel* email_Label = new QLabel("E-Mail:");
+    email_Label->setFont(userInfo_Font);
+    QLabel* email_Value = new QLabel(patient->email);
+    email_Value->setFont(userInfo_Font);
+    userInfo_Layout->addRow(email_Label, email_Value);
 
     // # Full Name:
-    QLabel* fullNameLabel = new QLabel("ФИО:");
-    fullNameLabel->setFont(userInfoFont);
-    QLabel* fullNameValue = new QLabel(patient->fullName);
-    fullNameValue->setFont(userInfoFont);
-    userInfoLayout->addRow(fullNameLabel, fullNameValue);
+    QLabel* fullName_Label = new QLabel("ФИО:");
+    fullName_Label->setFont(userInfo_Font);
+    QLabel* fullName_Value = new QLabel(patient->fullName);
+    fullName_Value->setFont(userInfo_Font);
+    userInfo_Layout->addRow(fullName_Label, fullName_Value);
 
     // # Birth Date:
-    QLabel* birthDateLabel = new QLabel("Дата рождения:");
-    birthDateLabel->setFont(userInfoFont);
-    QLabel* birthDateValue = new QLabel(patient->birthDate);
-    birthDateValue->setFont(userInfoFont);
-    userInfoLayout->addRow(birthDateLabel, birthDateValue);
+    QLabel* birthDate_Label = new QLabel("Дата рождения:");
+    birthDate_Label->setFont(userInfo_Font);
+    QLabel* birthDate_Value = new QLabel(patient->birthDate);
+    birthDate_Value->setFont(userInfo_Font);
+    userInfo_Layout->addRow(birthDate_Label, birthDate_Value);
 
     // # Location:
-    QLabel* locationLabel = new QLabel("Место проживания:");
-    locationLabel->setFont(userInfoFont);
-    QLabel* locationValue = new QLabel(patient->location);
-    locationValue->setFont(userInfoFont);
-    userInfoLayout->addRow(locationLabel, locationValue);
+    QLabel* location_Label = new QLabel("Место проживания:");
+    location_Label->setFont(userInfo_Font);
+    QLabel* location_Value = new QLabel(patient->location);
+    location_Value->setFont(userInfo_Font);
+    userInfo_Layout->addRow(location_Label, location_Value);
 
     // # Weight:
-    QLabel* weightLabel = new QLabel("Вес:");
-    weightLabel->setFont(userInfoFont);
-    QLabel* weightValue = new QLabel(patient->weight);
-    weightValue->setFont(userInfoFont);
-    userInfoLayout->addRow(weightLabel, weightValue);
+    QLabel* weight_Label = new QLabel("Вес:");
+    weight_Label->setFont(userInfo_Font);
+    QLabel* weight_Value = new QLabel(patient->weight);
+    weight_Value->setFont(userInfo_Font);
+    userInfo_Layout->addRow(weight_Label, weight_Value);
 
     // # Height:
-    QLabel* heightLabel = new QLabel("Рост:");
-    heightLabel->setFont(userInfoFont);
-    QLabel* heightValue = new QLabel(patient->height);
-    heightValue->setFont(userInfoFont);
-    userInfoLayout->addRow(heightLabel, heightValue);
+    QLabel* height_Label = new QLabel("Рост:");
+    height_Label->setFont(userInfo_Font);
+    QLabel* height_Value = new QLabel(patient->height);
+    height_Value->setFont(userInfo_Font);
+    userInfo_Layout->addRow(height_Label, height_Value);
 
     // # Blood Type:
-    QLabel* bloodTypeLabel = new QLabel("Группа крови:");
-    bloodTypeLabel->setFont(userInfoFont);
-    QLabel* bloodTypeValue = new QLabel(patient->height);
-    bloodTypeValue->setFont(userInfoFont);
-    userInfoLayout->addRow(bloodTypeLabel, bloodTypeValue);
+    QLabel* bloodType_Label = new QLabel("Группа крови:");
+    bloodType_Label->setFont(userInfo_Font);
+    QLabel* bloodType_Value = new QLabel(patient->height);
+    bloodType_Value->setFont(userInfo_Font);
+    userInfo_Layout->addRow(bloodType_Label, bloodType_Value);
 
-    sideBarLayout->addStretch(1);
+    sideBar_Layout->addStretch(1);
 
     // # Take Survery Button:
-    QPushButton* takeSurveyButton = new QPushButton("Пройти обследование");
-    sideBarLayout->addWidget(takeSurveyButton);
-    connect(takeSurveyButton,
+    QPushButton* takeSurvey_Button = new QPushButton("Пройти обследование");
+    sideBar_Layout->addWidget(takeSurvey_Button);
+    connect(takeSurvey_Button,
             &QPushButton::clicked,
             [=] () { emit takeSurveyButton_Clicked(); });
 
     // # Back Button:
-    QPushButton* backButton = new QPushButton("Назад");
-    sideBarLayout->addWidget(backButton);
-    connect(backButton,
+    QPushButton* back_Button = new QPushButton("Назад");
+    sideBar_Layout->addWidget(back_Button);
+    connect(back_Button,
             &QPushButton::clicked,
             [=] () { emit backButton_Clicked(); });
 
@@ -132,9 +132,9 @@ void Patient_View::init()
     contentColumn->setLayout(content_Layout);
     scrollArea->setWidget(contentColumn);
     scrollArea->setWidgetResizable(true);
-    baseLayout->addWidget(scrollArea, 3);
+    base_Layout->addWidget(scrollArea, 3);
 
-    setLayout(baseLayout);
+    setLayout(base_Layout);
 }
 
 void Patient_View::getRecomendations_Finished(QNetworkReply* reply)
