@@ -42,7 +42,8 @@ void Survey_View::init()
     buttons_Layout->addWidget(back_Button);
     connect(back_Button,
             &QPushButton::clicked,
-            [=] () { emit backButton_Clicked(); });
+            [=] () { camera->stop();
+                     emit backButton_Clicked(); });
 
     buttons_Layout->addStretch(1);
 
