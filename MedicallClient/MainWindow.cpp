@@ -37,7 +37,7 @@ MainWindow::MainWindow()
             this,
             &MainWindow::switchToLoginDoctorView);
     connect(welcome_View,
-            &Welcome_View::patientLoginButton_Clicked,
+            &Welcome_View::patientRegisterButton_Clicked,
             this,
             &MainWindow::switchToPatientRegistrationView);
     connect(welcome_View,
@@ -151,7 +151,11 @@ void MainWindow::switchToPatientRegistrationView() { stack->setCurrentIndex(3); 
 
 void MainWindow::switchToDoctorRegistrationView() { stack->setCurrentIndex(4); }
 
-void MainWindow::switchToSurveyView() { stack->setCurrentIndex(7); }
+void MainWindow::switchToSurveyView()
+{
+    survey_View->init();
+    stack->setCurrentIndex(7);
+}
 
 void MainWindow::switchToPatientView(QVariantHash data)
 {

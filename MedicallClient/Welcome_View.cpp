@@ -49,7 +49,7 @@ Welcome_View::Welcome_View(QWidget* parent) : QWidget(parent)
     base_Layout->addWidget(patientRegistration_Button);
     connect(patientRegistration_Button,
             &QPushButton::clicked,
-            [=] () { emit patientLoginButton_Clicked(); });
+            [=] () { emit patientRegisterButton_Clicked(); });
 
     // # Register as Doctor:
     QPushButton* doctorRegistration_Button = new QPushButton("Регистрация доктора");

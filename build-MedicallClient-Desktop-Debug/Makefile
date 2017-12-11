@@ -12,10 +12,10 @@ MAKEFILE      = Makefile
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_MULTIMEDIAWIDGETS_LIB -DQT_MULTIMEDIA_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I../MedicallClient -I. -isystem /usr/include/opencv -isystem /usr/include/qt -isystem /usr/include/qt/QtWidgets -isystem /usr/include/qt/QtGui -isystem /usr/include/qt/QtNetwork -isystem /usr/include/qt/QtCore -I. -isystem /usr/include/libdrm -I/usr/lib/qt/mkspecs/linux-g++
+INCPATH       = -I../MedicallClient -I. -isystem /usr/include/opencv -isystem /usr/include/qt -isystem /usr/include/qt/QtMultimediaWidgets -isystem /usr/include/qt/QtMultimedia -isystem /usr/include/qt/QtWidgets -isystem /usr/include/qt/QtGui -isystem /usr/include/qt/QtNetwork -isystem /usr/include/qt/QtCore -I. -isystem /usr/include/libdrm -I/usr/lib/qt/mkspecs/linux-g++
 QMAKE         = /usr/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -37,8 +37,8 @@ COMPRESS      = gzip -9f
 DISTNAME      = Test1.0.0
 DISTDIR = /home/archie/Git/medicall/build-MedicallClient-Desktop-Debug/.tmp/Test1.0.0
 LINK          = g++
-LFLAGS        = 
-LIBS          = $(SUBLIBS) -L/usr/lib -lopencv_core -lopencv_imgcodecs -lopencv_highgui -lQt5Widgets -lQt5Gui -lQt5Network -lQt5Core -lGL -lpthread 
+LFLAGS        = -Wl,-rpath-link,/usr/lib
+LIBS          = $(SUBLIBS) -L/usr/lib -lopencv_core -lopencv_imgcodecs -lopencv_highgui -lQt5MultimediaWidgets -lpulse-mainloop-glib -lpulse -lglib-2.0 -lQt5Multimedia -lQt5Widgets -lQt5Gui -lQt5Network -lQt5Core -lGL -lpthread 
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -140,6 +140,10 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/modules/qt_lib_linuxaccessibility_support_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_location.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_location_private.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_multimedia.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_multimedia_private.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_multimediawidgets.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_multimediawidgets_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_network.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_network_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_opengl.pri \
@@ -158,6 +162,7 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/modules/qt_lib_qmldevtools_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_qmltest.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_qmltest_private.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_quick.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_quick_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_quickcontrols2.pri \
@@ -293,6 +298,10 @@ Makefile: ../MedicallClient/MedicallClient.pro /usr/lib/qt/mkspecs/linux-g++/qma
 		/usr/lib/qt/mkspecs/modules/qt_lib_linuxaccessibility_support_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_location.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_location_private.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_multimedia.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_multimedia_private.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_multimediawidgets.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_multimediawidgets_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_network.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_network_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_opengl.pri \
@@ -311,6 +320,7 @@ Makefile: ../MedicallClient/MedicallClient.pro /usr/lib/qt/mkspecs/linux-g++/qma
 		/usr/lib/qt/mkspecs/modules/qt_lib_qmldevtools_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_qmltest.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_qmltest_private.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_quick.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_quick_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_quickcontrols2.pri \
@@ -373,6 +383,8 @@ Makefile: ../MedicallClient/MedicallClient.pro /usr/lib/qt/mkspecs/linux-g++/qma
 		/usr/lib/qt/mkspecs/features/yacc.prf \
 		/usr/lib/qt/mkspecs/features/lex.prf \
 		../MedicallClient/MedicallClient.pro \
+		/usr/lib/libQt5MultimediaWidgets.prl \
+		/usr/lib/libQt5Multimedia.prl \
 		/usr/lib/libQt5Widgets.prl \
 		/usr/lib/libQt5Gui.prl \
 		/usr/lib/libQt5Network.prl \
@@ -415,6 +427,10 @@ Makefile: ../MedicallClient/MedicallClient.pro /usr/lib/qt/mkspecs/linux-g++/qma
 /usr/lib/qt/mkspecs/modules/qt_lib_linuxaccessibility_support_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_location.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_location_private.pri:
+/usr/lib/qt/mkspecs/modules/qt_lib_multimedia.pri:
+/usr/lib/qt/mkspecs/modules/qt_lib_multimedia_private.pri:
+/usr/lib/qt/mkspecs/modules/qt_lib_multimediawidgets.pri:
+/usr/lib/qt/mkspecs/modules/qt_lib_multimediawidgets_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_network.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_network_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_opengl.pri:
@@ -433,6 +449,7 @@ Makefile: ../MedicallClient/MedicallClient.pro /usr/lib/qt/mkspecs/linux-g++/qma
 /usr/lib/qt/mkspecs/modules/qt_lib_qmldevtools_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_qmltest.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_qmltest_private.pri:
+/usr/lib/qt/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_quick.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_quick_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_quickcontrols2.pri:
@@ -495,6 +512,8 @@ Makefile: ../MedicallClient/MedicallClient.pro /usr/lib/qt/mkspecs/linux-g++/qma
 /usr/lib/qt/mkspecs/features/yacc.prf:
 /usr/lib/qt/mkspecs/features/lex.prf:
 ../MedicallClient/MedicallClient.pro:
+/usr/lib/libQt5MultimediaWidgets.prl:
+/usr/lib/libQt5Multimedia.prl:
 /usr/lib/libQt5Widgets.prl:
 /usr/lib/libQt5Gui.prl:
 /usr/lib/libQt5Network.prl:
@@ -554,14 +573,14 @@ moc_DoctorRegistration_View.cpp: ../MedicallClient/NetworkManager.h \
 		../MedicallClient/DoctorRegistration_View.h \
 		moc_predefs.h \
 		/usr/bin/moc
-	/usr/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/archie/Git/medicall/MedicallClient -I/usr/include/opencv -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/7.2.0 -I/usr/include/c++/7.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/7.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include-fixed -I/usr/include ../MedicallClient/DoctorRegistration_View.h -o moc_DoctorRegistration_View.cpp
+	/usr/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/archie/Git/medicall/MedicallClient -I/usr/include/opencv -I/usr/include/qt -I/usr/include/qt/QtMultimediaWidgets -I/usr/include/qt/QtMultimedia -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/7.2.0 -I/usr/include/c++/7.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/7.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include-fixed -I/usr/include ../MedicallClient/DoctorRegistration_View.h -o moc_DoctorRegistration_View.cpp
 
 moc_Doctor_Model.cpp: ../MedicallClient/NetworkManager.h \
 		../MedicallClient/DoctorLogin_View.h \
 		../MedicallClient/Doctor_Model.h \
 		moc_predefs.h \
 		/usr/bin/moc
-	/usr/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/archie/Git/medicall/MedicallClient -I/usr/include/opencv -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/7.2.0 -I/usr/include/c++/7.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/7.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include-fixed -I/usr/include ../MedicallClient/Doctor_Model.h -o moc_Doctor_Model.cpp
+	/usr/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/archie/Git/medicall/MedicallClient -I/usr/include/opencv -I/usr/include/qt -I/usr/include/qt/QtMultimediaWidgets -I/usr/include/qt/QtMultimedia -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/7.2.0 -I/usr/include/c++/7.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/7.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include-fixed -I/usr/include ../MedicallClient/Doctor_Model.h -o moc_Doctor_Model.cpp
 
 moc_Doctor_View.cpp: ../MedicallClient/Doctor_Model.h \
 		../MedicallClient/NetworkManager.h \
@@ -570,19 +589,19 @@ moc_Doctor_View.cpp: ../MedicallClient/Doctor_Model.h \
 		../MedicallClient/Doctor_View.h \
 		moc_predefs.h \
 		/usr/bin/moc
-	/usr/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/archie/Git/medicall/MedicallClient -I/usr/include/opencv -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/7.2.0 -I/usr/include/c++/7.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/7.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include-fixed -I/usr/include ../MedicallClient/Doctor_View.h -o moc_Doctor_View.cpp
+	/usr/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/archie/Git/medicall/MedicallClient -I/usr/include/opencv -I/usr/include/qt -I/usr/include/qt/QtMultimediaWidgets -I/usr/include/qt/QtMultimedia -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/7.2.0 -I/usr/include/c++/7.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/7.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include-fixed -I/usr/include ../MedicallClient/Doctor_View.h -o moc_Doctor_View.cpp
 
 moc_DoctorLogin_View.cpp: ../MedicallClient/NetworkManager.h \
 		../MedicallClient/DoctorLogin_View.h \
 		moc_predefs.h \
 		/usr/bin/moc
-	/usr/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/archie/Git/medicall/MedicallClient -I/usr/include/opencv -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/7.2.0 -I/usr/include/c++/7.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/7.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include-fixed -I/usr/include ../MedicallClient/DoctorLogin_View.h -o moc_DoctorLogin_View.cpp
+	/usr/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/archie/Git/medicall/MedicallClient -I/usr/include/opencv -I/usr/include/qt -I/usr/include/qt/QtMultimediaWidgets -I/usr/include/qt/QtMultimedia -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/7.2.0 -I/usr/include/c++/7.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/7.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include-fixed -I/usr/include ../MedicallClient/DoctorLogin_View.h -o moc_DoctorLogin_View.cpp
 
 moc_PatientLogin_View.cpp: ../MedicallClient/NetworkManager.h \
 		../MedicallClient/PatientLogin_View.h \
 		moc_predefs.h \
 		/usr/bin/moc
-	/usr/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/archie/Git/medicall/MedicallClient -I/usr/include/opencv -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/7.2.0 -I/usr/include/c++/7.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/7.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include-fixed -I/usr/include ../MedicallClient/PatientLogin_View.h -o moc_PatientLogin_View.cpp
+	/usr/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/archie/Git/medicall/MedicallClient -I/usr/include/opencv -I/usr/include/qt -I/usr/include/qt/QtMultimediaWidgets -I/usr/include/qt/QtMultimedia -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/7.2.0 -I/usr/include/c++/7.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/7.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include-fixed -I/usr/include ../MedicallClient/PatientLogin_View.h -o moc_PatientLogin_View.cpp
 
 moc_MainWindow.cpp: ../MedicallClient/Welcome_View.h \
 		../MedicallClient/PatientLogin_View.h \
@@ -599,25 +618,25 @@ moc_MainWindow.cpp: ../MedicallClient/Welcome_View.h \
 		../MedicallClient/MainWindow.h \
 		moc_predefs.h \
 		/usr/bin/moc
-	/usr/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/archie/Git/medicall/MedicallClient -I/usr/include/opencv -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/7.2.0 -I/usr/include/c++/7.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/7.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include-fixed -I/usr/include ../MedicallClient/MainWindow.h -o moc_MainWindow.cpp
+	/usr/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/archie/Git/medicall/MedicallClient -I/usr/include/opencv -I/usr/include/qt -I/usr/include/qt/QtMultimediaWidgets -I/usr/include/qt/QtMultimedia -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/7.2.0 -I/usr/include/c++/7.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/7.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include-fixed -I/usr/include ../MedicallClient/MainWindow.h -o moc_MainWindow.cpp
 
 moc_NetworkManager.cpp: ../MedicallClient/NetworkManager.h \
 		moc_predefs.h \
 		/usr/bin/moc
-	/usr/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/archie/Git/medicall/MedicallClient -I/usr/include/opencv -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/7.2.0 -I/usr/include/c++/7.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/7.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include-fixed -I/usr/include ../MedicallClient/NetworkManager.h -o moc_NetworkManager.cpp
+	/usr/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/archie/Git/medicall/MedicallClient -I/usr/include/opencv -I/usr/include/qt -I/usr/include/qt/QtMultimediaWidgets -I/usr/include/qt/QtMultimedia -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/7.2.0 -I/usr/include/c++/7.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/7.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include-fixed -I/usr/include ../MedicallClient/NetworkManager.h -o moc_NetworkManager.cpp
 
 moc_Patient_Model.cpp: ../MedicallClient/NetworkManager.h \
 		../MedicallClient/PatientLogin_View.h \
 		../MedicallClient/Patient_Model.h \
 		moc_predefs.h \
 		/usr/bin/moc
-	/usr/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/archie/Git/medicall/MedicallClient -I/usr/include/opencv -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/7.2.0 -I/usr/include/c++/7.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/7.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include-fixed -I/usr/include ../MedicallClient/Patient_Model.h -o moc_Patient_Model.cpp
+	/usr/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/archie/Git/medicall/MedicallClient -I/usr/include/opencv -I/usr/include/qt -I/usr/include/qt/QtMultimediaWidgets -I/usr/include/qt/QtMultimedia -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/7.2.0 -I/usr/include/c++/7.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/7.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include-fixed -I/usr/include ../MedicallClient/Patient_Model.h -o moc_Patient_Model.cpp
 
 moc_PatientRegistration_View.cpp: ../MedicallClient/NetworkManager.h \
 		../MedicallClient/PatientRegistration_View.h \
 		moc_predefs.h \
 		/usr/bin/moc
-	/usr/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/archie/Git/medicall/MedicallClient -I/usr/include/opencv -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/7.2.0 -I/usr/include/c++/7.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/7.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include-fixed -I/usr/include ../MedicallClient/PatientRegistration_View.h -o moc_PatientRegistration_View.cpp
+	/usr/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/archie/Git/medicall/MedicallClient -I/usr/include/opencv -I/usr/include/qt -I/usr/include/qt/QtMultimediaWidgets -I/usr/include/qt/QtMultimedia -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/7.2.0 -I/usr/include/c++/7.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/7.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include-fixed -I/usr/include ../MedicallClient/PatientRegistration_View.h -o moc_PatientRegistration_View.cpp
 
 moc_Patient_View.cpp: ../MedicallClient/Patient_Model.h \
 		../MedicallClient/NetworkManager.h \
@@ -626,22 +645,22 @@ moc_Patient_View.cpp: ../MedicallClient/Patient_Model.h \
 		../MedicallClient/Patient_View.h \
 		moc_predefs.h \
 		/usr/bin/moc
-	/usr/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/archie/Git/medicall/MedicallClient -I/usr/include/opencv -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/7.2.0 -I/usr/include/c++/7.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/7.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include-fixed -I/usr/include ../MedicallClient/Patient_View.h -o moc_Patient_View.cpp
+	/usr/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/archie/Git/medicall/MedicallClient -I/usr/include/opencv -I/usr/include/qt -I/usr/include/qt/QtMultimediaWidgets -I/usr/include/qt/QtMultimedia -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/7.2.0 -I/usr/include/c++/7.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/7.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include-fixed -I/usr/include ../MedicallClient/Patient_View.h -o moc_Patient_View.cpp
 
 moc_Recomendation_Widget.cpp: ../MedicallClient/Recomendation_Widget.h \
 		moc_predefs.h \
 		/usr/bin/moc
-	/usr/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/archie/Git/medicall/MedicallClient -I/usr/include/opencv -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/7.2.0 -I/usr/include/c++/7.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/7.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include-fixed -I/usr/include ../MedicallClient/Recomendation_Widget.h -o moc_Recomendation_Widget.cpp
+	/usr/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/archie/Git/medicall/MedicallClient -I/usr/include/opencv -I/usr/include/qt -I/usr/include/qt/QtMultimediaWidgets -I/usr/include/qt/QtMultimedia -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/7.2.0 -I/usr/include/c++/7.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/7.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include-fixed -I/usr/include ../MedicallClient/Recomendation_Widget.h -o moc_Recomendation_Widget.cpp
 
 moc_Survey_View.cpp: ../MedicallClient/Survey_View.h \
 		moc_predefs.h \
 		/usr/bin/moc
-	/usr/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/archie/Git/medicall/MedicallClient -I/usr/include/opencv -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/7.2.0 -I/usr/include/c++/7.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/7.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include-fixed -I/usr/include ../MedicallClient/Survey_View.h -o moc_Survey_View.cpp
+	/usr/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/archie/Git/medicall/MedicallClient -I/usr/include/opencv -I/usr/include/qt -I/usr/include/qt/QtMultimediaWidgets -I/usr/include/qt/QtMultimedia -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/7.2.0 -I/usr/include/c++/7.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/7.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include-fixed -I/usr/include ../MedicallClient/Survey_View.h -o moc_Survey_View.cpp
 
 moc_Welcome_View.cpp: ../MedicallClient/Welcome_View.h \
 		moc_predefs.h \
 		/usr/bin/moc
-	/usr/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/archie/Git/medicall/MedicallClient -I/usr/include/opencv -I/usr/include/qt -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/7.2.0 -I/usr/include/c++/7.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/7.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include-fixed -I/usr/include ../MedicallClient/Welcome_View.h -o moc_Welcome_View.cpp
+	/usr/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/archie/Git/medicall/MedicallClient -I/usr/include/opencv -I/usr/include/qt -I/usr/include/qt/QtMultimediaWidgets -I/usr/include/qt/QtMultimedia -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/7.2.0 -I/usr/include/c++/7.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/7.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include-fixed -I/usr/include ../MedicallClient/Welcome_View.h -o moc_Welcome_View.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:

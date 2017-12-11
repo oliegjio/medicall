@@ -7,6 +7,9 @@
 #include <QImage>
 #include <QLabel>
 #include <QPushButton>
+#include <QCameraInfo>
+#include <QMessageBox>
+#include <QCameraViewfinder>
 
 #include <opencv2/opencv.hpp>
 
@@ -19,6 +22,7 @@ signals:
 
 public:
     Survey_View(QWidget* parent = 0);
+    void init();
 
 private:
     QImage image;
