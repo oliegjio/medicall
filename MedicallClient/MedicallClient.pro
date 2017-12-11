@@ -25,34 +25,34 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp \
-    welcomeview.cpp \
-    networkmanager.cpp \
-    patient.cpp \
-    patientregistrationview.cpp \
-    doctorregistrationview.cpp \
-    patientview.cpp \
-    recomendationwidget.cpp \
-    loginpatientview.cpp \
-    logindoctorview.cpp \
-    doctor.cpp \
-    doctorview.cpp \
-    surveyview.cpp
+    DoctorRegistration_View.cpp \
+    Doctor_Model.cpp \
+    Doctor_View.cpp \
+    DoctorLogin_View.cpp \
+    PatientLogin_View.cpp \
+    MainWindow.cpp \
+    NetworkManager.cpp \
+    Patient_Model.cpp \
+    PatientRegistration_View.cpp \
+    Patient_View.cpp \
+    Recomendation_Widget.cpp \
+    Survey_View.cpp \
+    Welcome_View.cpp
 
 HEADERS += \
-        mainwindow.h \
-    welcomeview.h \
-    networkmanager.h \
-    patient.h \
-    patientregistrationview.h \
-    doctorregistrationview.h \
-    patientview.h \
-    recomendationwidget.h \
-    loginpatientview.h \
-    logindoctorview.h \
-    doctor.h \
-    doctorview.h \
-    surveyview.h
+    DoctorRegistration_View.h \
+    Doctor_Model.h \
+    Doctor_View.h \
+    DoctorLogin_View.h \
+    PatientLogin_View.h \
+    MainWindow.h \
+    NetworkManager.h \
+    Patient_Model.h \
+    PatientRegistration_View.h \
+    Patient_View.h \
+    Recomendation_Widget.h \
+    Survey_View.h \
+    Welcome_View.h
 
 INCLUDEPATH += /usr/include/opencv
 LIBS += -L/usr/lib -lopencv_core -lopencv_imgcodecs -lopencv_highgui
