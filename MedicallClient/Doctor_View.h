@@ -15,7 +15,7 @@ class Doctor_View : public QWidget
     Q_OBJECT
 
 signals:
-    void backButton_Event();
+    void backButton_Clicked();
 
 public:
     Doctor_View(QWidget* parent = 0);

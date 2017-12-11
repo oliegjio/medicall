@@ -21,11 +21,14 @@ public:
     static QNetworkReply* postForm(QNetworkAccessManager* manager,
                                    const QUrl& url,
                                    const QMap<QString, QString>& data);
+
     static QNetworkReply* postEmpy(QNetworkAccessManager* manager,
                                    const QUrl& url);
+
     static QNetworkReply* postJson(QNetworkAccessManager* manager,
                                    const QUrl& url,
                                    const QJsonObject& data);
+
     static QNetworkReply* postJsonToken(QNetworkAccessManager* manager,
                                         const QUrl& url,
                                         const QString& token);

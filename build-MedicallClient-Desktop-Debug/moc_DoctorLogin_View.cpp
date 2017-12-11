@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_DoctorLogin_VIew_t {
-    QByteArrayData data[11];
-    char stringdata0[137];
+    QByteArrayData data[10];
+    char stringdata0[127];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,22 +32,21 @@ struct qt_meta_stringdata_DoctorLogin_VIew_t {
 static const qt_meta_stringdata_DoctorLogin_VIew_t qt_meta_stringdata_DoctorLogin_VIew = {
     {
 QT_MOC_LITERAL(0, 0, 16), // "DoctorLogin_VIew"
-QT_MOC_LITERAL(1, 17, 17), // "switchToLoginView"
-QT_MOC_LITERAL(2, 35, 0), // ""
-QT_MOC_LITERAL(3, 36, 16), // "backButton_Event"
-QT_MOC_LITERAL(4, 53, 8), // "loggedIn"
-QT_MOC_LITERAL(5, 62, 13), // "QVariantHash&"
-QT_MOC_LITERAL(6, 76, 4), // "data"
-QT_MOC_LITERAL(7, 81, 14), // "login_Finished"
-QT_MOC_LITERAL(8, 96, 14), // "QNetworkReply*"
-QT_MOC_LITERAL(9, 111, 5), // "reply"
-QT_MOC_LITERAL(10, 117, 19) // "loginButton_Clicked"
+QT_MOC_LITERAL(1, 17, 18), // "backButton_Clicked"
+QT_MOC_LITERAL(2, 36, 0), // ""
+QT_MOC_LITERAL(3, 37, 14), // "loggedIn_Event"
+QT_MOC_LITERAL(4, 52, 13), // "QVariantHash&"
+QT_MOC_LITERAL(5, 66, 4), // "data"
+QT_MOC_LITERAL(6, 71, 14), // "login_Finished"
+QT_MOC_LITERAL(7, 86, 14), // "QNetworkReply*"
+QT_MOC_LITERAL(8, 101, 5), // "reply"
+QT_MOC_LITERAL(9, 107, 19) // "loginButton_Clicked"
 
     },
-    "DoctorLogin_VIew\0switchToLoginView\0\0"
-    "backButton_Event\0loggedIn\0QVariantHash&\0"
-    "data\0login_Finished\0QNetworkReply*\0"
-    "reply\0loginButton_Clicked"
+    "DoctorLogin_VIew\0backButton_Clicked\0"
+    "\0loggedIn_Event\0QVariantHash&\0data\0"
+    "login_Finished\0QNetworkReply*\0reply\0"
+    "loginButton_Clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -57,29 +56,27 @@ static const uint qt_meta_data_DoctorLogin_VIew[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       3,       // signalCount
+       2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   39,    2, 0x06 /* Public */,
-       3,    0,   40,    2, 0x06 /* Public */,
-       4,    1,   41,    2, 0x06 /* Public */,
+       1,    0,   34,    2, 0x06 /* Public */,
+       3,    1,   35,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       7,    1,   44,    2, 0x08 /* Private */,
-      10,    0,   47,    2, 0x08 /* Private */,
+       6,    1,   38,    2, 0x08 /* Private */,
+       9,    0,   41,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 5,    6,
+    QMetaType::Void, 0x80000000 | 4,    5,
 
  // slots: parameters
-    QMetaType::Void, 0x80000000 | 8,    9,
+    QMetaType::Void, 0x80000000 | 7,    8,
     QMetaType::Void,
 
        0        // eod
@@ -91,17 +88,16 @@ void DoctorLogin_VIew::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         DoctorLogin_VIew *_t = static_cast<DoctorLogin_VIew *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->switchToLoginView(); break;
-        case 1: _t->backButton_Event(); break;
-        case 2: _t->loggedIn((*reinterpret_cast< QVariantHash(*)>(_a[1]))); break;
-        case 3: _t->login_Finished((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
-        case 4: _t->loginButton_Clicked(); break;
+        case 0: _t->backButton_Clicked(); break;
+        case 1: _t->loggedIn_Event((*reinterpret_cast< QVariantHash(*)>(_a[1]))); break;
+        case 2: _t->login_Finished((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
+        case 3: _t->loginButton_Clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         switch (_id) {
         default: *reinterpret_cast<int*>(_a[0]) = -1; break;
-        case 3:
+        case 2:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<int*>(_a[0]) = -1; break;
             case 0:
@@ -113,22 +109,15 @@ void DoctorLogin_VIew::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         int *result = reinterpret_cast<int *>(_a[0]);
         {
             typedef void (DoctorLogin_VIew::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&DoctorLogin_VIew::switchToLoginView)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&DoctorLogin_VIew::backButton_Clicked)) {
                 *result = 0;
                 return;
             }
         }
         {
-            typedef void (DoctorLogin_VIew::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&DoctorLogin_VIew::backButton_Event)) {
-                *result = 1;
-                return;
-            }
-        }
-        {
             typedef void (DoctorLogin_VIew::*_t)(QVariantHash & );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&DoctorLogin_VIew::loggedIn)) {
-                *result = 2;
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&DoctorLogin_VIew::loggedIn_Event)) {
+                *result = 1;
                 return;
             }
         }
@@ -160,34 +149,28 @@ int DoctorLogin_VIew::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 4;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 5)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 4;
     }
     return _id;
 }
 
 // SIGNAL 0
-void DoctorLogin_VIew::switchToLoginView()
+void DoctorLogin_VIew::backButton_Clicked()
 {
     QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
 }
 
 // SIGNAL 1
-void DoctorLogin_VIew::backButton_Event()
-{
-    QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
-}
-
-// SIGNAL 2
-void DoctorLogin_VIew::loggedIn(QVariantHash & _t1)
+void DoctorLogin_VIew::loggedIn_Event(QVariantHash & _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
-    QMetaObject::activate(this, &staticMetaObject, 2, _a);
+    QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

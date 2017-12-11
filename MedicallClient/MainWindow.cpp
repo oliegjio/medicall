@@ -29,23 +29,23 @@ MainWindow::MainWindow()
     stack->addWidget(welcomeView);
 
     connect(welcomeView,
-            &Welcome_View::loginPatientButton_Event,
+            &Welcome_View::patientLoginButton_Clicked,
             this,
             &MainWindow::switchToLoginPatientView);
     connect(welcomeView,
-            &Welcome_View::loginDoctorButton_Event,
+            &Welcome_View::doctorLoginButton_Clicked,
             this,
             &MainWindow::switchToLoginDoctorView);
     connect(welcomeView,
-            &Welcome_View::registerPatientButton_Event,
+            &Welcome_View::patientLoginButton_Clicked,
             this,
             &MainWindow::switchToPatientRegistrationView);
     connect(welcomeView,
-            &Welcome_View::registerDoctorButton_Event,
+            &Welcome_View::doctorRegisterButton_Clicked,
             this,
             &MainWindow::switchToDoctorRegistrationView);
     connect(welcomeView,
-            &Welcome_View::exitButton_Event,
+            &Welcome_View::exitButton_Clicked,
             this,
             &QMainWindow::close);
 
@@ -54,11 +54,11 @@ MainWindow::MainWindow()
     PatientLogin_View* loginPatientView = new PatientLogin_View(this);
     stack->addWidget(loginPatientView);
     connect(loginPatientView,
-            &PatientLogin_View::backButton_Event,
+            &PatientLogin_View::backButton_Clicked,
             this,
             &MainWindow::switchToWelcomeView);
     connect(loginPatientView,
-            &PatientLogin_View::loggedIn,
+            &PatientLogin_View::loggedIn_Event,
             this,
             &MainWindow::switchToPatientView);
 
@@ -67,11 +67,11 @@ MainWindow::MainWindow()
     DoctorLogin_VIew* loginDoctorView = new DoctorLogin_VIew(this);
     stack->addWidget(loginDoctorView);
     connect(loginDoctorView,
-            &DoctorLogin_VIew::backButton_Event,
+            &DoctorLogin_VIew::backButton_Clicked,
             this,
             &MainWindow::switchToWelcomeView);
     connect(loginDoctorView,
-            &DoctorLogin_VIew::loggedIn,
+            &DoctorLogin_VIew::loggedIn_Event,
             this,
             &MainWindow::switchToDoctorView);
 
@@ -80,11 +80,11 @@ MainWindow::MainWindow()
     PatientRegistration_View* patientRegistrationView = new PatientRegistration_View(this);
     stack->addWidget(patientRegistrationView);
     connect(patientRegistrationView,
-            &PatientRegistration_View::backButton_Event,
+            &PatientRegistration_View::backButton_Clicked,
             this,
             &MainWindow::switchToWelcomeView);
     connect(patientRegistrationView,
-            &PatientRegistration_View::registered,
+            &PatientRegistration_View::registered_Event,
             this,
             &MainWindow::patientRegistration_Finished);
 
@@ -93,43 +93,43 @@ MainWindow::MainWindow()
     DoctorRegistration_View* doctorRegistrationView = new DoctorRegistration_View(this);
     stack->addWidget(doctorRegistrationView);
     connect(doctorRegistrationView,
-            &DoctorRegistration_View::backButton_Event,
+            &DoctorRegistration_View::backButton_Clicked,
             this,
             &MainWindow::switchToWelcomeView);
     connect(doctorRegistrationView,
-            &DoctorRegistration_View::registered,
+            &DoctorRegistration_View::registered_Event,
             this,
             &MainWindow::doctorRegistration_Finished);
 
 
     // # 5
     // # Patient View:
-    patientView = new Patient_View(this);
-    stack->addWidget(patientView);
-    connect(patientView,
-            &Patient_View::backButton_Event,
+    patient_View = new Patient_View(this);
+    stack->addWidget(patient_View);
+    connect(patient_View,
+            &Patient_View::backButton_Clicked,
             this,
             &MainWindow::switchToWelcomeView);
-    connect(patientView,
-            &Patient_View::takeSurveyButton_Event,
+    connect(patient_View,
+            &Patient_View::takeSurveyButton_Clicked,
             this,
             &MainWindow::switchToSurveyView);
 
     // # 6
     // # Doctor View:
-    doctorView = new Doctor_View(this);
-    stack->addWidget(doctorView);
-    connect(doctorView,
-            &Doctor_View::backButton_Event,
+    doctor_View = new Doctor_View(this);
+    stack->addWidget(doctor_View);
+    connect(doctor_View,
+            &Doctor_View::backButton_Clicked,
             this,
             &MainWindow::switchToWelcomeView);
 
     // # 7
     // # Survey View:
-    surveyView = new Survey_View(this);
-    stack->addWidget(surveyView);
-    connect(surveyView,
-            &Survey_View::backButton_Event,
+    survey_View = new Survey_View(this);
+    stack->addWidget(survey_View);
+    connect(survey_View,
+            &Survey_View::backButton_Clicked,
             [=] () { stack->setCurrentIndex(5); });
 
     // #####
@@ -155,22 +155,22 @@ void MainWindow::switchToSurveyView() { stack->setCurrentIndex(7); }
 
 void MainWindow::switchToPatientView(QVariantHash data)
 {
-    patient->initPatient(data);
-    patientView->init();
+    patient->init(data);
+    patient_View->init();
     stack->setCurrentIndex(5);
 }
 
 void MainWindow::switchToDoctorView(QVariantHash data)
 {
     doctor->initDoctor(data);
-    doctorView->init();
+    doctor_View->init();
     stack->setCurrentIndex(6);
 }
 
 void MainWindow::patientRegistration_Finished(QVariantHash data)
 {
     switchToLoginPatientView();
-    patient->initPatient(data);
+    patient->init(data);
 }
 
 void MainWindow::doctorRegistration_Finished(QVariantHash data)

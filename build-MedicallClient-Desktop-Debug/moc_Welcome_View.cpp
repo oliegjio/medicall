@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Welcome_View_t {
     QByteArrayData data[7];
-    char stringdata0[135];
+    char stringdata0[145];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,18 +32,19 @@ struct qt_meta_stringdata_Welcome_View_t {
 static const qt_meta_stringdata_Welcome_View_t qt_meta_stringdata_Welcome_View = {
     {
 QT_MOC_LITERAL(0, 0, 12), // "Welcome_View"
-QT_MOC_LITERAL(1, 13, 24), // "loginPatientButton_Event"
-QT_MOC_LITERAL(2, 38, 0), // ""
-QT_MOC_LITERAL(3, 39, 23), // "loginDoctorButton_Event"
-QT_MOC_LITERAL(4, 63, 27), // "registerPatientButton_Event"
-QT_MOC_LITERAL(5, 91, 26), // "registerDoctorButton_Event"
-QT_MOC_LITERAL(6, 118, 16) // "exitButton_Event"
+QT_MOC_LITERAL(1, 13, 26), // "patientLoginButton_Clicked"
+QT_MOC_LITERAL(2, 40, 0), // ""
+QT_MOC_LITERAL(3, 41, 25), // "doctorLoginButton_Clicked"
+QT_MOC_LITERAL(4, 67, 29), // "patientRegisterButton_Clicked"
+QT_MOC_LITERAL(5, 97, 28), // "doctorRegisterButton_Clicked"
+QT_MOC_LITERAL(6, 126, 18) // "exitButton_Clicked"
 
     },
-    "Welcome_View\0loginPatientButton_Event\0"
-    "\0loginDoctorButton_Event\0"
-    "registerPatientButton_Event\0"
-    "registerDoctorButton_Event\0exitButton_Event"
+    "Welcome_View\0patientLoginButton_Clicked\0"
+    "\0doctorLoginButton_Clicked\0"
+    "patientRegisterButton_Clicked\0"
+    "doctorRegisterButton_Clicked\0"
+    "exitButton_Clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -83,46 +84,46 @@ void Welcome_View::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         Welcome_View *_t = static_cast<Welcome_View *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->loginPatientButton_Event(); break;
-        case 1: _t->loginDoctorButton_Event(); break;
-        case 2: _t->registerPatientButton_Event(); break;
-        case 3: _t->registerDoctorButton_Event(); break;
-        case 4: _t->exitButton_Event(); break;
+        case 0: _t->patientLoginButton_Clicked(); break;
+        case 1: _t->doctorLoginButton_Clicked(); break;
+        case 2: _t->patientRegisterButton_Clicked(); break;
+        case 3: _t->doctorRegisterButton_Clicked(); break;
+        case 4: _t->exitButton_Clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
             typedef void (Welcome_View::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Welcome_View::loginPatientButton_Event)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Welcome_View::patientLoginButton_Clicked)) {
                 *result = 0;
                 return;
             }
         }
         {
             typedef void (Welcome_View::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Welcome_View::loginDoctorButton_Event)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Welcome_View::doctorLoginButton_Clicked)) {
                 *result = 1;
                 return;
             }
         }
         {
             typedef void (Welcome_View::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Welcome_View::registerPatientButton_Event)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Welcome_View::patientRegisterButton_Clicked)) {
                 *result = 2;
                 return;
             }
         }
         {
             typedef void (Welcome_View::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Welcome_View::registerDoctorButton_Event)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Welcome_View::doctorRegisterButton_Clicked)) {
                 *result = 3;
                 return;
             }
         }
         {
             typedef void (Welcome_View::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Welcome_View::exitButton_Event)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Welcome_View::exitButton_Clicked)) {
                 *result = 4;
                 return;
             }
@@ -168,31 +169,31 @@ int Welcome_View::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void Welcome_View::loginPatientButton_Event()
+void Welcome_View::patientLoginButton_Clicked()
 {
     QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
 }
 
 // SIGNAL 1
-void Welcome_View::loginDoctorButton_Event()
+void Welcome_View::doctorLoginButton_Clicked()
 {
     QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
 }
 
 // SIGNAL 2
-void Welcome_View::registerPatientButton_Event()
+void Welcome_View::patientRegisterButton_Clicked()
 {
     QMetaObject::activate(this, &staticMetaObject, 2, nullptr);
 }
 
 // SIGNAL 3
-void Welcome_View::registerDoctorButton_Event()
+void Welcome_View::doctorRegisterButton_Clicked()
 {
     QMetaObject::activate(this, &staticMetaObject, 3, nullptr);
 }
 
 // SIGNAL 4
-void Welcome_View::exitButton_Event()
+void Welcome_View::exitButton_Clicked()
 {
     QMetaObject::activate(this, &staticMetaObject, 4, nullptr);
 }

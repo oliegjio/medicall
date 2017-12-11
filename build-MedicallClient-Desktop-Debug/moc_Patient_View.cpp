@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Patient_View_t {
     QByteArrayData data[7];
-    char stringdata0[102];
+    char stringdata0[106];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,16 +32,16 @@ struct qt_meta_stringdata_Patient_View_t {
 static const qt_meta_stringdata_Patient_View_t qt_meta_stringdata_Patient_View = {
     {
 QT_MOC_LITERAL(0, 0, 12), // "Patient_View"
-QT_MOC_LITERAL(1, 13, 16), // "backButton_Event"
-QT_MOC_LITERAL(2, 30, 0), // ""
-QT_MOC_LITERAL(3, 31, 22), // "takeSurveyButton_Event"
-QT_MOC_LITERAL(4, 54, 26), // "getRecomendations_Finished"
-QT_MOC_LITERAL(5, 81, 14), // "QNetworkReply*"
-QT_MOC_LITERAL(6, 96, 5) // "reply"
+QT_MOC_LITERAL(1, 13, 18), // "backButton_Clicked"
+QT_MOC_LITERAL(2, 32, 0), // ""
+QT_MOC_LITERAL(3, 33, 24), // "takeSurveyButton_Clicked"
+QT_MOC_LITERAL(4, 58, 26), // "getRecomendations_Finished"
+QT_MOC_LITERAL(5, 85, 14), // "QNetworkReply*"
+QT_MOC_LITERAL(6, 100, 5) // "reply"
 
     },
-    "Patient_View\0backButton_Event\0\0"
-    "takeSurveyButton_Event\0"
+    "Patient_View\0backButton_Clicked\0\0"
+    "takeSurveyButton_Clicked\0"
     "getRecomendations_Finished\0QNetworkReply*\0"
     "reply"
 };
@@ -83,8 +83,8 @@ void Patient_View::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         Patient_View *_t = static_cast<Patient_View *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->backButton_Event(); break;
-        case 1: _t->takeSurveyButton_Event(); break;
+        case 0: _t->backButton_Clicked(); break;
+        case 1: _t->takeSurveyButton_Clicked(); break;
         case 2: _t->getRecomendations_Finished((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
         default: ;
         }
@@ -103,14 +103,14 @@ void Patient_View::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         int *result = reinterpret_cast<int *>(_a[0]);
         {
             typedef void (Patient_View::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Patient_View::backButton_Event)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Patient_View::backButton_Clicked)) {
                 *result = 0;
                 return;
             }
         }
         {
             typedef void (Patient_View::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Patient_View::takeSurveyButton_Event)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Patient_View::takeSurveyButton_Clicked)) {
                 *result = 1;
                 return;
             }
@@ -155,13 +155,13 @@ int Patient_View::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void Patient_View::backButton_Event()
+void Patient_View::backButton_Clicked()
 {
     QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
 }
 
 // SIGNAL 1
-void Patient_View::takeSurveyButton_Event()
+void Patient_View::takeSurveyButton_Clicked()
 {
     QMetaObject::activate(this, &staticMetaObject, 1, nullptr);
 }

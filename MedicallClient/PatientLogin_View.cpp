@@ -47,26 +47,26 @@ PatientLogin_View::PatientLogin_View(QWidget* parent) : QWidget(parent)
     usernameLineLabel->setMaximumWidth(labelsWidth);
     formLayout->addWidget(usernameLineLabel, 0, 0);
 
-    usernameLine = new QLineEdit();
-    usernameLine->setMaximumWidth(linesWidth);
-    formLayout->addWidget(usernameLine, 0, 1);
+    username_Line = new QLineEdit();
+    username_Line->setMaximumWidth(linesWidth);
+    formLayout->addWidget(username_Line, 0, 1);
 
     // # Password Line:
     QLabel* passwordLineLabel = new QLabel("Пароль:");
     passwordLineLabel->setMaximumWidth(labelsWidth);
     formLayout->addWidget(passwordLineLabel, 1, 0);
 
-    passwordLine = new QLineEdit();
-    passwordLine->setMaximumWidth(linesWidth);
-    passwordLine->setEchoMode(QLineEdit::Password);
-    formLayout->addWidget(passwordLine, 1, 1);
+    password_Line = new QLineEdit();
+    password_Line->setMaximumWidth(linesWidth);
+    password_Line->setEchoMode(QLineEdit::Password);
+    formLayout->addWidget(password_Line, 1, 1);
 
     // # Back Button:
     QPushButton* backButton = new QPushButton("Назад");
     formLayout->addWidget(backButton, 2, 0);
     connect(backButton,
             &QPushButton::clicked,
-            [=] () { emit backButton_Event(); });
+            [=] () { emit backButton_Clicked(); });
 
     // # Login Button:
     QPushButton* loginButton = new QPushButton("Войти");
@@ -89,8 +89,8 @@ PatientLogin_View::~PatientLogin_View() {}
 void PatientLogin_View::loginButton_Clicked()
 {
     QJsonObject data {
-        {"username", usernameLine->text()},
-        {"password", passwordLine->text()}
+        {"username", username_Line->text()},
+        {"password", password_Line->text()}
     };
 
     NetworkManager::postJson(login_NetworkManager,
@@ -113,5 +113,5 @@ void PatientLogin_View::login_Finished(QNetworkReply* reply)
 
     QVariantHash data = NetworkManager::jsonToHash(replyData);
 
-    emit loggedIn(data);
+    emit loggedIn_Event(data);
 }

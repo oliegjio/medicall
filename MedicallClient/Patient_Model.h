@@ -20,7 +20,7 @@ private:
 
 public:
     static Patient_Model* getInstance();
-    void initPatient(QVariantHash data);
+    void init(QVariantHash data);
 
     QString id;
     QString token;

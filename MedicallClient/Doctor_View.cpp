@@ -12,36 +12,36 @@ void Doctor_View::init()
 
     Doctor_Model* doctor = Doctor_Model::getInstance();
 
-    QVBoxLayout* baseLayout = new QVBoxLayout();
+    QVBoxLayout* base_Layout = new QVBoxLayout();
 
-    QHBoxLayout* topBarLayout = new QHBoxLayout();
-    topBarLayout->setAlignment(Qt::AlignTop);
-    baseLayout->addLayout(topBarLayout, 1);
+    QHBoxLayout* topBar_Layout = new QHBoxLayout();
+    topBar_Layout->setAlignment(Qt::AlignTop);
+    base_Layout->addLayout(topBar_Layout, 1);
 
     QScrollArea* scrollArea = new QScrollArea();
     scrollArea->setVerticalScrollBarPolicy( Qt::ScrollBarAlwaysOn );
 
-    QVBoxLayout* contentLayout = new QVBoxLayout();
-    contentLayout->setContentsMargins(0, 0, 0, 0);
+    QVBoxLayout* content_Layout = new QVBoxLayout();
+    content_Layout->setContentsMargins(0, 0, 0, 0);
 
     // ####
     // ## Topbar Widgets:
     // ####
 
     // # Username Title:
-    QFont usernameLabel_Font("Airal", 20);
-    QLabel* usernameLabel = new QLabel(doctor->username);
-    usernameLabel->setFont(usernameLabel_Font);
-    topBarLayout->addWidget(usernameLabel);
+    QFont username_Font("Airal", 20);
+    QLabel* username_Label = new QLabel(doctor->username);
+    username_Label->setFont(username_Font);
+    topBar_Layout->addWidget(username_Label);
 
-    topBarLayout->addStretch(1);
+    topBar_Layout->addStretch(1);
 
     // # Back Button:
-    QPushButton* backButton = new QPushButton("Назад");
-    topBarLayout->addWidget(backButton);
-    connect(backButton,
+    QPushButton* back_Button = new QPushButton("Назад");
+    topBar_Layout->addWidget(back_Button);
+    connect(back_Button,
             &QPushButton::clicked,
-            [=] () { emit backButton_Event(); });
+            [=] () { emit backButton_Clicked(); });
 
     // # Recomendations:
 //    QVector<RecomendationWidget*> recomendations;
@@ -58,10 +58,10 @@ void Doctor_View::init()
 
     // # Scroll Area:
     QWidget* contentColumn = new QWidget();
-    contentColumn->setLayout(contentLayout);
+    contentColumn->setLayout(content_Layout);
     scrollArea->setWidget(contentColumn);
     scrollArea->setWidgetResizable(true);
-    baseLayout->addWidget(scrollArea, 1000);
+    base_Layout->addWidget(scrollArea, 1000);
 
-    setLayout(baseLayout);
+    setLayout(base_Layout);
 }

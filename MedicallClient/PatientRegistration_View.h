@@ -18,8 +18,8 @@ class PatientRegistration_View : public QWidget
     Q_OBJECT
 
 signals:
-    void backButton_Event();
-    void registered(QVariantHash& data);
+    void backButton_Clicked();
+    void registered_Event(QVariantHash& data);
 
 private slots:
     void registerButton_Clicked();
@@ -30,17 +30,17 @@ public:
     ~PatientRegistration_View();
 
 private:
-    QLineEdit* fullNameLine;
-    QLineEdit* usernameLine;
-    QLineEdit* emailLine;
-    QLineEdit* password1Line;
-    QLineEdit* password2Line;
-    QDateTimeEdit* birthDateLine;
-    QLineEdit* locationLine;
-    QComboBox* genderLine;
-    QLineEdit* weightLine;
-    QLineEdit* heightLine;
-    QComboBox* bloodTypeLine;
+    QLineEdit* fullName_Line;
+    QLineEdit* username_Line;
+    QLineEdit* email_Line;
+    QLineEdit* password1_Line;
+    QLineEdit* password2_Line;
+    QDateTimeEdit* birthDate_Line;
+    QLineEdit* location_Line;
+    QComboBox* gender_Line;
+    QLineEdit* weight_Line;
+    QLineEdit* height_Line;
+    QComboBox* bloodType_Line;
 
     QNetworkAccessManager* register_NetworkManager;
 };

@@ -42,51 +42,51 @@ DoctorRegistration_View::DoctorRegistration_View(QWidget* parent) : QWidget(pare
 
     // # Full name:
     QLabel* fullNameLabel = new QLabel("ФИО:");
-    fullNameLine = new QLineEdit(this);
-    formLayout->addRow(fullNameLabel, fullNameLine);
+    fullName_Line = new QLineEdit(this);
+    formLayout->addRow(fullNameLabel, fullName_Line);
 
     // # Username:
     QLabel* usernameLabel = new QLabel("Логин:");
-    usernameLine = new QLineEdit(this);
-    formLayout->addRow(usernameLabel, usernameLine);
+    username_Line = new QLineEdit(this);
+    formLayout->addRow(usernameLabel, username_Line);
 
     // # E-Mail:
     QLabel* emailLabel = new QLabel("Эл-Почта:");
-    emailLine = new QLineEdit(this);
-    formLayout->addRow(emailLabel, emailLine);
+    email_Line = new QLineEdit(this);
+    formLayout->addRow(emailLabel, email_Line);
 
     // # Password 1:
     QLabel* password1Label = new QLabel("Пароль:");
-    password1Line = new QLineEdit(this);
-    password1Line->setEchoMode(QLineEdit::Password);
-    formLayout->addRow(password1Label, password1Line);
+    password1_Line = new QLineEdit(this);
+    password1_Line->setEchoMode(QLineEdit::Password);
+    formLayout->addRow(password1Label, password1_Line);
 
     // # Password 2:
     QLabel* password2Label = new QLabel("Повторите пароль:");
-    password2Line = new QLineEdit(this);
-    password2Line->setEchoMode(QLineEdit::Password);
-    formLayout->addRow(password2Label, password2Line);
+    password2_Line = new QLineEdit(this);
+    password2_Line->setEchoMode(QLineEdit::Password);
+    formLayout->addRow(password2Label, password2_Line);
 
     // # Speciality:
     QLabel* specialityLabel = new QLabel("Специализация:");
-    specialityLine = new QLineEdit(this);
-    formLayout->addRow(specialityLabel, specialityLine);
+    speciality_Line = new QLineEdit(this);
+    formLayout->addRow(specialityLabel, speciality_Line);
 
     // # Phone Number:
     QLabel* phoneNumberLabel = new QLabel("Номер телефона:");
-    phoneNumberLine = new QLineEdit(this);
-    formLayout->addRow(phoneNumberLabel, phoneNumberLine);
+    phoneNumber_Line = new QLineEdit(this);
+    formLayout->addRow(phoneNumberLabel, phoneNumber_Line);
 
     // # Social Networks:
     QLabel* socialNetworksLabel = new QLabel("Соц. сети:");
-    socialNetworksLine = new QLineEdit(this);
-    formLayout->addRow(socialNetworksLabel, socialNetworksLine);
+    socialNetworks_Line = new QLineEdit(this);
+    formLayout->addRow(socialNetworksLabel, socialNetworks_Line);
 
     // # Back Button:
     QPushButton* backButton = new QPushButton("Назад");
     connect(backButton,
             &QPushButton::clicked,
-            [=] () { emit backButton_Event(); });
+            [=] () { emit backButton_Clicked(); });
 
     // # Register Button:
     QPushButton* registerButton = new QPushButton("Зарегестрироваться");
@@ -112,14 +112,14 @@ DoctorRegistration_View::~DoctorRegistration_View() {}
 void DoctorRegistration_View::registerButton_Clicked()
 {
     QJsonObject data {
-        {"username", usernameLine->text()},
-        {"password", password1Line->text()},
-        {"passwordRepeat", password2Line->text()},
-        {"fullName", fullNameLine->text()},
-        {"email", emailLine->text()},
-        {"speciality", specialityLine->text()},
-        {"phoneNumber", phoneNumberLine->text()},
-        {"socialNetworks", socialNetworksLine->text()}
+        {"username", username_Line->text()},
+        {"password", password1_Line->text()},
+        {"passwordRepeat", password2_Line->text()},
+        {"fullName", fullName_Line->text()},
+        {"email", email_Line->text()},
+        {"speciality", speciality_Line->text()},
+        {"phoneNumber", phoneNumber_Line->text()},
+        {"socialNetworks", socialNetworks_Line->text()}
     };
 
     NetworkManager::postJson(register_NetworkManager,
@@ -141,5 +141,5 @@ void DoctorRegistration_View::register_Finished(QNetworkReply* reply)
 
     QVariantHash data = NetworkManager::jsonToHash(replyData);
 
-    emit registered(data);
+    emit registered_Event(data);
 }

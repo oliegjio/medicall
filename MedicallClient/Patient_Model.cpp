@@ -13,7 +13,7 @@ Patient_Model* Patient_Model::getInstance()
 
 Patient_Model* Patient_Model::instance = 0;
 
-void Patient_Model::initPatient(QVariantHash data)
+void Patient_Model::init(QVariantHash data)
 {
     token = data["token"].value<QString>();
 

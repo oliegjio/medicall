@@ -12,12 +12,8 @@ class Recomendation_Widget : public QWidget
     Q_OBJECT
 
 public:
-    Recomendation_Widget(QString title,
-                        QString date,
-                        QString content,
-                        QString doctor,
-                        QString patient,
-                        QWidget* parent = 0);
+    Recomendation_Widget(QString title, QString date, QString content,
+                        QString doctor, QString patient, QWidget* parent = 0);
     ~Recomendation_Widget();
 
     QString id;

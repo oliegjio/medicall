@@ -10,11 +10,13 @@ class Welcome_View : public QWidget
     Q_OBJECT
 
 signals:
-    void loginPatientButton_Event();
-    void loginDoctorButton_Event();
-    void registerPatientButton_Event();
-    void registerDoctorButton_Event();
-    void exitButton_Event();
+    void patientLoginButton_Clicked();
+    void doctorLoginButton_Clicked();
+
+    void patientRegisterButton_Clicked();
+    void doctorRegisterButton_Clicked();
+
+    void exitButton_Clicked();
 
 public:
     Welcome_View(QWidget* parent = 0);

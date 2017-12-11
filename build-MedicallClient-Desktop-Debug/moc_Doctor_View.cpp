@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Doctor_View_t {
     QByteArrayData data[3];
-    char stringdata0[30];
+    char stringdata0[32];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,11 +32,11 @@ struct qt_meta_stringdata_Doctor_View_t {
 static const qt_meta_stringdata_Doctor_View_t qt_meta_stringdata_Doctor_View = {
     {
 QT_MOC_LITERAL(0, 0, 11), // "Doctor_View"
-QT_MOC_LITERAL(1, 12, 16), // "backButton_Event"
-QT_MOC_LITERAL(2, 29, 0) // ""
+QT_MOC_LITERAL(1, 12, 18), // "backButton_Clicked"
+QT_MOC_LITERAL(2, 31, 0) // ""
 
     },
-    "Doctor_View\0backButton_Event\0"
+    "Doctor_View\0backButton_Clicked\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -68,14 +68,14 @@ void Doctor_View::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         Doctor_View *_t = static_cast<Doctor_View *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->backButton_Event(); break;
+        case 0: _t->backButton_Clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
             typedef void (Doctor_View::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Doctor_View::backButton_Event)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Doctor_View::backButton_Clicked)) {
                 *result = 0;
                 return;
             }
@@ -121,7 +121,7 @@ int Doctor_View::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void Doctor_View::backButton_Event()
+void Doctor_View::backButton_Clicked()
 {
     QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
 }

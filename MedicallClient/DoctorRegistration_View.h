@@ -19,8 +19,8 @@ class DoctorRegistration_View : public QWidget
     Q_OBJECT
 
 signals:
-    void backButton_Event();
-    void registered(QVariantHash data);
+    void backButton_Clicked();
+    void registered_Event(QVariantHash data);
 
 private slots:
     void registerButton_Clicked();
@@ -31,14 +31,14 @@ public:
     ~DoctorRegistration_View();
 
 private:
-    QLineEdit* fullNameLine;
-    QLineEdit* usernameLine;
-    QLineEdit* emailLine;
-    QLineEdit* password1Line;
-    QLineEdit* password2Line;
-    QLineEdit* specialityLine;
-    QLineEdit* phoneNumberLine;
-    QLineEdit* socialNetworksLine;
+    QLineEdit* fullName_Line;
+    QLineEdit* username_Line;
+    QLineEdit* email_Line;
+    QLineEdit* password1_Line;
+    QLineEdit* password2_Line;
+    QLineEdit* speciality_Line;
+    QLineEdit* phoneNumber_Line;
+    QLineEdit* socialNetworks_Line;
 
     QNetworkAccessManager* register_NetworkManager;
 };

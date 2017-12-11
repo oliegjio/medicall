@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_PatientRegistration_View_t {
     QByteArrayData data[10];
-    char stringdata0[135];
+    char stringdata0[143];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,19 +32,19 @@ struct qt_meta_stringdata_PatientRegistration_View_t {
 static const qt_meta_stringdata_PatientRegistration_View_t qt_meta_stringdata_PatientRegistration_View = {
     {
 QT_MOC_LITERAL(0, 0, 24), // "PatientRegistration_View"
-QT_MOC_LITERAL(1, 25, 16), // "backButton_Event"
-QT_MOC_LITERAL(2, 42, 0), // ""
-QT_MOC_LITERAL(3, 43, 10), // "registered"
-QT_MOC_LITERAL(4, 54, 13), // "QVariantHash&"
-QT_MOC_LITERAL(5, 68, 4), // "data"
-QT_MOC_LITERAL(6, 73, 22), // "registerButton_Clicked"
-QT_MOC_LITERAL(7, 96, 17), // "register_Finished"
-QT_MOC_LITERAL(8, 114, 14), // "QNetworkReply*"
-QT_MOC_LITERAL(9, 129, 5) // "reply"
+QT_MOC_LITERAL(1, 25, 18), // "backButton_Clicked"
+QT_MOC_LITERAL(2, 44, 0), // ""
+QT_MOC_LITERAL(3, 45, 16), // "registered_Event"
+QT_MOC_LITERAL(4, 62, 13), // "QVariantHash&"
+QT_MOC_LITERAL(5, 76, 4), // "data"
+QT_MOC_LITERAL(6, 81, 22), // "registerButton_Clicked"
+QT_MOC_LITERAL(7, 104, 17), // "register_Finished"
+QT_MOC_LITERAL(8, 122, 14), // "QNetworkReply*"
+QT_MOC_LITERAL(9, 137, 5) // "reply"
 
     },
-    "PatientRegistration_View\0backButton_Event\0"
-    "\0registered\0QVariantHash&\0data\0"
+    "PatientRegistration_View\0backButton_Clicked\0"
+    "\0registered_Event\0QVariantHash&\0data\0"
     "registerButton_Clicked\0register_Finished\0"
     "QNetworkReply*\0reply"
 };
@@ -88,8 +88,8 @@ void PatientRegistration_View::qt_static_metacall(QObject *_o, QMetaObject::Call
         PatientRegistration_View *_t = static_cast<PatientRegistration_View *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->backButton_Event(); break;
-        case 1: _t->registered((*reinterpret_cast< QVariantHash(*)>(_a[1]))); break;
+        case 0: _t->backButton_Clicked(); break;
+        case 1: _t->registered_Event((*reinterpret_cast< QVariantHash(*)>(_a[1]))); break;
         case 2: _t->registerButton_Clicked(); break;
         case 3: _t->register_Finished((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
         default: ;
@@ -109,14 +109,14 @@ void PatientRegistration_View::qt_static_metacall(QObject *_o, QMetaObject::Call
         int *result = reinterpret_cast<int *>(_a[0]);
         {
             typedef void (PatientRegistration_View::*_t)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&PatientRegistration_View::backButton_Event)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&PatientRegistration_View::backButton_Clicked)) {
                 *result = 0;
                 return;
             }
         }
         {
             typedef void (PatientRegistration_View::*_t)(QVariantHash & );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&PatientRegistration_View::registered)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&PatientRegistration_View::registered_Event)) {
                 *result = 1;
                 return;
             }
@@ -161,13 +161,13 @@ int PatientRegistration_View::qt_metacall(QMetaObject::Call _c, int _id, void **
 }
 
 // SIGNAL 0
-void PatientRegistration_View::backButton_Event()
+void PatientRegistration_View::backButton_Clicked()
 {
     QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
 }
 
 // SIGNAL 1
-void PatientRegistration_View::registered(QVariantHash & _t1)
+void PatientRegistration_View::registered_Event(QVariantHash & _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);

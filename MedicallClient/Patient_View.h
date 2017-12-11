@@ -18,8 +18,8 @@ public slots:
     void getRecomendations_Finished(QNetworkReply* reply);
 
 signals:
-    void backButton_Event();
-    void takeSurveyButton_Event();
+    void backButton_Clicked();
+    void takeSurveyButton_Clicked();
 
 public:
     Patient_View(QWidget* parent = 0);
@@ -28,7 +28,7 @@ public:
     void init();
 
 private:
-    QVBoxLayout* contentLayout;
+    QVBoxLayout* content_Layout;
 };
 
 #endif // PATIENTVIEW_H

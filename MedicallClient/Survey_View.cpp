@@ -31,7 +31,7 @@ Survey_View::Survey_View(QWidget* parent) : QWidget(parent)
     buttonsLayout->addWidget(backButton);
     connect(backButton,
             &QPushButton::clicked,
-            [=] () { emit backButton_Event(); });
+            [=] () { emit backButton_Clicked(); });
 
     buttonsLayout->addStretch(1);
 

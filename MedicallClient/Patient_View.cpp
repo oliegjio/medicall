@@ -25,9 +25,9 @@ void Patient_View::init()
     QScrollArea* scrollArea = new QScrollArea();
     scrollArea->setVerticalScrollBarPolicy( Qt::ScrollBarAlwaysOn );
 
-    contentLayout = new QVBoxLayout();
-    contentLayout->setAlignment(Qt::AlignTop);
-    contentLayout->setContentsMargins(0, 0, 0, 0);
+    content_Layout = new QVBoxLayout();
+    content_Layout->setAlignment(Qt::AlignTop);
+    content_Layout->setContentsMargins(0, 0, 0, 0);
 
     QNetworkAccessManager* getRecomendations_NetworkManager = new QNetworkAccessManager();
     connect(getRecomendations_NetworkManager,
@@ -114,14 +114,14 @@ void Patient_View::init()
     sideBarLayout->addWidget(takeSurveyButton);
     connect(takeSurveyButton,
             &QPushButton::clicked,
-            [=] () { emit takeSurveyButton_Event(); });
+            [=] () { emit takeSurveyButton_Clicked(); });
 
     // # Back Button:
     QPushButton* backButton = new QPushButton("Назад");
     sideBarLayout->addWidget(backButton);
     connect(backButton,
             &QPushButton::clicked,
-            [=] () { emit backButton_Event(); });
+            [=] () { emit backButton_Clicked(); });
 
     // ####
     // ## Other:
@@ -129,7 +129,7 @@ void Patient_View::init()
 
     // # Scroll Area:
     QWidget* contentColumn = new QWidget();
-    contentColumn->setLayout(contentLayout);
+    contentColumn->setLayout(content_Layout);
     scrollArea->setWidget(contentColumn);
     scrollArea->setWidgetResizable(true);
     baseLayout->addWidget(scrollArea, 3);
@@ -168,6 +168,6 @@ void Patient_View::getRecomendations_Finished(QNetworkReply* reply)
                 new Recomendation_Widget(title, date, content, doctor, patient);
 
         recomendationWidgets.append(recomendationWidget);
-        contentLayout->addWidget(recomendationWidget);
+        content_Layout->addWidget(recomendationWidget);
     }
 }

@@ -33,7 +33,7 @@ Welcome_View::Welcome_View(QWidget* parent) : QWidget(parent)
     layout->addWidget(loginPatientButton);
     connect(loginPatientButton,
             &QPushButton::clicked,
-            [=] () { emit loginPatientButton_Event(); });
+            [=] () { emit patientLoginButton_Clicked(); });
 
     // # Login as Doctor Button:
     QPushButton* loginDoctorButton = new QPushButton("Войти как доктор");
@@ -41,7 +41,7 @@ Welcome_View::Welcome_View(QWidget* parent) : QWidget(parent)
     layout->addWidget(loginDoctorButton);
     connect(loginDoctorButton,
             &QPushButton::clicked,
-            [=] () { emit loginDoctorButton_Event(); });
+            [=] () { emit doctorLoginButton_Clicked(); });
 
     layout->addStretch(1);
 
@@ -51,7 +51,7 @@ Welcome_View::Welcome_View(QWidget* parent) : QWidget(parent)
     layout->addWidget(registerPatientButton);
     connect(registerPatientButton,
             &QPushButton::clicked,
-            [=] () { emit registerPatientButton_Event(); });
+            [=] () { emit patientLoginButton_Clicked(); });
 
     // # Register as Doctor:
     QPushButton* registerDoctorButton = new QPushButton("Регистрация доктора");
@@ -59,7 +59,7 @@ Welcome_View::Welcome_View(QWidget* parent) : QWidget(parent)
     layout->addWidget(registerDoctorButton);
     connect(registerDoctorButton,
             &QPushButton::clicked,
-            [=] () { emit registerDoctorButton_Event(); });
+            [=] () { emit doctorRegisterButton_Clicked(); });
 
     layout->addStretch(1);
 
@@ -69,7 +69,7 @@ Welcome_View::Welcome_View(QWidget* parent) : QWidget(parent)
     layout->addWidget(exitButton);
     connect(exitButton,
             &QPushButton::clicked,
-            [=] () { emit exitButton_Event(); });
+            [=] () { emit exitButton_Clicked(); });
 
     // #####
     // ## Other:

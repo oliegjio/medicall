@@ -41,11 +41,11 @@ public:
     QStackedWidget* stack;
 
 private:
-    Patient_View* patientView;
-    Doctor_View* doctorView;
+    Patient_View* patient_View;
+    Doctor_View* doctor_View;
     Patient_Model* patient;
     Doctor_Model* doctor;
-    Survey_View* surveyView;
+    Survey_View* survey_View;
 };
 
 #endif // MAINWINDOW_H

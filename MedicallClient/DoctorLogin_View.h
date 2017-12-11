@@ -20,9 +20,8 @@ private slots:
     void loginButton_Clicked();
 
 signals:
-    void switchToLoginView();
-    void backButton_Event();
-    void loggedIn(QVariantHash& data);
+    void backButton_Clicked();
+    void loggedIn_Event(QVariantHash& data);
 
 public:
     DoctorLogin_VIew(QWidget* parent = 0);
@@ -30,8 +29,8 @@ public:
 
 private:
     QNetworkAccessManager* login_NetworkManager;
-    QLineEdit* usernameLine;
-    QLineEdit* passwordLine;
+    QLineEdit* username_Line;
+    QLineEdit* password_Line;
 };
 
 #endif // LOGINDOCTORVIEW_H
