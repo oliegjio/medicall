@@ -18,8 +18,6 @@ LoginPatientView::LoginPatientView(QWidget* parent) : QWidget(parent)
             this,
             &LoginPatientView::login_Finished);
 
-    QFont logoFont("Arial", 75);
-
     int linesWidth = 400;
     int labelsWidth = 150;
 
@@ -29,16 +27,22 @@ LoginPatientView::LoginPatientView(QWidget* parent) : QWidget(parent)
     // ## Widgets:
     // #####
 
-    // # Logo
+    // # Logo:
     QLabel* logo = new QLabel("Medicall");
     logo->setAlignment(Qt::AlignCenter);
-    logo->setFont(logoFont);
+    logo->setFont(QFont("Arial", 75));
     layout->addWidget(logo);
+
+    // # Title:
+    QLabel* titleLabel = new QLabel("Войти пациентом:");
+    titleLabel->setAlignment(Qt::AlignCenter);
+    titleLabel->setFont(QFont("Arial", 25));
+    layout->addWidget(titleLabel);
 
     layout->addStretch(1);
     layout->addLayout(formLayout);
 
-    // # Username:
+    // # Username Line:
     QLabel* usernameLineLabel = new QLabel("Логин:");
     usernameLineLabel->setMaximumWidth(labelsWidth);
     formLayout->addWidget(usernameLineLabel, 0, 0);
@@ -47,7 +51,7 @@ LoginPatientView::LoginPatientView(QWidget* parent) : QWidget(parent)
     usernameLine->setMaximumWidth(linesWidth);
     formLayout->addWidget(usernameLine, 0, 1);
 
-    // # Password:
+    // # Password Line:
     QLabel* passwordLineLabel = new QLabel("Пароль:");
     passwordLineLabel->setMaximumWidth(labelsWidth);
     formLayout->addWidget(passwordLineLabel, 1, 0);
@@ -57,13 +61,14 @@ LoginPatientView::LoginPatientView(QWidget* parent) : QWidget(parent)
     passwordLine->setEchoMode(QLineEdit::Password);
     formLayout->addWidget(passwordLine, 1, 1);
 
-    // # Buttons:
+    // # Back Button:
     QPushButton* backButton = new QPushButton("Назад");
     formLayout->addWidget(backButton, 2, 0);
     connect(backButton,
             &QPushButton::clicked,
             [=] () { emit backButton_Event(); });
 
+    // # Login Button:
     QPushButton* loginButton = new QPushButton("Войти");
     formLayout->addWidget(loginButton, 2, 1);
     connect(loginButton,

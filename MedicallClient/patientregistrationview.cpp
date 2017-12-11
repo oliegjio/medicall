@@ -107,12 +107,13 @@ PatientRegistrationView::PatientRegistrationView(QWidget* parent) : QWidget(pare
     bloodTypeLine->addItem("AB");
     formLayout->addRow(bloodTypeLabel, bloodTypeLine);
 
-    // # Buttons:
+    // # Back Button:
     QPushButton* backButton = new QPushButton("Назад");
     connect(backButton,
             &QPushButton::clicked,
             [=] () { emit backButton_Event(); });
 
+    // # Register Button:
     QPushButton* registerButton = new QPushButton("Зарегестрироваться");
     connect(registerButton,
             SIGNAL(clicked()),

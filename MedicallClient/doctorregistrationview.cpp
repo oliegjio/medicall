@@ -82,12 +82,13 @@ DoctorRegistrationView::DoctorRegistrationView(QWidget* parent) : QWidget(parent
     socialNetworksLine = new QLineEdit(this);
     formLayout->addRow(socialNetworksLabel, socialNetworksLine);
 
-    // # Buttons:
+    // # Back Button:
     QPushButton* backButton = new QPushButton("Назад");
     connect(backButton,
             &QPushButton::clicked,
             [=] () { emit backButton_Event(); });
 
+    // # Register Button:
     QPushButton* registerButton = new QPushButton("Зарегестрироваться");
     connect(registerButton,
             SIGNAL(clicked()),

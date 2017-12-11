@@ -18,8 +18,6 @@ LoginDoctorView::LoginDoctorView(QWidget* parent) : QWidget(parent)
             this,
             &LoginDoctorView::login_Finished);
 
-    QFont logoFont("Arial", 75);
-
     int linesWidth = 400;
     int labelsWidth = 150;
 
@@ -32,8 +30,14 @@ LoginDoctorView::LoginDoctorView(QWidget* parent) : QWidget(parent)
     // # Logo:
     QLabel* logo = new QLabel("Medicall");
     logo->setAlignment(Qt::AlignCenter);
-    logo->setFont(logoFont);
+    logo->setFont(QFont("Arial", 75));
     layout->addWidget(logo);
+
+    // # Title:
+    QLabel* titleLabel = new QLabel("Войти доктором:");
+    titleLabel->setAlignment(Qt::AlignCenter);
+    titleLabel->setFont(QFont("Arial", 25));
+    layout->addWidget(titleLabel);
 
     layout->addStretch(1);
     layout->addLayout(formLayout);
