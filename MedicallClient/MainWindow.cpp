@@ -153,7 +153,7 @@ void MainWindow::switchToDoctorRegistrationView() { stack->setCurrentIndex(4); }
 
 void MainWindow::switchToSurveyView()
 {
-    survey_View->init();
+//    survey_View->init();
     stack->setCurrentIndex(7);
 }
 

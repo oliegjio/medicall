@@ -11,6 +11,7 @@
 #include <QMessageBox>
 #include <QCameraViewfinder>
 #include <QFile>
+#include <QPainter>
 
 #include <opencv2/opencv.hpp>
 
@@ -31,13 +32,13 @@ public:
 
 private:
     QImage image;
-<<<<<<< HEAD
+    QCamera* camera;
+    CameraFrameGrabber* grabber;
+    QWidget* display;
+    virtual void paintEvent(QPaintEvent* event);
 
 private slots:
     void handleImage(QImage image);
-=======
-    QCamera* camera;
->>>>>>> f0e4004fa7584cbc243d7eb6f0b855e0628023da
 };
 
 #endif // SURVEYVIEW_H
