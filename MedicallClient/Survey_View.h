@@ -31,9 +31,13 @@ public:
 
 private:
     QImage image;
+<<<<<<< HEAD
 
 private slots:
     void handleImage(QImage image);
+=======
+    QCamera* camera;
+>>>>>>> f0e4004fa7584cbc243d7eb6f0b855e0628023da
 };
 
 #endif // SURVEYVIEW_H

@@ -1,5 +1,6 @@
 #include "Survey_View.h"
 
+<<<<<<< HEAD
 Survey_View::Survey_View(QWidget* parent) : QWidget(parent) {}
 
 Survey_View::~Survey_View()
@@ -9,6 +10,9 @@ Survey_View::~Survey_View()
 }
 
 void Survey_View::init()
+=======
+Survey_View::Survey_View(QWidget* parent) : QWidget(parent)
+>>>>>>> f0e4004fa7584cbc243d7eb6f0b855e0628023da
 {
     QVBoxLayout* base_Layout = new QVBoxLayout();
     base_Layout->setAlignment(Qt::AlignCenter);
@@ -37,6 +41,7 @@ void Survey_View::init()
     buttons_Layout->addStretch(1);
 
     if (QCameraInfo::availableCameras().count() <= 0)
+<<<<<<< HEAD
         Modal::message("No available cameras found!");
 
 //    QCameraViewfinder* viewFinder = new QCameraViewfinder();
@@ -51,19 +56,29 @@ void Survey_View::init()
             this,
             SLOT(handleImage(QImage)));
     camera->start();
+=======
+        QMessageBox(QMessageBox::NoIcon, "Ошибка", "Не обнаружено вебкамеры!").exec();
+
+    QCameraViewfinder* viewFinder = new QCameraViewfinder();
+    camera = new QCamera(QCamera::FrontFace);
+    camera->setViewfinder(viewFinder);
+    base_Layout->addWidget(viewFinder);
+>>>>>>> f0e4004fa7584cbc243d7eb6f0b855e0628023da
 
     // # Back Button:
     QPushButton* back_Button = new QPushButton("Назад");
     buttons_Layout->addWidget(back_Button);
     connect(back_Button,
             &QPushButton::clicked,
-            [=] () { emit backButton_Clicked(); });
+            [=] () { camera->stop();
+                     emit backButton_Clicked(); });
 
     buttons_Layout->addStretch(1);
 
     setLayout(base_Layout);
 }
 
+<<<<<<< HEAD
 void Survey_View::handleImage(QImage image)
 {
     QString filename = "frame.jpg";
@@ -79,4 +94,14 @@ void Survey_View::handleImage(QImage image)
 //        QPixmap pixmap = QPixmap::fromImage(image);
 //        out << pixmap;
 //    }
+=======
+void Survey_View::init()
+{
+    if (QCameraInfo::availableCameras().count() <= 0)
+    {
+        QMessageBox(QMessageBox::NoIcon, "Ошибка", "Не обнаружено вебкамеры!").exec();
+        return;
+    }
+    camera->start();
+>>>>>>> f0e4004fa7584cbc243d7eb6f0b855e0628023da
 }
