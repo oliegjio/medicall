@@ -34,6 +34,8 @@ public:
                                         const QString& token);
 
     static QVariantHash jsonToHash(QByteArray& reply);
+
+    static QVariantHash processReply(QNetworkReply* reply);
 };
 
 #endif // NETWORKMANAGER_H

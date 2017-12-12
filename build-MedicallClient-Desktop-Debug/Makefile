@@ -63,7 +63,8 @@ SOURCES       = ../MedicallClient/main.cpp \
 		../MedicallClient/Patient_View.cpp \
 		../MedicallClient/Recomendation_Widget.cpp \
 		../MedicallClient/Survey_View.cpp \
-		../MedicallClient/Welcome_View.cpp moc_DoctorRegistration_View.cpp \
+		../MedicallClient/Welcome_View.cpp \
+		../MedicallClient/CameraFrameGrubber.cpp moc_DoctorRegistration_View.cpp \
 		moc_Doctor_Model.cpp \
 		moc_Doctor_View.cpp \
 		moc_DoctorLogin_View.cpp \
@@ -90,6 +91,7 @@ OBJECTS       = main.o \
 		Recomendation_Widget.o \
 		Survey_View.o \
 		Welcome_View.o \
+		CameraFrameGrubber.o \
 		moc_DoctorRegistration_View.o \
 		moc_Doctor_Model.o \
 		moc_Doctor_View.o \
@@ -178,6 +180,8 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/modules/qt_lib_service_support_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_sql.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_sql_private.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_svg.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_svg_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_testlib.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_testlib_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_theme_support_private.pri \
@@ -195,6 +199,8 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/modules/qt_lib_webenginewidgets_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_widgets.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_widgets_private.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_x11extras.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_x11extras_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_xcb_qpa_lib_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_xml.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_xml_private.pri \
@@ -236,7 +242,8 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		../MedicallClient/Patient_View.h \
 		../MedicallClient/Recomendation_Widget.h \
 		../MedicallClient/Survey_View.h \
-		../MedicallClient/Welcome_View.h ../MedicallClient/main.cpp \
+		../MedicallClient/Welcome_View.h \
+		../MedicallClient/CameraFrameGrubber.h ../MedicallClient/main.cpp \
 		../MedicallClient/DoctorRegistration_View.cpp \
 		../MedicallClient/Doctor_Model.cpp \
 		../MedicallClient/Doctor_View.cpp \
@@ -249,7 +256,8 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		../MedicallClient/Patient_View.cpp \
 		../MedicallClient/Recomendation_Widget.cpp \
 		../MedicallClient/Survey_View.cpp \
-		../MedicallClient/Welcome_View.cpp
+		../MedicallClient/Welcome_View.cpp \
+		../MedicallClient/CameraFrameGrubber.cpp
 QMAKE_TARGET  = Test
 DESTDIR       = 
 TARGET        = Test
@@ -336,6 +344,8 @@ Makefile: ../MedicallClient/MedicallClient.pro /usr/lib/qt/mkspecs/linux-g++/qma
 		/usr/lib/qt/mkspecs/modules/qt_lib_service_support_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_sql.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_sql_private.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_svg.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_svg_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_testlib.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_testlib_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_theme_support_private.pri \
@@ -353,6 +363,8 @@ Makefile: ../MedicallClient/MedicallClient.pro /usr/lib/qt/mkspecs/linux-g++/qma
 		/usr/lib/qt/mkspecs/modules/qt_lib_webenginewidgets_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_widgets.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_widgets_private.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_x11extras.pri \
+		/usr/lib/qt/mkspecs/modules/qt_lib_x11extras_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_xcb_qpa_lib_private.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_xml.pri \
 		/usr/lib/qt/mkspecs/modules/qt_lib_xml_private.pri \
@@ -465,6 +477,8 @@ Makefile: ../MedicallClient/MedicallClient.pro /usr/lib/qt/mkspecs/linux-g++/qma
 /usr/lib/qt/mkspecs/modules/qt_lib_service_support_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_sql.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_sql_private.pri:
+/usr/lib/qt/mkspecs/modules/qt_lib_svg.pri:
+/usr/lib/qt/mkspecs/modules/qt_lib_svg_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_testlib.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_testlib_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_theme_support_private.pri:
@@ -482,6 +496,8 @@ Makefile: ../MedicallClient/MedicallClient.pro /usr/lib/qt/mkspecs/linux-g++/qma
 /usr/lib/qt/mkspecs/modules/qt_lib_webenginewidgets_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_widgets.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_widgets_private.pri:
+/usr/lib/qt/mkspecs/modules/qt_lib_x11extras.pri:
+/usr/lib/qt/mkspecs/modules/qt_lib_x11extras_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_xcb_qpa_lib_private.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_xml.pri:
 /usr/lib/qt/mkspecs/modules/qt_lib_xml_private.pri:
@@ -533,8 +549,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../MedicallClient/DoctorRegistration_View.h ../MedicallClient/Doctor_Model.h ../MedicallClient/Doctor_View.h ../MedicallClient/DoctorLogin_View.h ../MedicallClient/PatientLogin_View.h ../MedicallClient/MainWindow.h ../MedicallClient/NetworkManager.h ../MedicallClient/Patient_Model.h ../MedicallClient/PatientRegistration_View.h ../MedicallClient/Patient_View.h ../MedicallClient/Recomendation_Widget.h ../MedicallClient/Survey_View.h ../MedicallClient/Welcome_View.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../MedicallClient/main.cpp ../MedicallClient/DoctorRegistration_View.cpp ../MedicallClient/Doctor_Model.cpp ../MedicallClient/Doctor_View.cpp ../MedicallClient/DoctorLogin_View.cpp ../MedicallClient/PatientLogin_View.cpp ../MedicallClient/MainWindow.cpp ../MedicallClient/NetworkManager.cpp ../MedicallClient/Patient_Model.cpp ../MedicallClient/PatientRegistration_View.cpp ../MedicallClient/Patient_View.cpp ../MedicallClient/Recomendation_Widget.cpp ../MedicallClient/Survey_View.cpp ../MedicallClient/Welcome_View.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../MedicallClient/DoctorRegistration_View.h ../MedicallClient/Doctor_Model.h ../MedicallClient/Doctor_View.h ../MedicallClient/DoctorLogin_View.h ../MedicallClient/PatientLogin_View.h ../MedicallClient/MainWindow.h ../MedicallClient/NetworkManager.h ../MedicallClient/Patient_Model.h ../MedicallClient/PatientRegistration_View.h ../MedicallClient/Patient_View.h ../MedicallClient/Recomendation_Widget.h ../MedicallClient/Survey_View.h ../MedicallClient/Welcome_View.h ../MedicallClient/CameraFrameGrubber.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../MedicallClient/main.cpp ../MedicallClient/DoctorRegistration_View.cpp ../MedicallClient/Doctor_Model.cpp ../MedicallClient/Doctor_View.cpp ../MedicallClient/DoctorLogin_View.cpp ../MedicallClient/PatientLogin_View.cpp ../MedicallClient/MainWindow.cpp ../MedicallClient/NetworkManager.cpp ../MedicallClient/Patient_Model.cpp ../MedicallClient/PatientRegistration_View.cpp ../MedicallClient/Patient_View.cpp ../MedicallClient/Recomendation_Widget.cpp ../MedicallClient/Survey_View.cpp ../MedicallClient/Welcome_View.cpp ../MedicallClient/CameraFrameGrubber.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -757,6 +773,9 @@ Survey_View.o: ../MedicallClient/Survey_View.cpp ../MedicallClient/Survey_View.h
 
 Welcome_View.o: ../MedicallClient/Welcome_View.cpp ../MedicallClient/Welcome_View.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Welcome_View.o ../MedicallClient/Welcome_View.cpp
+
+CameraFrameGrubber.o: ../MedicallClient/CameraFrameGrubber.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o CameraFrameGrubber.o ../MedicallClient/CameraFrameGrubber.cpp
 
 moc_DoctorRegistration_View.o: moc_DoctorRegistration_View.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_DoctorRegistration_View.o moc_DoctorRegistration_View.cpp

@@ -63,3 +63,29 @@ QVariantHash NetworkManager::jsonToHash(QByteArray& rawData)
     return object;
 }
 
+QVariantHash NetworkManager::processReply(QNetworkReply *reply)
+{
+    QVariantHash invalid = QVariantHash();
+    invalid["status"] = QVariant().Invalid;
+
+    if (reply->error()) {
+        QString error = reply->errorString();
+        qDebug() << error;
+        invalid["error"] = QVariant(error);
+        return invalid;
+    }
+
+    QByteArray replyData = reply->readAll();
+
+    QVariant statusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
+
+    if (!statusCode.isValid() || replyData.isEmpty())
+    {
+        invalid["error"] = QVariant("Invalid or Empty reply!");
+        return invalid;
+    }
+
+    QVariantHash data = NetworkManager::jsonToHash(replyData);
+
+    return data;
+}
