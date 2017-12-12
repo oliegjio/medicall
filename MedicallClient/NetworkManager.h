@@ -18,6 +18,12 @@ private:
     static QMap<QString, QString> parseJsonToMap(QJsonObject& object);
 
 public:
+    static int const ERR_CONNECTION = 0;
+    static int const ERR_CREDENTIALS = 401;
+    static int const ERR_SERVER = 400;
+    static int const ERR_DATABASE = 406;
+    static int const ERR_UNKNOWN = 3;
+
     static QNetworkReply* postForm(QNetworkAccessManager* manager,
                                    const QUrl& url,
                                    const QMap<QString, QString>& data);

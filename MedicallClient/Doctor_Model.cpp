@@ -13,7 +13,7 @@ Doctor_Model* Doctor_Model::getInstance()
 
 Doctor_Model* Doctor_Model::instance = 0;
 
-void Doctor_Model::initDoctor(QVariantHash data)
+void Doctor_Model::init(QVariantHash data)
 {
     token = data["token"].value<QString>();
 

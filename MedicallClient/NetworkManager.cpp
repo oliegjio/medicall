@@ -65,27 +65,41 @@ QVariantHash NetworkManager::jsonToHash(QByteArray& rawData)
 
 QVariantHash NetworkManager::processReply(QNetworkReply *reply)
 {
-    QVariantHash invalid = QVariantHash();
-    invalid["status"] = QVariant().Invalid;
+    QVariantHash status = QVariantHash();
 
     if (reply->error()) {
-        QString error = reply->errorString();
-        qDebug() << error;
-        invalid["error"] = QVariant(error);
-        return invalid;
+        QVariant statusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
+
+//        switch (statusCode.toInt())
+//        {
+//            case NetworkManager::ERR_CONNECTION:
+//                status["error"] = QVariant(NetworkManager::ERR_CONNECTION);
+//                break;
+
+//            case NetworkManager::ERR_CREDENTIALS:
+//                status["error"] = QVariant(NetworkManager::ERR_CREDENTIALS);
+
+//            case NetworkManager::ERR_DATABASE:
+//                status["error"] =
+//        }
+//        if (!statusCode)
+//            status["error"] = QVariant(NetworkManager::ERR_UNKNOWN);
+//        if (statusCode == 406)
+//            status["error"] = QVariant(NetworkManager::ERR_AUTH);
+//        else
+
+
+        status["status"] = QVariant().Invalid;
+
+        return status;
     }
 
     QByteArray replyData = reply->readAll();
 
-    QVariant statusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
-
-    if (!statusCode.isValid() || replyData.isEmpty())
-    {
-        invalid["error"] = QVariant("Invalid or Empty reply!");
-        return invalid;
-    }
+    status["status"] = QVariant(200);
 
     QVariantHash data = NetworkManager::jsonToHash(replyData);
+    data = data.unite(status);
 
     return data;
 }

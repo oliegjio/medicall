@@ -102,7 +102,18 @@ void PatientLogin_View::login_Finished(QNetworkReply* reply)
 {
     QVariantHash data = NetworkManager::processReply(reply);
 
-    if (!data["status"].isValid()) return;
+    if (!data["status"].isValid())
+    {
+        if (data["error"] == NetworkManager::ERR_SERVER)
+        {
+            Modal::message("Внутренняя ошибка!");
+        }
+        else
+        {
+            Modal::message("Неверное имя пользователя или пароль!");
+        }
+        return;
+    }
 
     emit loggedIn_Event(data);
 }

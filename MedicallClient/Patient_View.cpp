@@ -139,18 +139,9 @@ void Patient_View::init()
 
 void Patient_View::getRecomendations_Finished(QNetworkReply* reply)
 {
-    if (reply->error()) {
-        qDebug() << reply->errorString();
-        return;
-    }
+    QVariantHash data = NetworkManager::processReply(reply);
 
-    QByteArray replyData = reply->readAll();
-
-    QVariant statusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
-
-    if (!statusCode.isValid() || replyData.isEmpty()) return;
-
-    QVariantHash data = NetworkManager::jsonToHash(replyData);
+    if (!data["status"].isValid()) return;
 
     // # Recomendations:
     QVector<Recomendation_Widget*> recomendationWidgets;

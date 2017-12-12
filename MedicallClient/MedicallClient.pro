@@ -38,7 +38,8 @@ SOURCES += \
     Recomendation_Widget.cpp \
     Survey_View.cpp \
     Welcome_View.cpp \
-    CameraFrameGrubber.cpp
+    CameraFrameGrubber.cpp \
+    Modal.cpp
 
 HEADERS += \
     DoctorRegistration_View.h \
@@ -54,7 +55,8 @@ HEADERS += \
     Recomendation_Widget.h \
     Survey_View.h \
     Welcome_View.h \
-    CameraFrameGrubber.h
+    CameraFrameGrubber.h \
+    Modal.h
 
 INCLUDEPATH += /usr/include/opencv
 LIBS += -L/usr/lib -lopencv_core -lopencv_imgcodecs -lopencv_highgui

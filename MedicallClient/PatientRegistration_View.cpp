@@ -155,17 +155,9 @@ void PatientRegistration_View::registerButton_Clicked()
 
 void PatientRegistration_View::register_Finished(QNetworkReply* reply)
 {
-    if (reply->error()) {
-        qDebug() << reply->errorString();
-        return;
-    }
+    QVariantHash data = NetworkManager::processReply(reply);
 
-    QByteArray replyData = reply->readAll();
-    QVariant statusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
-
-    if (!statusCode.isValid() || replyData.isEmpty()) return;
-
-    QVariantHash data = NetworkManager::jsonToHash(replyData);
+    if (!data["status"].isValid()) return;
 
     emit registered_Event(data);
 }

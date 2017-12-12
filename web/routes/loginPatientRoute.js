@@ -18,16 +18,12 @@ var init = (app) => {
               if (!result)
                 return response.sendStatus(401)
 
-              if (patient) {
-                  var payload = { id: patient.id }
-                  var token = jwt.encode(payload, config.jwtSecret)
-                  response.json({
-                      token: token,
-                      patient: patient
-                  })
-              } else {
-                return response.sendStatus(401)
-              }
+              var payload = { id: patient.id }
+              var token = jwt.encode(payload, config.jwtSecret)
+              response.json({
+                  token: token,
+                  patient: patient
+              })
             })
             .catch((error) => {
               console.error(error)

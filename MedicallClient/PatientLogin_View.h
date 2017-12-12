@@ -10,6 +10,7 @@
 #include <QHttpPart>
 
 #include "NetworkManager.h"
+#include "Modal.h"
 
 class PatientLogin_View : public QWidget
 {

@@ -166,19 +166,19 @@ void MainWindow::switchToPatientView(QVariantHash data)
 
 void MainWindow::switchToDoctorView(QVariantHash data)
 {
-    doctor->initDoctor(data);
+    doctor->init(data);
     doctor_View->init();
     stack->setCurrentIndex(6);
 }
 
 void MainWindow::patientRegistration_Finished(QVariantHash data)
 {
-    switchToLoginPatientView();
     patient->init(data);
+    switchToLoginPatientView();
 }
 
 void MainWindow::doctorRegistration_Finished(QVariantHash data)
 {
+    doctor->init(data);
     switchToLoginDoctorView();
-    doctor->initDoctor(data);
 }

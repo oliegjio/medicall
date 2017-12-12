@@ -15,7 +15,7 @@ class Doctor_Model : public QObject
     Q_OBJECT
 
 public slots:
-    void initDoctor(QVariantHash data);
+    void init(QVariantHash data);
 
 private:
     Doctor_Model();

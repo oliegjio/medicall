@@ -101,18 +101,9 @@ void DoctorLogin_VIew::loginButton_Clicked()
 
 void DoctorLogin_VIew::login_Finished(QNetworkReply* reply)
 {
-    if (reply->error()) {
-        qDebug() << reply->errorString();
-        return;
-    }
+    QVariantHash data = NetworkManager::processReply(reply);
 
-    QByteArray replyData = reply->readAll();
-
-    QVariant statusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
-
-    if (!statusCode.isValid() || replyData.isEmpty()) return;
-
-    QVariantHash data = NetworkManager::jsonToHash(replyData);
+    if (!data["status"].isValid()) return;
 
     emit loggedIn_Event(data);
 }

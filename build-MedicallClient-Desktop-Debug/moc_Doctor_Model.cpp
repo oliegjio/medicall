@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Doctor_Model_t {
     QByteArrayData data[4];
-    char stringdata0[30];
+    char stringdata0[24];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,12 +32,12 @@ struct qt_meta_stringdata_Doctor_Model_t {
 static const qt_meta_stringdata_Doctor_Model_t qt_meta_stringdata_Doctor_Model = {
     {
 QT_MOC_LITERAL(0, 0, 12), // "Doctor_Model"
-QT_MOC_LITERAL(1, 13, 10), // "initDoctor"
-QT_MOC_LITERAL(2, 24, 0), // ""
-QT_MOC_LITERAL(3, 25, 4) // "data"
+QT_MOC_LITERAL(1, 13, 4), // "init"
+QT_MOC_LITERAL(2, 18, 0), // ""
+QT_MOC_LITERAL(3, 19, 4) // "data"
 
     },
-    "Doctor_Model\0initDoctor\0\0data"
+    "Doctor_Model\0init\0\0data"
 };
 #undef QT_MOC_LITERAL
 
@@ -69,7 +69,7 @@ void Doctor_Model::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         Doctor_Model *_t = static_cast<Doctor_Model *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->initDoctor((*reinterpret_cast< QVariantHash(*)>(_a[1]))); break;
+        case 0: _t->init((*reinterpret_cast< QVariantHash(*)>(_a[1]))); break;
         default: ;
         }
     }
