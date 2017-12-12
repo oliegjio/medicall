@@ -29,6 +29,7 @@ private:
 private slots:
     void startPlayer();
     void stopPlayer();
+    void analyze();
 };
 
 #endif // SURVEYVIEW_H

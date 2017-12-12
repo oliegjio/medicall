@@ -21,6 +21,14 @@ Survey_View::Survey_View(QWidget* parent) : QWidget(parent)
     buttons_Layout->setAlignment(Qt::AlignCenter);
     base_Layout->addLayout(buttons_Layout);
 
+    // # Start Button:
+    QPushButton* start_Button = new QPushButton("Начать");
+    buttons_Layout->addWidget(start_Button);
+    connect(start_Button,
+            &QPushButton::clicked,
+            this,
+            &Survey_View::startPlayer);
+
     // # Stop Button:
     QPushButton* stop_Button = new QPushButton("Остановить");
     buttons_Layout->addWidget(stop_Button);
@@ -29,13 +37,13 @@ Survey_View::Survey_View(QWidget* parent) : QWidget(parent)
             this,
             &Survey_View::stopPlayer);
 
-    // # Start Button:
-    QPushButton* start_Button = new QPushButton("Начать");
-    buttons_Layout->addWidget(start_Button);
-    connect(start_Button,
+    // # Analyze Button:
+    QPushButton* analyze_Button = new QPushButton("Анализировать");
+    buttons_Layout->addWidget(analyze_Button);
+    connect(analyze_Button,
             &QPushButton::clicked,
             this,
-            &Survey_View::startPlayer);
+            &Survey_View::analyze);
 
     // # Back Button:
     QPushButton* back_Button = new QPushButton("Назад");
@@ -55,3 +63,8 @@ void Survey_View::startPlayer()
 }
 
 void Survey_View::stopPlayer() { player->stop(); }
+
+void Survey_View::analyze()
+{
+    player->frameToJpg("frame.jpg");
+}

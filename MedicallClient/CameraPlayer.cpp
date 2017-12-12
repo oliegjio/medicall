@@ -26,16 +26,17 @@ void CameraPlayer::stop()
     camera->stop();
 }
 
+void CameraPlayer::frameToJpg(QString filename)
+{
+    QFile::remove(filename);
+    QFile file(filename);
+    image.save(filename, "jpg");
+}
+
 void CameraPlayer::handleImage(QImage image)
 {
-    QString filename = "frame.jpg";
-    QFile file(filename);
-
+    this->image = image;
     update();
-
-    if (file.exists()) return;
-
-    image.save(filename, "jpg");
 }
 
 void CameraPlayer::paintEvent(QPaintEvent *event)
