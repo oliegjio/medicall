@@ -4,19 +4,13 @@
 #include <QWidget>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
-#include <QImage>
 #include <QLabel>
 #include <QPushButton>
-#include <QCameraInfo>
-#include <QMessageBox>
-#include <QCameraViewfinder>
-#include <QFile>
-#include <QPainter>
 
 #include <opencv2/opencv.hpp>
 
 #include "Modal.h"
-#include "CameraFrameGrubber.h"
+#include "CameraPlayer.h"
 
 class Survey_View : public QWidget
 {
@@ -28,17 +22,13 @@ signals:
 public:
     Survey_View(QWidget* parent = 0);
     ~Survey_View();
-    void init();
 
 private:
-    QImage image;
-    QCamera* camera;
-    CameraFrameGrabber* grabber;
-    QWidget* display;
-    virtual void paintEvent(QPaintEvent* event);
+    CameraPlayer* player;
 
 private slots:
-    void handleImage(QImage image);
+    void startPlayer();
+    void stopPlayer();
 };
 
 #endif // SURVEYVIEW_H

@@ -11,77 +11,47 @@ Survey_View::Survey_View(QWidget* parent) : QWidget(parent)
     QVBoxLayout* base_Layout = new QVBoxLayout();
     base_Layout->setAlignment(Qt::AlignCenter);
 
-    display = new QWidget();
-    display->setMinimumHeight(400);
-    display->setMinimumHeight(400);
-    base_Layout->addWidget(display);
+    // # Camera Player:
+    player = new CameraPlayer();
+    player->setMinimumSize(QSize(500, 500));
+    base_Layout->addWidget(player);
 
-    grabber = new CameraFrameGrabber(this);
-
-//    cv::Mat inputImage = cv::imread("/home/archie/Wallpapers/toph.png");
-//    if(!inputImage.empty()) cv::imshow("Display Image", inputImage);
-
-//    QSize imageSize = size() * 15;
-
-//    image = QImage((const unsigned char*)(inputImage.data),
-//                          inputImage.cols,
-//                          inputImage.rows,
-//                          QImage::Format_RGB888)
-//                          .rgbSwapped()
-//                          .scaled(imageSize, Qt::KeepAspectRatio, Qt::SmoothTransformation);
-
-//    QLabel* image_Label = new QLabel();
-//    image_Label->setPixmap(QPixmap::fromImage(image));
-//    image_Label->setAlignment(Qt::AlignCenter);
-//    base_Layout->addWidget(image_Label);
-
+    // # Buttons Layout:
     QHBoxLayout* buttons_Layout = new QHBoxLayout();
+    buttons_Layout->setAlignment(Qt::AlignCenter);
     base_Layout->addLayout(buttons_Layout);
-    buttons_Layout->addStretch(1);
 
-    if (QCameraInfo::availableCameras().count() <= 0)
-        Modal::message("No available cameras found!");
-
-    QCamera* camera = new QCamera(QCamera::FrontFace);
-    camera->setViewfinder(grabber);
-    connect(grabber,
-            SIGNAL(frameAvailable(QImage)),
+    // # Stop Button:
+    QPushButton* stop_Button = new QPushButton("Остановить");
+    buttons_Layout->addWidget(stop_Button);
+    connect(stop_Button,
+            &QPushButton::clicked,
             this,
-            SLOT(handleImage(QImage)));
-    camera->start();
+            &Survey_View::stopPlayer);
+
+    // # Start Button:
+    QPushButton* start_Button = new QPushButton("Начать");
+    buttons_Layout->addWidget(start_Button);
+    connect(start_Button,
+            &QPushButton::clicked,
+            this,
+            &Survey_View::startPlayer);
 
     // # Back Button:
     QPushButton* back_Button = new QPushButton("Назад");
     buttons_Layout->addWidget(back_Button);
     connect(back_Button,
             &QPushButton::clicked,
-            [=] () { camera->stop();
+            [=] () { stopPlayer();
                      emit backButton_Clicked(); });
-
-    buttons_Layout->addStretch(1);
 
     setLayout(base_Layout);
 }
 
-void Survey_View::handleImage(QImage image)
+void Survey_View::startPlayer()
 {
-    QString filename = "frame.jpg";
-    QFile file(filename);
-
-    update();
-
-    if (file.exists()) return;
-
-    image.save(filename, "jpg");
+    if (!player->start())
+        Modal::message("Нет доступных камер!");
 }
 
-void Survey_View::paintEvent(QPaintEvent *event)
-{
-    QPainter painter(this);
-    grabber->paint(&painter);
-}
-
-//void Survey_View::init()
-//{
-//    camera->start();
-//}
+void Survey_View::stopPlayer() { player->stop(); }

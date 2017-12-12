@@ -39,7 +39,8 @@ SOURCES += \
     Survey_View.cpp \
     Welcome_View.cpp \
     CameraFrameGrubber.cpp \
-    Modal.cpp
+    Modal.cpp \
+    CameraPlayer.cpp
 
 HEADERS += \
     DoctorRegistration_View.h \
@@ -56,7 +57,8 @@ HEADERS += \
     Survey_View.h \
     Welcome_View.h \
     CameraFrameGrubber.h \
-    Modal.h
+    Modal.h \
+    CameraPlayer.h
 
 INCLUDEPATH += /usr/include/opencv
 LIBS += -L/usr/lib -lopencv_core -lopencv_imgcodecs -lopencv_highgui
