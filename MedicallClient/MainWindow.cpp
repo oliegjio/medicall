@@ -16,9 +16,6 @@ MainWindow::MainWindow()
 
     setCentralWidget(stack);
 
-    QFont defaultFont("Arial", 15);
-    setFont(defaultFont);
-
     // #####
     // ## Stack:
     // #####
@@ -136,7 +133,7 @@ MainWindow::MainWindow()
     // ## Other:
     // #####
 
-    setStyleSheet("background-color: white;");
+    setStyleSheet("background-color: lightblue;");
 }
 
 MainWindow::~MainWindow() {}

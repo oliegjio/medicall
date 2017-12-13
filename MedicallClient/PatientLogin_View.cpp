@@ -47,7 +47,7 @@ PatientLogin_View::PatientLogin_View(QWidget* parent) : QWidget(parent)
     username_Label->setMaximumWidth(labelsWidth);
     form_Layout->addWidget(username_Label, 0, 0);
 
-    username_Line = new QLineEdit();
+    username_Line = new LineEdit();
     username_Line->setMaximumWidth(linesWidth);
     form_Layout->addWidget(username_Line, 0, 1);
 
@@ -56,20 +56,20 @@ PatientLogin_View::PatientLogin_View(QWidget* parent) : QWidget(parent)
     password_Label->setMaximumWidth(labelsWidth);
     form_Layout->addWidget(password_Label, 1, 0);
 
-    password_Line = new QLineEdit();
+    password_Line = new LineEdit();
     password_Line->setMaximumWidth(linesWidth);
-    password_Line->setEchoMode(QLineEdit::Password);
+    password_Line->setEchoMode(LineEdit::Password);
     form_Layout->addWidget(password_Line, 1, 1);
 
     // # Back Button:
-    QPushButton* back_Button = new QPushButton("Назад");
+    Button* back_Button = new Button("Назад");
     form_Layout->addWidget(back_Button, 2, 0);
     connect(back_Button,
-            &QPushButton::clicked,
+            &Button::clicked,
             [=] () { emit backButton_Clicked(); });
 
     // # Login Button:
-    QPushButton* login_Button = new QPushButton("Войти");
+    Button* login_Button = new Button("Войти");
     form_Layout->addWidget(login_Button, 2, 1);
     connect(login_Button,
             SIGNAL(clicked()),

@@ -1,9 +1,10 @@
 #ifndef WELCOMEVIEW_H
 #define WELCOMEVIEW_H
 
-#include "QLabel"
-#include "QVBoxLayout"
-#include "QPushButton"
+#include <QLabel>
+#include <QVBoxLayout>
+
+#include "Button.h"
 
 class Welcome_View : public QWidget
 {

@@ -3,13 +3,13 @@
 
 #include <QLabel>
 #include <QVBoxLayout>
-#include <QLineEdit>
-#include <QPushButton>
 #include <QNetworkRequest>
 #include <QNetworkReply>
 #include <QHttpPart>
 
 #include "NetworkManager.h"
+#include "Button.h"
+#include "LineEdit.h"
 
 class DoctorLogin_VIew : public QWidget
 {
@@ -29,8 +29,8 @@ public:
 
 private:
     QNetworkAccessManager* login_NetworkManager;
-    QLineEdit* username_Line;
-    QLineEdit* password_Line;
+    LineEdit* username_Line;
+    LineEdit* password_Line;
 };
 
 #endif // LOGINDOCTORVIEW_H

@@ -9,6 +9,7 @@
 
 #include "Doctor_Model.h"
 #include "Recomendation_Widget.h"
+#include "Button.h"
 
 class Doctor_View : public QWidget
 {

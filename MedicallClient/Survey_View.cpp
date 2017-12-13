@@ -22,34 +22,34 @@ Survey_View::Survey_View(QWidget* parent) : QWidget(parent)
     base_Layout->addLayout(buttons_Layout);
 
     // # Start Button:
-    QPushButton* start_Button = new QPushButton("Начать");
+    Button* start_Button = new Button("Начать");
     buttons_Layout->addWidget(start_Button);
     connect(start_Button,
-            &QPushButton::clicked,
+            &Button::clicked,
             this,
             &Survey_View::startPlayer);
 
     // # Stop Button:
-    QPushButton* stop_Button = new QPushButton("Остановить");
+    Button* stop_Button = new Button("Остановить");
     buttons_Layout->addWidget(stop_Button);
     connect(stop_Button,
-            &QPushButton::clicked,
+            &Button::clicked,
             this,
             &Survey_View::stopPlayer);
 
     // # Analyze Button:
-    QPushButton* analyze_Button = new QPushButton("Анализировать");
+    Button* analyze_Button = new Button("Анализировать");
     buttons_Layout->addWidget(analyze_Button);
     connect(analyze_Button,
-            &QPushButton::clicked,
+            &Button::clicked,
             this,
             &Survey_View::analyze);
 
     // # Back Button:
-    QPushButton* back_Button = new QPushButton("Назад");
+    Button* back_Button = new Button("Назад");
     buttons_Layout->addWidget(back_Button);
     connect(back_Button,
-            &QPushButton::clicked,
+            &Button::clicked,
             [=] () { stopPlayer();
                      emit backButton_Clicked(); });
 

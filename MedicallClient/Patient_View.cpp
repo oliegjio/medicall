@@ -110,17 +110,17 @@ void Patient_View::init()
     sideBar_Layout->addStretch(1);
 
     // # Take Survery Button:
-    QPushButton* takeSurvey_Button = new QPushButton("Пройти обследование");
+    Button* takeSurvey_Button = new Button("Пройти обследование");
     sideBar_Layout->addWidget(takeSurvey_Button);
     connect(takeSurvey_Button,
-            &QPushButton::clicked,
+            &Button::clicked,
             [=] () { emit takeSurveyButton_Clicked(); });
 
     // # Back Button:
-    QPushButton* back_Button = new QPushButton("Назад");
+    Button* back_Button = new Button("Назад");
     sideBar_Layout->addWidget(back_Button);
     connect(back_Button,
-            &QPushButton::clicked,
+            &Button::clicked,
             [=] () { emit backButton_Clicked(); });
 
     // ####

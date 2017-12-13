@@ -5,13 +5,13 @@
 #include <QVBoxLayout>
 #include <QFormLayout>
 #include <QLabel>
-#include <QLineEdit>
 #include <QDateTimeEdit>
 #include <QComboBox>
 #include <QDoubleValidator>
-#include <QPushButton>
 
 #include "NetworkManager.h"
+#include "Button.h"
+#include "LineEdit.h"
 
 class PatientRegistration_View : public QWidget
 {
@@ -30,16 +30,16 @@ public:
     ~PatientRegistration_View();
 
 private:
-    QLineEdit* fullName_Line;
-    QLineEdit* username_Line;
-    QLineEdit* email_Line;
-    QLineEdit* password1_Line;
-    QLineEdit* password2_Line;
+    LineEdit* fullName_Line;
+    LineEdit* username_Line;
+    LineEdit* email_Line;
+    LineEdit* password1_Line;
+    LineEdit* password2_Line;
     QDateTimeEdit* birthDate_Line;
-    QLineEdit* location_Line;
+    LineEdit* location_Line;
     QComboBox* gender_Line;
-    QLineEdit* weight_Line;
-    QLineEdit* height_Line;
+    LineEdit* weight_Line;
+    LineEdit* height_Line;
     QComboBox* bloodType_Line;
 
     QNetworkAccessManager* register_NetworkManager;

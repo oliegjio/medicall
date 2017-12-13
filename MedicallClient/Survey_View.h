@@ -5,11 +5,11 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QLabel>
-#include <QPushButton>
 
 #include "Modal.h"
 #include "CameraPlayer.h"
 #include "FaceAnalyzer.h"
+#include "Button.h"
 
 class Survey_View : public QWidget
 {

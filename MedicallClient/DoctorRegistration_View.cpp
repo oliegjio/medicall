@@ -40,54 +40,54 @@ DoctorRegistration_View::DoctorRegistration_View(QWidget* parent) : QWidget(pare
 
     // # Full name:
     QLabel* fullName_Label = new QLabel("ФИО:");
-    fullName_Line = new QLineEdit(this);
+    fullName_Line = new LineEdit(this);
     form_Layout->addRow(fullName_Label, fullName_Line);
 
     // # Username:
     QLabel* username_Label = new QLabel("Логин:");
-    username_Line = new QLineEdit(this);
+    username_Line = new LineEdit(this);
     form_Layout->addRow(username_Label, username_Line);
 
     // # E-Mail:
     QLabel* email_Label = new QLabel("Эл-Почта:");
-    email_Line = new QLineEdit(this);
+    email_Line = new LineEdit(this);
     form_Layout->addRow(email_Label, email_Line);
 
     // # Password 1:
     QLabel* password1_Label = new QLabel("Пароль:");
-    password1_Line = new QLineEdit(this);
-    password1_Line->setEchoMode(QLineEdit::Password);
+    password1_Line = new LineEdit(this);
+    password1_Line->setEchoMode(LineEdit::Password);
     form_Layout->addRow(password1_Label, password1_Line);
 
     // # Password 2:
     QLabel* password2_Label = new QLabel("Повторите пароль:");
-    password2_Line = new QLineEdit(this);
-    password2_Line->setEchoMode(QLineEdit::Password);
+    password2_Line = new LineEdit(this);
+    password2_Line->setEchoMode(LineEdit::Password);
     form_Layout->addRow(password2_Label, password2_Line);
 
     // # Speciality:
     QLabel* speciality_Label = new QLabel("Специализация:");
-    speciality_Line = new QLineEdit(this);
+    speciality_Line = new LineEdit(this);
     form_Layout->addRow(speciality_Label, speciality_Line);
 
     // # Phone Number:
     QLabel* phoneNumber_Label = new QLabel("Номер телефона:");
-    phoneNumber_Line = new QLineEdit(this);
+    phoneNumber_Line = new LineEdit(this);
     form_Layout->addRow(phoneNumber_Label, phoneNumber_Line);
 
     // # Social Networks:
     QLabel* socialNetworks_Label = new QLabel("Соц. сети:");
-    socialNetworks_Line = new QLineEdit(this);
+    socialNetworks_Line = new LineEdit(this);
     form_Layout->addRow(socialNetworks_Label, socialNetworks_Line);
 
     // # Back Button:
-    QPushButton* back_Button = new QPushButton("Назад");
+    Button* back_Button = new Button("Назад");
     connect(back_Button,
-            &QPushButton::clicked,
+            &Button::clicked,
             [=] () { emit backButton_Clicked(); });
 
     // # Register Button:
-    QPushButton* register_Button = new QPushButton("Зарегестрироваться");
+    Button* register_Button = new Button("Зарегестрироваться");
     connect(register_Button,
             SIGNAL(clicked()),
             this,

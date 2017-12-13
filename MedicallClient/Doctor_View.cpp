@@ -37,10 +37,10 @@ void Doctor_View::init()
     topBar_Layout->addStretch(1);
 
     // # Back Button:
-    QPushButton* back_Button = new QPushButton("Назад");
+    Button* back_Button = new Button("Назад");
     topBar_Layout->addWidget(back_Button);
     connect(back_Button,
-            &QPushButton::clicked,
+            &Button::clicked,
             [=] () { emit backButton_Clicked(); });
 
     // # Recomendations:

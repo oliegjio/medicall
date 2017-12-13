@@ -41,29 +41,29 @@ PatientRegistration_View::PatientRegistration_View(QWidget* parent) : QWidget(pa
 
     // # Full name:
     QLabel* fullName_Label = new QLabel("ФИО:");
-    fullName_Line = new QLineEdit(this);
+    fullName_Line = new LineEdit(this);
     form_Layout->addRow(fullName_Label, fullName_Line);
 
     // # Username:
     QLabel* username_Label = new QLabel("Логин:");
-    username_Line = new QLineEdit(this);
+    username_Line = new LineEdit(this);
     form_Layout->addRow(username_Label, username_Line);
 
     // # E-Mail:
     QLabel* email_Label = new QLabel("Эл-Почта:");
-    email_Line = new QLineEdit(this);
+    email_Line = new LineEdit(this);
     form_Layout->addRow(email_Label, email_Line);
 
     // # Password 1:
     QLabel* password1_Label = new QLabel("Пароль:");
-    password1_Line = new QLineEdit(this);
-    password1_Line->setEchoMode(QLineEdit::Password);
+    password1_Line = new LineEdit(this);
+    password1_Line->setEchoMode(LineEdit::Password);
     form_Layout->addRow(password1_Label, password1_Line);
 
     // # Password 2:
     QLabel* password2_Label = new QLabel("Повторите пароль:");
-    password2_Line = new QLineEdit(this);
-    password2_Line->setEchoMode(QLineEdit::Password);
+    password2_Line = new LineEdit(this);
+    password2_Line->setEchoMode(LineEdit::Password);
     form_Layout->addRow(password2_Label, password2_Line);
 
     // # Birth Day:
@@ -74,7 +74,7 @@ PatientRegistration_View::PatientRegistration_View(QWidget* parent) : QWidget(pa
 
     // # Location:
     QLabel* localtion_Label = new QLabel("Место проживания:");
-    location_Line = new QLineEdit(this);
+    location_Line = new LineEdit(this);
     form_Layout->addRow(localtion_Label, location_Line);
 
     // # Gender:
@@ -86,13 +86,13 @@ PatientRegistration_View::PatientRegistration_View(QWidget* parent) : QWidget(pa
 
     // # Weight:
     QLabel* weight_Label = new QLabel("Вес:");
-    weight_Line = new QLineEdit(this);
+    weight_Line = new LineEdit(this);
     weight_Line->setValidator(new QDoubleValidator(0.0, 300.0, 3, this));
     form_Layout->addRow(weight_Label, weight_Line);
 
     // # Height:
     QLabel* height_Label = new QLabel("Рост:");
-    height_Line = new QLineEdit(this);
+    height_Line = new LineEdit(this);
     height_Line->setValidator(new QDoubleValidator(0.0, 300.0, 3, this));
     form_Layout->addRow(height_Label, height_Line);
 
@@ -106,13 +106,13 @@ PatientRegistration_View::PatientRegistration_View(QWidget* parent) : QWidget(pa
     form_Layout->addRow(bloodType_Label, bloodType_Line);
 
     // # Back Button:
-    QPushButton* back_Button = new QPushButton("Назад");
+    Button* back_Button = new Button("Назад");
     connect(back_Button,
-            &QPushButton::clicked,
+            &Button::clicked,
             [=] () { emit backButton_Clicked(); });
 
     // # Register Button:
-    QPushButton* register_Button = new QPushButton("Зарегестрироваться");
+    Button* register_Button = new Button("Зарегестрироваться");
     connect(register_Button,
             SIGNAL(clicked()),
             this,

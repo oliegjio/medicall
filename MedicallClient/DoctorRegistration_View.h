@@ -6,13 +6,14 @@
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QFormLayout>
-#include <QPushButton>
 #include <QLineEdit>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QJsonObject>
 
 #include "NetworkManager.h"
+#include "Button.h"
+#include "LineEdit.h"
 
 class DoctorRegistration_View : public QWidget
 {
@@ -31,14 +32,14 @@ public:
     ~DoctorRegistration_View();
 
 private:
-    QLineEdit* fullName_Line;
-    QLineEdit* username_Line;
-    QLineEdit* email_Line;
-    QLineEdit* password1_Line;
-    QLineEdit* password2_Line;
-    QLineEdit* speciality_Line;
-    QLineEdit* phoneNumber_Line;
-    QLineEdit* socialNetworks_Line;
+    LineEdit* fullName_Line;
+    LineEdit* username_Line;
+    LineEdit* email_Line;
+    LineEdit* password1_Line;
+    LineEdit* password2_Line;
+    LineEdit* speciality_Line;
+    LineEdit* phoneNumber_Line;
+    LineEdit* socialNetworks_Line;
 
     QNetworkAccessManager* register_NetworkManager;
 };

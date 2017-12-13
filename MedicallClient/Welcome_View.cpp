@@ -26,47 +26,47 @@ Welcome_View::Welcome_View(QWidget* parent) : QWidget(parent)
     base_Layout->addStretch(1);
 
     // # Login as Patient Button:
-    QPushButton* patientLogin_Button = new QPushButton("Войти как пациент");
+    Button* patientLogin_Button = new Button("Войти как пациент");
     patientLogin_Button->setMaximumWidth(buttonsWidth);
     base_Layout->addWidget(patientLogin_Button);
     connect(patientLogin_Button,
-            &QPushButton::clicked,
+            &Button::clicked,
             [=] () { emit patientLoginButton_Clicked(); });
 
     // # Login as Doctor Button:
-    QPushButton* doctorLogin_Button = new QPushButton("Войти как доктор");
+    Button* doctorLogin_Button = new Button("Войти как доктор");
     doctorLogin_Button->setMaximumWidth(buttonsWidth);
     base_Layout->addWidget(doctorLogin_Button);
     connect(doctorLogin_Button,
-            &QPushButton::clicked,
+            &Button::clicked,
             [=] () { emit doctorLoginButton_Clicked(); });
 
     base_Layout->addStretch(1);
 
     // # Register as Pacient:
-    QPushButton* patientRegistration_Button = new QPushButton("Регистрация пациента");
+    Button* patientRegistration_Button = new Button("Регистрация пациента");
     patientRegistration_Button->setMaximumWidth(buttonsWidth);
     base_Layout->addWidget(patientRegistration_Button);
     connect(patientRegistration_Button,
-            &QPushButton::clicked,
+            &Button::clicked,
             [=] () { emit patientRegisterButton_Clicked(); });
 
     // # Register as Doctor:
-    QPushButton* doctorRegistration_Button = new QPushButton("Регистрация доктора");
+    Button* doctorRegistration_Button = new Button("Регистрация доктора");
     doctorRegistration_Button->setMaximumWidth(buttonsWidth);
     base_Layout->addWidget(doctorRegistration_Button);
     connect(doctorRegistration_Button,
-            &QPushButton::clicked,
+            &Button::clicked,
             [=] () { emit doctorRegisterButton_Clicked(); });
 
     base_Layout->addStretch(1);
 
     // # Exit Button:
-    QPushButton* exit_Button = new QPushButton("Выйти");
+    Button* exit_Button = new Button("Выйти");
     exit_Button->setMaximumWidth(buttonsWidth);
     base_Layout->addWidget(exit_Button);
     connect(exit_Button,
-            &QPushButton::clicked,
+            &Button::clicked,
             [=] () { emit exitButton_Clicked(); });
 
     // #####
