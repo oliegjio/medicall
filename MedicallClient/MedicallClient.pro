@@ -64,3 +64,9 @@ HEADERS += \
 
 INCLUDEPATH += /usr/include/opencv
 LIBS += -L/usr/lib -lopencv_core -lopencv_imgproc -lopencv_calib3d -lopencv_video -lopencv_features2d -lopencv_ml -lopencv_highgui -lopencv_objdetect -lopencv_flann -lopencv_imgcodecs
+
+DISTFILES += \
+    Cascade.xml
+
+RESOURCES += \
+    Resources.qrc

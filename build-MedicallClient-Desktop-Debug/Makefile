@@ -67,7 +67,8 @@ SOURCES       = ../MedicallClient/main.cpp \
 		../MedicallClient/CameraFrameGrubber.cpp \
 		../MedicallClient/Modal.cpp \
 		../MedicallClient/CameraPlayer.cpp \
-		../MedicallClient/FaceAnalyzer.cpp moc_DoctorRegistration_View.cpp \
+		../MedicallClient/FaceAnalyzer.cpp qrc_Resources.cpp \
+		moc_DoctorRegistration_View.cpp \
 		moc_Doctor_Model.cpp \
 		moc_Doctor_View.cpp \
 		moc_DoctorLogin_View.cpp \
@@ -102,6 +103,7 @@ OBJECTS       = main.o \
 		Modal.o \
 		CameraPlayer.o \
 		FaceAnalyzer.o \
+		qrc_Resources.o \
 		moc_DoctorRegistration_View.o \
 		moc_Doctor_Model.o \
 		moc_Doctor_View.o \
@@ -119,7 +121,8 @@ OBJECTS       = main.o \
 		moc_Modal.o \
 		moc_CameraPlayer.o \
 		moc_FaceAnalyzer.o
-DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
+DIST          = ../MedicallClient/Cascade.xml \
+		/usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/common/unix.conf \
 		/usr/lib/qt/mkspecs/common/linux.conf \
 		/usr/lib/qt/mkspecs/common/sanitize.conf \
@@ -415,6 +418,7 @@ Makefile: ../MedicallClient/MedicallClient.pro /usr/lib/qt/mkspecs/linux-g++/qma
 		/usr/lib/qt/mkspecs/features/yacc.prf \
 		/usr/lib/qt/mkspecs/features/lex.prf \
 		../MedicallClient/MedicallClient.pro \
+		../MedicallClient/Resources.qrc \
 		/usr/lib/libQt5MultimediaWidgets.prl \
 		/usr/lib/libQt5Multimedia.prl \
 		/usr/lib/libQt5Widgets.prl \
@@ -548,6 +552,7 @@ Makefile: ../MedicallClient/MedicallClient.pro /usr/lib/qt/mkspecs/linux-g++/qma
 /usr/lib/qt/mkspecs/features/yacc.prf:
 /usr/lib/qt/mkspecs/features/lex.prf:
 ../MedicallClient/MedicallClient.pro:
+../MedicallClient/Resources.qrc:
 /usr/lib/libQt5MultimediaWidgets.prl:
 /usr/lib/libQt5Multimedia.prl:
 /usr/lib/libQt5Widgets.prl:
@@ -568,6 +573,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
+	$(COPY_FILE) --parents ../MedicallClient/Resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../MedicallClient/DoctorRegistration_View.h ../MedicallClient/Doctor_Model.h ../MedicallClient/Doctor_View.h ../MedicallClient/DoctorLogin_View.h ../MedicallClient/PatientLogin_View.h ../MedicallClient/MainWindow.h ../MedicallClient/NetworkManager.h ../MedicallClient/Patient_Model.h ../MedicallClient/PatientRegistration_View.h ../MedicallClient/Patient_View.h ../MedicallClient/Recomendation_Widget.h ../MedicallClient/Survey_View.h ../MedicallClient/Welcome_View.h ../MedicallClient/CameraFrameGrubber.h ../MedicallClient/Modal.h ../MedicallClient/CameraPlayer.h ../MedicallClient/FaceAnalyzer.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../MedicallClient/main.cpp ../MedicallClient/DoctorRegistration_View.cpp ../MedicallClient/Doctor_Model.cpp ../MedicallClient/Doctor_View.cpp ../MedicallClient/DoctorLogin_View.cpp ../MedicallClient/PatientLogin_View.cpp ../MedicallClient/MainWindow.cpp ../MedicallClient/NetworkManager.cpp ../MedicallClient/Patient_Model.cpp ../MedicallClient/PatientRegistration_View.cpp ../MedicallClient/Patient_View.cpp ../MedicallClient/Recomendation_Widget.cpp ../MedicallClient/Survey_View.cpp ../MedicallClient/Welcome_View.cpp ../MedicallClient/CameraFrameGrubber.cpp ../MedicallClient/Modal.cpp ../MedicallClient/CameraPlayer.cpp ../MedicallClient/FaceAnalyzer.cpp $(DISTDIR)/
@@ -594,8 +600,14 @@ check: first
 
 benchmark: first
 
-compiler_rcc_make_all:
+compiler_rcc_make_all: qrc_Resources.cpp
 compiler_rcc_clean:
+	-$(DEL_FILE) qrc_Resources.cpp
+qrc_Resources.cpp: ../MedicallClient/Resources.qrc \
+		/usr/bin/rcc \
+		../MedicallClient/Cascade.xml
+	/usr/bin/rcc -name Resources ../MedicallClient/Resources.qrc -o qrc_Resources.cpp
+
 compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) moc_predefs.h
@@ -741,7 +753,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean 
 
 ####### Compile
 
@@ -855,6 +867,9 @@ CameraPlayer.o: ../MedicallClient/CameraPlayer.cpp ../MedicallClient/CameraPlaye
 
 FaceAnalyzer.o: ../MedicallClient/FaceAnalyzer.cpp ../MedicallClient/FaceAnalyzer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o FaceAnalyzer.o ../MedicallClient/FaceAnalyzer.cpp
+
+qrc_Resources.o: qrc_Resources.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_Resources.o qrc_Resources.cpp
 
 moc_DoctorRegistration_View.o: moc_DoctorRegistration_View.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_DoctorRegistration_View.o moc_DoctorRegistration_View.cpp

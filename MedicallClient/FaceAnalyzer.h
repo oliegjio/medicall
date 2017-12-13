@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QDebug>
+#include <QTemporaryDir>
 
 #include <opencv2/opencv.hpp>
 #include <iostream>
@@ -18,8 +19,6 @@ private:
     const int COLOR_MIN = 20;
     const int COLOR_MAX = 80;
     const int COLOR_SATURATION = 21;
-
-//    const std::string haar_cascade_face_detection = "/Users/artem/Desktop/neuro/cascade.xml";
 
     // Get coordinate region of cutted face
     IplImage *cutFace(IplImage* image, CvRect faceArea);

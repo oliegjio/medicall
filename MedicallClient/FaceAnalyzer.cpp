@@ -9,10 +9,10 @@ FaceAnalyzer::FaceAnalyzer(char* filename) : QObject()
     cvtColor(image, gray, cv::COLOR_BGR2GRAY); // Translate to black and white
     cv::CascadeClassifier cascadeSymbol; // Cascade definition
 
-    // Load cascade
-    bool cascadeSymbol_Load = cascadeSymbol
-            .load("/home/archie/Git/medicall/MedicallClient/Cascade.xml");
-//    bool cascadeSymbol_Load = cascadeSymbol.load(haar_cascade_face_detection);
+    QTemporaryDir dir;
+    QString cascade_Path = dir.path() + "/Cascade.xml";
+    QFile::copy(":/Cascade.xml", cascade_Path);
+    bool cascadeSymbol_Load = cascadeSymbol.load(cascade_Path.toStdString());
 
     if(!cascadeSymbol_Load)
     {
