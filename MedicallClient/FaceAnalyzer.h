@@ -1,13 +1,18 @@
 #ifndef FACEANALYZER_H
 #define FACEANALYZER_H
 
+#include <QObject>
+#include <QDebug>
+
 #include <opencv2/opencv.hpp>
 #include <iostream>
 
-class FaceAnalyzer
+class FaceAnalyzer : public QObject
 {
+    Q_OBJECT
+
 public:
-    FaceAnalyzer();
+    FaceAnalyzer(char* filename);
 
 private:
     const int COLOR_MIN = 20;

@@ -9,6 +9,7 @@
 
 #include "Modal.h"
 #include "CameraPlayer.h"
+#include "FaceAnalyzer.h"
 
 class Survey_View : public QWidget
 {
@@ -23,6 +24,7 @@ public:
 
 private:
     CameraPlayer* player;
+    FaceAnalyzer* analyzer;
 
 private slots:
     void startPlayer();

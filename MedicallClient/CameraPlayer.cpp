@@ -18,12 +18,14 @@ bool CameraPlayer::start()
             SLOT(handleImage(QImage)));
     camera->start();
 
+    isActive = true;
     return true;
 }
 
 void CameraPlayer::stop()
 {
     camera->stop();
+    isActive = false;
 }
 
 void CameraPlayer::frameToPng(QString filename)

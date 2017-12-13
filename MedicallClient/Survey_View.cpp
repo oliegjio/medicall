@@ -66,5 +66,7 @@ void Survey_View::stopPlayer() { player->stop(); }
 
 void Survey_View::analyze()
 {
+    if (!player->isActive) return;
     player->frameToPng("frame.png");
+    analyzer = new FaceAnalyzer("frame.png");
 }

@@ -1,10 +1,8 @@
 #include "FaceAnalyzer.h"
 
-FaceAnalyzer::FaceAnalyzer()
+FaceAnalyzer::FaceAnalyzer(char* filename) : QObject()
 {
-    std::string filename = "frame.png";
-
-    cv::Mat image = cv::imread("frame.png");
+    cv::Mat image = cv::imread(filename);
 
     cv::Mat gray;
 
@@ -37,7 +35,7 @@ FaceAnalyzer::FaceAnalyzer()
 
         // Face cutting
         cvSaveImage("cut.png",
-                    cutFace(cvLoadImage("frame.png", 1),
+                    cutFace(cvLoadImage(filename, 1),
                     cvRect(p.x, p.y, p.width, p.height)));
         cv::Mat cuttedMat = cv::imread("cut.png");
         cv::Mat mask;

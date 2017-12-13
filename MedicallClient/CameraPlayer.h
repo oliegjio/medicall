@@ -19,6 +19,8 @@ public:
     void stop();
     void frameToPng(QString filename);
 
+    bool isActive = false;
+
 private:
     virtual void paintEvent(QPaintEvent* event);
 
