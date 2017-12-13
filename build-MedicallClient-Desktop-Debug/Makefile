@@ -66,7 +66,8 @@ SOURCES       = ../MedicallClient/main.cpp \
 		../MedicallClient/Welcome_View.cpp \
 		../MedicallClient/CameraFrameGrubber.cpp \
 		../MedicallClient/Modal.cpp \
-		../MedicallClient/CameraPlayer.cpp moc_DoctorRegistration_View.cpp \
+		../MedicallClient/CameraPlayer.cpp \
+		../MedicallClient/FaceAnalyzer.cpp moc_DoctorRegistration_View.cpp \
 		moc_Doctor_Model.cpp \
 		moc_Doctor_View.cpp \
 		moc_DoctorLogin_View.cpp \
@@ -99,6 +100,7 @@ OBJECTS       = main.o \
 		CameraFrameGrubber.o \
 		Modal.o \
 		CameraPlayer.o \
+		FaceAnalyzer.o \
 		moc_DoctorRegistration_View.o \
 		moc_Doctor_Model.o \
 		moc_Doctor_View.o \
@@ -255,7 +257,8 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		../MedicallClient/Welcome_View.h \
 		../MedicallClient/CameraFrameGrubber.h \
 		../MedicallClient/Modal.h \
-		../MedicallClient/CameraPlayer.h ../MedicallClient/main.cpp \
+		../MedicallClient/CameraPlayer.h \
+		../MedicallClient/FaceAnalyzer.h ../MedicallClient/main.cpp \
 		../MedicallClient/DoctorRegistration_View.cpp \
 		../MedicallClient/Doctor_Model.cpp \
 		../MedicallClient/Doctor_View.cpp \
@@ -271,7 +274,8 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		../MedicallClient/Welcome_View.cpp \
 		../MedicallClient/CameraFrameGrubber.cpp \
 		../MedicallClient/Modal.cpp \
-		../MedicallClient/CameraPlayer.cpp
+		../MedicallClient/CameraPlayer.cpp \
+		../MedicallClient/FaceAnalyzer.cpp
 QMAKE_TARGET  = Test
 DESTDIR       = 
 TARGET        = Test
@@ -563,8 +567,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../MedicallClient/DoctorRegistration_View.h ../MedicallClient/Doctor_Model.h ../MedicallClient/Doctor_View.h ../MedicallClient/DoctorLogin_View.h ../MedicallClient/PatientLogin_View.h ../MedicallClient/MainWindow.h ../MedicallClient/NetworkManager.h ../MedicallClient/Patient_Model.h ../MedicallClient/PatientRegistration_View.h ../MedicallClient/Patient_View.h ../MedicallClient/Recomendation_Widget.h ../MedicallClient/Survey_View.h ../MedicallClient/Welcome_View.h ../MedicallClient/CameraFrameGrubber.h ../MedicallClient/Modal.h ../MedicallClient/CameraPlayer.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../MedicallClient/main.cpp ../MedicallClient/DoctorRegistration_View.cpp ../MedicallClient/Doctor_Model.cpp ../MedicallClient/Doctor_View.cpp ../MedicallClient/DoctorLogin_View.cpp ../MedicallClient/PatientLogin_View.cpp ../MedicallClient/MainWindow.cpp ../MedicallClient/NetworkManager.cpp ../MedicallClient/Patient_Model.cpp ../MedicallClient/PatientRegistration_View.cpp ../MedicallClient/Patient_View.cpp ../MedicallClient/Recomendation_Widget.cpp ../MedicallClient/Survey_View.cpp ../MedicallClient/Welcome_View.cpp ../MedicallClient/CameraFrameGrubber.cpp ../MedicallClient/Modal.cpp ../MedicallClient/CameraPlayer.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../MedicallClient/DoctorRegistration_View.h ../MedicallClient/Doctor_Model.h ../MedicallClient/Doctor_View.h ../MedicallClient/DoctorLogin_View.h ../MedicallClient/PatientLogin_View.h ../MedicallClient/MainWindow.h ../MedicallClient/NetworkManager.h ../MedicallClient/Patient_Model.h ../MedicallClient/PatientRegistration_View.h ../MedicallClient/Patient_View.h ../MedicallClient/Recomendation_Widget.h ../MedicallClient/Survey_View.h ../MedicallClient/Welcome_View.h ../MedicallClient/CameraFrameGrubber.h ../MedicallClient/Modal.h ../MedicallClient/CameraPlayer.h ../MedicallClient/FaceAnalyzer.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../MedicallClient/main.cpp ../MedicallClient/DoctorRegistration_View.cpp ../MedicallClient/Doctor_Model.cpp ../MedicallClient/Doctor_View.cpp ../MedicallClient/DoctorLogin_View.cpp ../MedicallClient/PatientLogin_View.cpp ../MedicallClient/MainWindow.cpp ../MedicallClient/NetworkManager.cpp ../MedicallClient/Patient_Model.cpp ../MedicallClient/PatientRegistration_View.cpp ../MedicallClient/Patient_View.cpp ../MedicallClient/Recomendation_Widget.cpp ../MedicallClient/Survey_View.cpp ../MedicallClient/Welcome_View.cpp ../MedicallClient/CameraFrameGrubber.cpp ../MedicallClient/Modal.cpp ../MedicallClient/CameraPlayer.cpp ../MedicallClient/FaceAnalyzer.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -647,8 +651,8 @@ moc_MainWindow.cpp: ../MedicallClient/Welcome_View.h \
 		../MedicallClient/Doctor_Model.h \
 		../MedicallClient/Doctor_View.h \
 		../MedicallClient/Survey_View.h \
-		../MedicallClient/CameraFrameGrubber.h \
 		../MedicallClient/CameraPlayer.h \
+		../MedicallClient/CameraFrameGrubber.h \
 		../MedicallClient/MainWindow.h \
 		moc_predefs.h \
 		/usr/bin/moc
@@ -689,8 +693,8 @@ moc_Recomendation_Widget.cpp: ../MedicallClient/Recomendation_Widget.h \
 	/usr/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/archie/Git/medicall/MedicallClient -I/usr/include/opencv -I/usr/include/qt -I/usr/include/qt/QtMultimediaWidgets -I/usr/include/qt/QtMultimedia -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtNetwork -I/usr/include/qt/QtCore -I. -I/usr/include/c++/7.2.0 -I/usr/include/c++/7.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/7.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/7.2.0/include-fixed -I/usr/include ../MedicallClient/Recomendation_Widget.h -o moc_Recomendation_Widget.cpp
 
 moc_Survey_View.cpp: ../MedicallClient/Modal.h \
-		../MedicallClient/CameraFrameGrubber.h \
 		../MedicallClient/CameraPlayer.h \
+		../MedicallClient/CameraFrameGrubber.h \
 		../MedicallClient/Survey_View.h \
 		moc_predefs.h \
 		/usr/bin/moc
@@ -746,8 +750,8 @@ main.o: ../MedicallClient/main.cpp ../MedicallClient/MainWindow.h \
 		../MedicallClient/Doctor_Model.h \
 		../MedicallClient/Doctor_View.h \
 		../MedicallClient/Survey_View.h \
-		../MedicallClient/CameraFrameGrubber.h \
-		../MedicallClient/CameraPlayer.h
+		../MedicallClient/CameraPlayer.h \
+		../MedicallClient/CameraFrameGrubber.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../MedicallClient/main.cpp
 
 DoctorRegistration_View.o: ../MedicallClient/DoctorRegistration_View.cpp ../MedicallClient/DoctorRegistration_View.h \
@@ -789,8 +793,8 @@ MainWindow.o: ../MedicallClient/MainWindow.cpp ../MedicallClient/MainWindow.h \
 		../MedicallClient/Doctor_Model.h \
 		../MedicallClient/Doctor_View.h \
 		../MedicallClient/Survey_View.h \
-		../MedicallClient/CameraFrameGrubber.h \
-		../MedicallClient/CameraPlayer.h
+		../MedicallClient/CameraPlayer.h \
+		../MedicallClient/CameraFrameGrubber.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o MainWindow.o ../MedicallClient/MainWindow.cpp
 
 NetworkManager.o: ../MedicallClient/NetworkManager.cpp ../MedicallClient/NetworkManager.h
@@ -819,8 +823,8 @@ Recomendation_Widget.o: ../MedicallClient/Recomendation_Widget.cpp ../MedicallCl
 
 Survey_View.o: ../MedicallClient/Survey_View.cpp ../MedicallClient/Survey_View.h \
 		../MedicallClient/Modal.h \
-		../MedicallClient/CameraFrameGrubber.h \
-		../MedicallClient/CameraPlayer.h
+		../MedicallClient/CameraPlayer.h \
+		../MedicallClient/CameraFrameGrubber.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Survey_View.o ../MedicallClient/Survey_View.cpp
 
 Welcome_View.o: ../MedicallClient/Welcome_View.cpp ../MedicallClient/Welcome_View.h
@@ -836,6 +840,9 @@ CameraPlayer.o: ../MedicallClient/CameraPlayer.cpp ../MedicallClient/CameraPlaye
 		../MedicallClient/Modal.h \
 		../MedicallClient/CameraFrameGrubber.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o CameraPlayer.o ../MedicallClient/CameraPlayer.cpp
+
+FaceAnalyzer.o: ../MedicallClient/FaceAnalyzer.cpp ../MedicallClient/FaceAnalyzer.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o FaceAnalyzer.o ../MedicallClient/FaceAnalyzer.cpp
 
 moc_DoctorRegistration_View.o: moc_DoctorRegistration_View.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_DoctorRegistration_View.o moc_DoctorRegistration_View.cpp

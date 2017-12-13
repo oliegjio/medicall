@@ -66,5 +66,5 @@ void Survey_View::stopPlayer() { player->stop(); }
 
 void Survey_View::analyze()
 {
-    player->frameToJpg("frame.jpg");
+    player->frameToPng("frame.png");
 }

@@ -26,11 +26,11 @@ void CameraPlayer::stop()
     camera->stop();
 }
 
-void CameraPlayer::frameToJpg(QString filename)
+void CameraPlayer::frameToPng(QString filename)
 {
     QFile::remove(filename);
     QFile file(filename);
-    image.save(filename, "jpg");
+    image.save(filename, "png");
 }
 
 void CameraPlayer::handleImage(QImage image)

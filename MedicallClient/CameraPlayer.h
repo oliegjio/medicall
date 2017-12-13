@@ -17,7 +17,7 @@ public:
 
     bool start();
     void stop();
-    void frameToJpg(QString filename);
+    void frameToPng(QString filename);
 
 private:
     virtual void paintEvent(QPaintEvent* event);

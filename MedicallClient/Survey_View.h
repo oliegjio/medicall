@@ -7,8 +7,6 @@
 #include <QLabel>
 #include <QPushButton>
 
-#include <opencv2/opencv.hpp>
-
 #include "Modal.h"
 #include "CameraPlayer.h"
 

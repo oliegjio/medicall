@@ -40,7 +40,8 @@ SOURCES += \
     Welcome_View.cpp \
     CameraFrameGrubber.cpp \
     Modal.cpp \
-    CameraPlayer.cpp
+    CameraPlayer.cpp \
+    FaceAnalyzer.cpp
 
 HEADERS += \
     DoctorRegistration_View.h \
@@ -58,7 +59,8 @@ HEADERS += \
     Welcome_View.h \
     CameraFrameGrubber.h \
     Modal.h \
-    CameraPlayer.h
+    CameraPlayer.h \
+    FaceAnalyzer.h
 
 INCLUDEPATH += /usr/include/opencv
 LIBS += -L/usr/lib -lopencv_core -lopencv_imgcodecs -lopencv_highgui
