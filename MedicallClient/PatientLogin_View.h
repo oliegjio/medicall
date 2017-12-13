@@ -1,7 +1,6 @@
 #ifndef LOGINVIEW_H
 #define LOGINVIEW_H
 
-#include <QLabel>
 #include <QVBoxLayout>
 #include <QLineEdit>
 #include <QNetworkRequest>
@@ -12,6 +11,7 @@
 #include "Modal.h"
 #include "Button.h"
 #include "LineEdit.h"
+#include "Label.h"
 
 class PatientLogin_View : public QWidget
 {

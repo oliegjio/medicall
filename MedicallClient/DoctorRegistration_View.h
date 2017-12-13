@@ -4,7 +4,6 @@
 #include <QWidget>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
-#include <QLabel>
 #include <QFormLayout>
 #include <QLineEdit>
 #include <QNetworkAccessManager>
@@ -14,6 +13,7 @@
 #include "NetworkManager.h"
 #include "Button.h"
 #include "LineEdit.h"
+#include "Label.h"
 
 class DoctorRegistration_View : public QWidget
 {

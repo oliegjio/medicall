@@ -31,7 +31,7 @@ PatientRegistration_View::PatientRegistration_View(QWidget* parent) : QWidget(pa
     middle_Layout->addStretch(1);
 
     // # Title
-    QLabel* title_Label = new QLabel("Регистрация пациента:");
+    Label* title_Label = new Label("Регистрация пациента:");
     title_Label->setAlignment(Qt::AlignCenter);
     title_Label->setFont(QFont("Arial", 30));
     base_Layout->addWidget(title_Label);
@@ -40,64 +40,64 @@ PatientRegistration_View::PatientRegistration_View(QWidget* parent) : QWidget(pa
     middle_Layout->addLayout(form_Layout);
 
     // # Full name:
-    QLabel* fullName_Label = new QLabel("ФИО:");
+    Label* fullName_Label = new Label("ФИО:");
     fullName_Line = new LineEdit(this);
     form_Layout->addRow(fullName_Label, fullName_Line);
 
     // # Username:
-    QLabel* username_Label = new QLabel("Логин:");
+    Label* username_Label = new Label("Логин:");
     username_Line = new LineEdit(this);
     form_Layout->addRow(username_Label, username_Line);
 
     // # E-Mail:
-    QLabel* email_Label = new QLabel("Эл-Почта:");
+    Label* email_Label = new Label("Эл-Почта:");
     email_Line = new LineEdit(this);
     form_Layout->addRow(email_Label, email_Line);
 
     // # Password 1:
-    QLabel* password1_Label = new QLabel("Пароль:");
+    Label* password1_Label = new Label("Пароль:");
     password1_Line = new LineEdit(this);
     password1_Line->setEchoMode(LineEdit::Password);
     form_Layout->addRow(password1_Label, password1_Line);
 
     // # Password 2:
-    QLabel* password2_Label = new QLabel("Повторите пароль:");
+    Label* password2_Label = new Label("Повторите пароль:");
     password2_Line = new LineEdit(this);
     password2_Line->setEchoMode(LineEdit::Password);
     form_Layout->addRow(password2_Label, password2_Line);
 
     // # Birth Day:
-    QLabel* birthDate_Label = new QLabel("Дата рождения:");
+    Label* birthDate_Label = new Label("Дата рождения:");
     birthDate_Line = new QDateTimeEdit(this);
     birthDate_Line->setDisplayFormat("dd.MM.yyyy");
     form_Layout->addRow(birthDate_Label, birthDate_Line);
 
     // # Location:
-    QLabel* localtion_Label = new QLabel("Место проживания:");
+    Label* localtion_Label = new Label("Место проживания:");
     location_Line = new LineEdit(this);
     form_Layout->addRow(localtion_Label, location_Line);
 
     // # Gender:
-    QLabel* gender_Label = new QLabel("Пол:");
+    Label* gender_Label = new Label("Пол:");
     gender_Line = new QComboBox(this);
     gender_Line->addItem("Мужской");
     gender_Line->addItem("Женский");
     form_Layout->addRow(gender_Label, gender_Line);
 
     // # Weight:
-    QLabel* weight_Label = new QLabel("Вес:");
+    Label* weight_Label = new Label("Вес:");
     weight_Line = new LineEdit(this);
     weight_Line->setValidator(new QDoubleValidator(0.0, 300.0, 3, this));
     form_Layout->addRow(weight_Label, weight_Line);
 
     // # Height:
-    QLabel* height_Label = new QLabel("Рост:");
+    Label* height_Label = new Label("Рост:");
     height_Line = new LineEdit(this);
     height_Line->setValidator(new QDoubleValidator(0.0, 300.0, 3, this));
     form_Layout->addRow(height_Label, height_Line);
 
     // # Blood Type:
-    QLabel* bloodType_Label = new QLabel("Группа крови:");
+    Label* bloodType_Label = new Label("Группа крови:");
     bloodType_Line = new QComboBox(this);
     bloodType_Line->addItem("0");
     bloodType_Line->addItem("A");

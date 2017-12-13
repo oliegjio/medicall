@@ -45,7 +45,7 @@ void Patient_View::init()
 
     // # Username Title:
     QFont usernameLabel_Font("Airal", 35);
-    QLabel* username_Label = new QLabel(patient->username);
+    Label* username_Label = new Label(patient->username);
     username_Label->setFont(usernameLabel_Font);
     sideBar_Layout->addWidget(username_Label);
 
@@ -59,51 +59,51 @@ void Patient_View::init()
     sideBar_Layout->addLayout(userInfo_Layout);
 
     // # E-Mail:
-    QLabel* email_Label = new QLabel("E-Mail:");
+    Label* email_Label = new Label("E-Mail:");
     email_Label->setFont(userInfo_Font);
-    QLabel* email_Value = new QLabel(patient->email);
+    Label* email_Value = new Label(patient->email);
     email_Value->setFont(userInfo_Font);
     userInfo_Layout->addRow(email_Label, email_Value);
 
     // # Full Name:
-    QLabel* fullName_Label = new QLabel("ФИО:");
+    Label* fullName_Label = new Label("ФИО:");
     fullName_Label->setFont(userInfo_Font);
-    QLabel* fullName_Value = new QLabel(patient->fullName);
+    Label* fullName_Value = new Label(patient->fullName);
     fullName_Value->setFont(userInfo_Font);
     userInfo_Layout->addRow(fullName_Label, fullName_Value);
 
     // # Birth Date:
-    QLabel* birthDate_Label = new QLabel("Дата рождения:");
+    Label* birthDate_Label = new Label("Дата рождения:");
     birthDate_Label->setFont(userInfo_Font);
-    QLabel* birthDate_Value = new QLabel(patient->birthDate);
+    Label* birthDate_Value = new Label(patient->birthDate);
     birthDate_Value->setFont(userInfo_Font);
     userInfo_Layout->addRow(birthDate_Label, birthDate_Value);
 
     // # Location:
-    QLabel* location_Label = new QLabel("Место проживания:");
+    Label* location_Label = new Label("Место проживания:");
     location_Label->setFont(userInfo_Font);
-    QLabel* location_Value = new QLabel(patient->location);
+    Label* location_Value = new Label(patient->location);
     location_Value->setFont(userInfo_Font);
     userInfo_Layout->addRow(location_Label, location_Value);
 
     // # Weight:
-    QLabel* weight_Label = new QLabel("Вес:");
+    Label* weight_Label = new Label("Вес:");
     weight_Label->setFont(userInfo_Font);
-    QLabel* weight_Value = new QLabel(patient->weight);
+    Label* weight_Value = new Label(patient->weight);
     weight_Value->setFont(userInfo_Font);
     userInfo_Layout->addRow(weight_Label, weight_Value);
 
     // # Height:
-    QLabel* height_Label = new QLabel("Рост:");
+    Label* height_Label = new Label("Рост:");
     height_Label->setFont(userInfo_Font);
-    QLabel* height_Value = new QLabel(patient->height);
+    Label* height_Value = new Label(patient->height);
     height_Value->setFont(userInfo_Font);
     userInfo_Layout->addRow(height_Label, height_Value);
 
     // # Blood Type:
-    QLabel* bloodType_Label = new QLabel("Группа крови:");
+    Label* bloodType_Label = new Label("Группа крови:");
     bloodType_Label->setFont(userInfo_Font);
-    QLabel* bloodType_Value = new QLabel(patient->height);
+    Label* bloodType_Value = new Label(patient->height);
     bloodType_Value->setFont(userInfo_Font);
     userInfo_Layout->addRow(bloodType_Label, bloodType_Value);
 

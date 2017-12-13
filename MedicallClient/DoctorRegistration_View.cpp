@@ -30,7 +30,7 @@ DoctorRegistration_View::DoctorRegistration_View(QWidget* parent) : QWidget(pare
 
     middle_Layout->addStretch(1);
 
-    QLabel* title_Label = new QLabel("Регистрация доктора:");
+    Label* title_Label = new Label("Регистрация доктора:");
     title_Label->setAlignment(Qt::AlignCenter);
     title_Label->setFont(QFont("Arial", 30));
     base_Layout->addWidget(title_Label);
@@ -39,44 +39,44 @@ DoctorRegistration_View::DoctorRegistration_View(QWidget* parent) : QWidget(pare
     middle_Layout->addLayout(form_Layout);
 
     // # Full name:
-    QLabel* fullName_Label = new QLabel("ФИО:");
+    Label* fullName_Label = new Label("ФИО:");
     fullName_Line = new LineEdit(this);
     form_Layout->addRow(fullName_Label, fullName_Line);
 
     // # Username:
-    QLabel* username_Label = new QLabel("Логин:");
+    Label* username_Label = new Label("Логин:");
     username_Line = new LineEdit(this);
     form_Layout->addRow(username_Label, username_Line);
 
     // # E-Mail:
-    QLabel* email_Label = new QLabel("Эл-Почта:");
+    Label* email_Label = new Label("Эл-Почта:");
     email_Line = new LineEdit(this);
     form_Layout->addRow(email_Label, email_Line);
 
     // # Password 1:
-    QLabel* password1_Label = new QLabel("Пароль:");
+    Label* password1_Label = new Label("Пароль:");
     password1_Line = new LineEdit(this);
     password1_Line->setEchoMode(LineEdit::Password);
     form_Layout->addRow(password1_Label, password1_Line);
 
     // # Password 2:
-    QLabel* password2_Label = new QLabel("Повторите пароль:");
+    Label* password2_Label = new Label("Повторите пароль:");
     password2_Line = new LineEdit(this);
     password2_Line->setEchoMode(LineEdit::Password);
     form_Layout->addRow(password2_Label, password2_Line);
 
     // # Speciality:
-    QLabel* speciality_Label = new QLabel("Специализация:");
+    Label* speciality_Label = new Label("Специализация:");
     speciality_Line = new LineEdit(this);
     form_Layout->addRow(speciality_Label, speciality_Line);
 
     // # Phone Number:
-    QLabel* phoneNumber_Label = new QLabel("Номер телефона:");
+    Label* phoneNumber_Label = new Label("Номер телефона:");
     phoneNumber_Line = new LineEdit(this);
     form_Layout->addRow(phoneNumber_Label, phoneNumber_Line);
 
     // # Social Networks:
-    QLabel* socialNetworks_Label = new QLabel("Соц. сети:");
+    Label* socialNetworks_Label = new Label("Соц. сети:");
     socialNetworks_Line = new LineEdit(this);
     form_Layout->addRow(socialNetworks_Label, socialNetworks_Line);
 

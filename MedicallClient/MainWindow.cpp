@@ -98,7 +98,6 @@ MainWindow::MainWindow()
             this,
             &MainWindow::doctorRegistration_Finished);
 
-
     // # 5
     // # Patient View:
     patient_View = new Patient_View(this);

@@ -4,7 +4,6 @@
 #include <QWidget>
 #include <QVBoxLayout>
 #include <QFormLayout>
-#include <QLabel>
 #include <QDateTimeEdit>
 #include <QComboBox>
 #include <QDoubleValidator>
@@ -12,6 +11,7 @@
 #include "NetworkManager.h"
 #include "Button.h"
 #include "LineEdit.h"
+#include "Label.h"
 
 class PatientRegistration_View : public QWidget
 {

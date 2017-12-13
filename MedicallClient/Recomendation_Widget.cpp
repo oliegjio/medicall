@@ -21,11 +21,11 @@ Recomendation_Widget::Recomendation_Widget(QString title, QString date, QString 
     // ## Widgets:
     // ####
 
-    QLabel* title_Label = new QLabel(title);
+    Label* title_Label = new Label(title);
     title_Label->setFont(QFont("Arial", 18));
     base_Layout->addWidget(title_Label);
 
-    QLabel* date_Label = new QLabel(date);
+    Label* date_Label = new Label(date);
     date_Label->setFont(QFont("Arial", 8));
     base_Layout->addWidget(date_Label);
 

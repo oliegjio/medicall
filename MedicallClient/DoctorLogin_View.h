@@ -1,7 +1,6 @@
 #ifndef LOGINDOCTORVIEW_H
 #define LOGINDOCTORVIEW_H
 
-#include <QLabel>
 #include <QVBoxLayout>
 #include <QNetworkRequest>
 #include <QNetworkReply>
@@ -10,6 +9,7 @@
 #include "NetworkManager.h"
 #include "Button.h"
 #include "LineEdit.h"
+#include "Label.h"
 
 class DoctorLogin_VIew : public QWidget
 {

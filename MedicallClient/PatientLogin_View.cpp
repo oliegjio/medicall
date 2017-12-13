@@ -28,13 +28,13 @@ PatientLogin_View::PatientLogin_View(QWidget* parent) : QWidget(parent)
     // #####
 
     // # Logo:
-    QLabel* logo_Label = new QLabel("Medicall");
+    Label* logo_Label = new Label("Medicall");
     logo_Label->setAlignment(Qt::AlignCenter);
     logo_Label->setFont(QFont("Arial", 75));
     base_Layout->addWidget(logo_Label);
 
     // # Title:
-    QLabel* title_Label = new QLabel("Войти пациентом:");
+    Label* title_Label = new Label("Войти пациентом:");
     title_Label->setAlignment(Qt::AlignCenter);
     title_Label->setFont(QFont("Arial", 25));
     base_Layout->addWidget(title_Label);
@@ -43,7 +43,7 @@ PatientLogin_View::PatientLogin_View(QWidget* parent) : QWidget(parent)
     base_Layout->addLayout(form_Layout);
 
     // # Username Line:
-    QLabel* username_Label = new QLabel("Логин:");
+    Label* username_Label = new Label("Логин:");
     username_Label->setMaximumWidth(labelsWidth);
     form_Layout->addWidget(username_Label, 0, 0);
 
@@ -52,7 +52,7 @@ PatientLogin_View::PatientLogin_View(QWidget* parent) : QWidget(parent)
     form_Layout->addWidget(username_Line, 0, 1);
 
     // # Password Line:
-    QLabel* password_Label = new QLabel("Пароль:");
+    Label* password_Label = new Label("Пароль:");
     password_Label->setMaximumWidth(labelsWidth);
     form_Layout->addWidget(password_Label, 1, 0);
 

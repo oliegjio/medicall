@@ -30,7 +30,7 @@ void Doctor_View::init()
 
     // # Username Title:
     QFont username_Font("Airal", 20);
-    QLabel* username_Label = new QLabel(doctor->username);
+    Label* username_Label = new Label(doctor->username);
     username_Label->setFont(username_Font);
     topBar_Layout->addWidget(username_Label);
 

@@ -3,9 +3,10 @@
 
 #include <QWidget>
 #include <QVBoxLayout>
-#include <QLabel>
 #include <QPalette>
 #include <QTextEdit>
+
+#include "Label.h"
 
 class Recomendation_Widget : public QWidget
 {

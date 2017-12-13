@@ -18,7 +18,7 @@ Welcome_View::Welcome_View(QWidget* parent) : QWidget(parent)
     // #####
 
     // # Logo:
-    QLabel* logo_Label = new QLabel("Medicall");
+    Label* logo_Label = new Label("Medicall");
     logo_Label->setAlignment(Qt::AlignCenter);
     logo_Label->setFont(QFont("Arial", 75));
     base_Layout->addWidget(logo_Label);

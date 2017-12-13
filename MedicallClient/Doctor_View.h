@@ -3,13 +3,13 @@
 
 #include <QWidget>
 #include <QHBoxLayout>
-#include <QLabel>
 #include <QFormLayout>
 #include <QScrollArea>
 
 #include "Doctor_Model.h"
 #include "Recomendation_Widget.h"
 #include "Button.h"
+#include "Label.h"
 
 class Doctor_View : public QWidget
 {

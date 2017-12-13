@@ -43,7 +43,8 @@ SOURCES += \
     CameraPlayer.cpp \
     FaceAnalyzer.cpp \
     Button.cpp \
-    LineEdit.cpp
+    LineEdit.cpp \
+    Label.cpp
 
 HEADERS += \
     DoctorRegistration_View.h \
@@ -64,7 +65,8 @@ HEADERS += \
     CameraPlayer.h \
     FaceAnalyzer.h \
     Button.h \
-    LineEdit.h
+    LineEdit.h \
+    Label.h
 
 INCLUDEPATH += /usr/include/opencv
 LIBS += -L/usr/lib -lopencv_core -lopencv_imgproc -lopencv_calib3d -lopencv_video -lopencv_features2d -lopencv_ml -lopencv_highgui -lopencv_objdetect -lopencv_flann -lopencv_imgcodecs
