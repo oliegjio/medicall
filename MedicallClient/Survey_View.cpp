@@ -13,7 +13,6 @@ Survey_View::Survey_View(QWidget* parent) : QWidget(parent)
 
     // # Camera Player:
     player = new CameraPlayer();
-    player->setStyleSheet("border: 2px solid lightgray;");
     player->setMinimumSize(QSize(500, 500));
     base_Layout->addWidget(player);
 
