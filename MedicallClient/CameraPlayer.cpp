@@ -19,13 +19,20 @@ bool CameraPlayer::start()
     camera->start();
 
     isActive = true;
-    return true;
+    return isActive;
 }
 
 void CameraPlayer::stop()
 {
-    camera->stop();
-    isActive = false;
+    if (isActive)
+    {
+        camera->stop();
+        isActive = false;
+    }
+    else
+    {
+        return;
+    }
 }
 
 void CameraPlayer::frameToPng(QString filename)
