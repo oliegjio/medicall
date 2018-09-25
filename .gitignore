@@ -1,1 +1,3 @@
-build-MedicallClient-Desktop-Debug/
+build-*
+*.pro.user*
+*.autosave
